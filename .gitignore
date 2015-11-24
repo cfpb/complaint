@@ -1,0 +1,4 @@
+ccdb/settings_secret.py
+landing_pages/wp-content/*
+*.pyc
+.DS_Store
