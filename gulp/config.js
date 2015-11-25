@@ -6,7 +6,7 @@ var fs = require( 'fs' );
  * Set up file paths
  */
 var loc = {
-  src:  './src/disclosures',
+  src:  './src',
   dist: './landing_pages/static/',
   lib:  JSON.parse( fs.readFileSync( './.bowerrc' ) ).directory, // eslint-disable-line no-sync, no-inline-comments, max-len
   test: './test'
@@ -39,9 +39,9 @@ module.exports = {
     dest: loc.dist
   },
   styles: {
-    cwd:      loc.src + '/css',
-    src:      '/main.less',
-    dest:     loc.dist + '/static/css',
+    cwd:      loc.src + '/static/css',
+    src:      '/ccdb-landing.css',
+    dest:     loc.dist + '/css',
     settings: {
       paths: [
         loc.lib,
@@ -51,15 +51,15 @@ module.exports = {
     }
   },
   scripts: {
-    entrypoint: loc.src + '/js/index.js',
+    entrypoint: loc.src + '/static/js/index.js',
     src: [
       loc.lib + '/jquery/dist/jquery.js',
       loc.lib + '/jquery.easing/js/jquery.easing.js',
       loc.lib + '/cf-*/src/js/*.js',
-      loc.src + '/js/*.js',
-      loc.src + '/js/lib/*.js'
+      loc.src + '/static/js/*.js',
+      loc.src + '/static/js/lib/*.js'
     ],
-    dest: loc.dist + '/static/js/',
+    dest: loc.dist + '/js/',
     name: 'main.js'
   },
   browserify: {
@@ -70,7 +70,7 @@ module.exports = {
   },
   images: {
     src:  loc.src + '/static/img/**',
-    dest: loc.dist + '/static/img'
+    dest: loc.dist + '/img'
   },
   copy: {
     files: {
@@ -86,14 +86,14 @@ module.exports = {
     },
     icons: {
       src:  loc.lib + '/cf-icons/src/fonts/*',
-      dest: loc.dist + '/static/fonts/'
+      dest: loc.dist + '/fonts/'
     },
     vendorjs: {
       src: [
         loc.lib + '/box-sizing-polyfill/boxsizing.htc',
         loc.lib + '/html5shiv/dist/html5shiv-printshiv.min.js'
       ],
-      dest: loc.dist + '/static/js/'
+      dest: loc.dist + '/js/'
     }
   }
 };
