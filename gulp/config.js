@@ -40,7 +40,7 @@ module.exports = {
   },
   styles: {
     cwd:      loc.src + '/static/css',
-    src:      '/ccdb-landing.css',
+    src:      '/main.less',
     dest:     loc.dist + '/css',
     settings: {
       paths: [
@@ -83,6 +83,10 @@ module.exports = {
         '!' + loc.lib + '/**/*.html'
       ],
       dest: loc.dist
+    },
+    css: {
+      src:  loc.src + '/static/css/index.css',
+      dest: loc.dist + '/css/'
     },
     icons: {
       src:  loc.lib + '/cf-icons/src/fonts/*',

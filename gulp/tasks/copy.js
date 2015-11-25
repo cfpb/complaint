@@ -16,6 +16,16 @@ gulp.task( 'copy:files', function() {
     } ) );
 } );
 
+gulp.task( 'copy:css', function() {
+  return gulp.src( config.css.src )
+    .pipe( $.changed( config.css.dest ) )
+    .on( 'error', handleErrors )
+    .pipe( gulp.dest( config.css.dest ) )
+    .pipe( browserSync.reload( {
+      stream: true
+    } ) );
+} );
+
 gulp.task( 'copy:icons', function() {
   return gulp.src( config.icons.src )
     .pipe( $.changed( config.icons.dest ) )
@@ -40,6 +50,7 @@ gulp.task( 'copy',
   [
     'copy:files',
     'copy:icons',
+    'copy:css',
     'copy:vendorjs'
   ]
 );
