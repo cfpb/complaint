@@ -20,6 +20,11 @@ CCDB-content
   ``` 
   python manage.py runserver 
   ```
+1. install Gulp
+
+  ``` 
+  npm install --global gulp
+  ``` 
 1. run front end build
 
   ``` 
