@@ -1,4 +1,20 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Consumer Complaint Database{% endblock %}
+
+{% block page_viewport %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block responsive_nav %}
+<a class="toggle-menu" href="#"><i class="cf-icon cf-icon-menu"></i><span class="u-visually-hidden">Menu</span></a>
+{% endblock %}
+
 {% block content %}
 <div id="ccdb-landing">
   <div id="hero-bg"></div>
