@@ -20,12 +20,12 @@ CCDB-content
   ``` 
   python manage.py runserver 
   ```
-
 1. run front end build
 
   ``` 
   sh ./setup.sh
   ``` 
-
-1. go to landing page: http://127.0.0.1:8000/landing_pages/data-use-content/
-
+1. go to landing pages: 
+  - http://127.0.0.1:8000/landing_pages/data-use-content/
+  - http://127.0.0.1:8000/landing_pages/landing-page/
+  - http://127.0.0.1:8000/landing_pages/technical-documentation/
