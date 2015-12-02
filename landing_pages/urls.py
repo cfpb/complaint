@@ -1,8 +1,8 @@
 from django.conf.urls import url
-from django.views.generic import TemplateView
+from landing_pages.views import DataUseView, LandingView, DocsView
 
 urlpatterns = [
-    url(r'^data-use-content/', TemplateView.as_view(template_name="data-use-content.html")),
-    url(r'^landing-page/', TemplateView.as_view(template_name="landing-page.html")),
-    url(r'^technical-documentation/', TemplateView.as_view(template_name="technical-documentation.html")),
+    url(r'^data-use-content/', DataUseView.as_view()),
+    url(r'^landing-page/', LandingView.as_view()),
+    url(r'^technical-documentation/', DocsView.as_view()),
 ]
