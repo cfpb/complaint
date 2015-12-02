@@ -1,4 +1,23 @@
 {% extends base_template %}
+{% load staticfiles %}
+
+{% block title %}How we use complaint data{% endblock %}
+
+{% block page_viewport %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/_/c/cr-003-theme.css?ver=all">
+  <link rel="stylesheet" href="http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/_/c/cr-009-theme.css?ver=all">
+
+{% endblock %}
+
+{% block responsive_nav %}
+<a class="toggle-menu" href="#"><i class="cf-icon cf-icon-menu"></i><span class="u-visually-hidden">Menu</span></a>
+{% endblock %}
+
 {% block content %}
 <div class="cr-theme">
   <div class="sub-theme-quiet sub-theme-quiet--divided">
@@ -350,4 +369,8 @@
 
 </div>
 <!-- END .cr-theme -->
+{% endblock %}
+
+{% block page_js %}
+    <script src="{% static "js/main.js" %}"></script>
 {% endblock %}
