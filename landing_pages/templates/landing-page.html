@@ -1,4 +1,14 @@
 {% extends base_template %}
+{% load staticfiles %}
+
+{% block title %}Consumer Complaint Database{% endblock %}
+
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
+  
+{% endblock %}
+
 {% block content %}
 <div id="ccdb-landing">
   <div id="hero-bg"></div>
@@ -8,21 +18,21 @@
   </div>
   <div class="section-one ccdb-landing_section content-l">
     <div class="content-l_col content-l_col-1-3">
-      <img class="isocon" src="/wp-content/themes/cfpb_nemo/_/ccdb/narratives-iso.png">
+      <img class="isocon" src="{% static 'img/narratives-iso.png' %}">
       <p>Consumers have let us know they want to share their complaint descriptions so others can learn from their experience.</p>
       <div class="btn-holder">
         <p><a href="https://data.consumerfinance.gov/d/nsyy-je5y" target="_blank" class="btn">Read consumer narratives</a></p>
       </div>
     </div>
     <div class="content-l_col content-l_col-1-3">
-      <img class="isocon" src="/wp-content/themes/cfpb_nemo/_/ccdb/data-iso.png">
+      <img class="isocon" src="{% static 'img/data-iso.png' %}">
       <p>View, sort, and filter data right in your browser.</p>
       <div class="btn-holder">
         <p><a href="https://data.consumerfinance.gov/d/s6ew-h6mp" target="_blank" class="btn">View complaint data</a></p>
       </div>
     </div>
     <div class="content-l_col content-l_col-1-3">
-      <img class="isocon" src="/wp-content/themes/cfpb_nemo/_/ccdb/download-iso.png">
+      <img class="isocon" src="{% static 'img/download-iso.png' %}">
       <p>All complaint data we publish is freely available for anyone to use, analyze, and build on.</p>
       <div class="btn-holder">
         <p><a href="#download-the-data" class="btn">Download options and API</a></p>
@@ -625,6 +635,7 @@
     </div>
   </div>
   <hr>
+  
   <div class="section-six ccdb-landing_section">
     <div class="content-l">
       <div class="content-l_col content-l_col-2-3">
@@ -647,4 +658,8 @@ icon-link icon-link__right"><span class="icon-link_text">Check out the database 
     <div class="content">content</div>
   </div>
 </div>
+{% endblock %}
+
+{% block page_js %}
+    <script src="{% static 'js/main.js' %}"></script>
 {% endblock %}

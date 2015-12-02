@@ -59,5 +59,7 @@ gulp.task( 'styles:ie', function() {
 
 gulp.task( 'styles', [
   'styles:modern',
+  'styles:nemo',
+  
   'styles:ie'
 ] );

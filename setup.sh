@@ -42,6 +42,11 @@ install(){
 build(){
   echo 'Building project...'
   gulp clean
+  # copy django assets to use locally
+  # if [ $DEPLOY_ENV == "DEV" ]; then
+  # gulp clean:assets
+  # gulp copy:assets
+  # fi
   gulp build
 }
 
