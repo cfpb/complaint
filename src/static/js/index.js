@@ -234,15 +234,6 @@ $(document).ready( function() {
     $( '.category-buttons button' )[0].click();
   }
 
-  // Responsive header fix
-  var html = '<a class="toggle-menu" href="#"><span class="cf-icon cf-icon-menu"></span><span class="u-visually-hidden">Menu</span></a>';
-  $( '#header > div:first-child' ).prepend( html );
-  var bodyTag = document.getElementsByTagName('body')[0];
-  bodyTag.className += ' js';
-  $( '.toggle-menu' ).on( 'click', function() {
-    $( '#header > nav ul' ).toggleClass( 'vis' );
-  });
-
   // Tooltip handler
   $('[data-tooltip-target]').click( function( ev ) {
     ev.preventDefault();
