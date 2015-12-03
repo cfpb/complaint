@@ -56,10 +56,10 @@ body {
   }
   
   .ccdb-hero {
-      background-image: url('/wp-content/themes/cfpb_nemo/_/ccdb/ccdb-hero.png');
+    background-image: url('/wp-content/themes/cfpb_nemo/_/ccdb/ccdb-hero.png');
     background-position: 740px 20px;
     background-repeat: no-repeat;
-    color: #fff;
+    color: @white;
     height: 350px;
     top: 60px;
     position: relative;
@@ -121,7 +121,7 @@ body {
       display: block;
       font-size: 1.84615384615em;
       font-weight: bold;
-      font-family: 'AvenirNextLTW01-Demi', Arial, sans;
+      .webfont-demi();
       margin-bottom: 0px;
       line-height: 1.25;
     }
@@ -136,8 +136,8 @@ body {
 
     .category-buttons {
       button {
-        background: #F8F8F8;
-        border: 1px solid #BABBBD;
+        background: @gray-5;
+        border: 1px solid @gray-50;
         border-radius: 0;
         border-left: 0;
         float: left;
@@ -164,34 +164,34 @@ body {
       }
 
       button.selected-button {
-        background-color: #FFF;
-        border-bottom: 1px solid #fff;
+        background-color: @white;
+        border-bottom: 1px solid @white;
         border-top: 3px solid #ABDA8F;
 
         .cf-icon {
-          color: #000;
+          color: @black;
           position: relative;
           margin-top: -2px;
         }
       }
 
       button.hover-button {
-        background-color: #FFF;
+        background-color: @white;
         overflow: visible;
         padding-top: 11px;
         z-index: 1;
 
         .cf-icon {
-          color: #000;
+          color: @black;
           position: relative;
           top: 0px;
         }
 
         .text-content {
-          background-color: #FFF;
+          background-color: @white;
           border: 1px solid #8F9193;
           display: block;
-          font-family: 'AvenirNextLTW01-Regular', Arial, sans;
+          .webfont-regular();
           font-size: inherit;
           height: 30px;
           margin: 0px;
@@ -218,7 +218,7 @@ body {
 
           &:after {
             border-color: rgba(255, 255, 255, 0);
-            border-top-color: #FFF;
+            border-top-color: @white;
             border-width: 5px;
             margin-left: -5px;
           }
@@ -257,7 +257,7 @@ body {
       }
 
       h4 {
-        font-family: 'AvenirNextLTW01-Demi', Arial, sans;
+        .webfont-demi();
         font-size: 0.875em;
         font-weight: bold;
         text-transform: uppercase;
@@ -279,7 +279,7 @@ body {
         border-bottom-width: 0;
         color: #0072ce;
         float: right;
-        font-family: 'AvenirNextLTW01-Regular', Arial, sans;
+        .webfont-regular();
         padding: 0;
         padding-top: .375em;
       }
@@ -293,7 +293,7 @@ body {
       }
 
       .response-text {
-        font-family: 'AvenirNextLTW01-Regular', Arial, sans;
+        .webfont-regular();
       }
 
       .content-l_col.content-l_col-1-3.details-small {
@@ -312,8 +312,8 @@ body {
       width: 66.6666%;
     }
     .data-selection-container {
-      background-color: #F8F8F8;
-      border: 1px solid #BABBBD;
+      background-color: @gray-5;
+      border: 1px solid @gray-50;
       margin-left: 0px;
       margin-right: 0px;
       padding: 30px 15px;
@@ -321,9 +321,8 @@ body {
         display: none;
       }
       h3 {
-        font-family: 'AvenirNextLTW01-Demi', Arial, sans;
+        .webfont-demi();
         font-size: .875em;
-        font-weight: bold;
         text-transform: uppercase;
       }
       input[type="radio"] {
@@ -381,7 +380,7 @@ body {
    Medium screens
 ==================================================================== */
 
-@media (max-width: 1175px ) {
+.respond-to-max(1175px, {
   #maincontent {
     width: auto;
   }
@@ -427,7 +426,7 @@ body {
         font-size: 1.375em;
       }
       .numeric-callout {
-        font-family: 'AvenirNextLTW01-Regular', Arial, sans;
+        .webfont-regular();
         font-size: 1.375em;
         font-weight: normal;
         line-height: 1;
@@ -453,7 +452,7 @@ body {
       .expandable-bar {
         border-top: 1px solid #CDCDCB;
         display: block;
-        font-family: 'AvenirNextLTW01-Regular', Arial, Sans;
+        .webfont-regular();
         line-height: 3;
         white-space: nowrap;
 
@@ -492,13 +491,13 @@ body {
     }
   }
 
-}
+});
 
 /* ====================================================================
    Small screens
 ==================================================================== */
 
-@media (max-width: 769px) {
+.respond-to-max(769px, {
   #ccdb-landing,
   #maincontent {
     width: 100%;
@@ -571,7 +570,7 @@ body {
 
     .section-two {
       .callout {
-        font-family: 'AvenirNextLTW01-Regular', Arial, sans;
+        .webfont-regular();
         font-size: 1.375em;
         font-weight: normal;
       }
@@ -637,7 +636,7 @@ body {
     }
   }
   
-}
+});
 
 /* Tooltips */
 div[data-tooltip-name] {
@@ -650,9 +649,10 @@ div[data-tooltip-name] {
   cursor: auto;
   border-bottom: none;
 }
+
 #tooltip-container {
-  background-color: #E4E2E0;
-  border: 0px solid #000;
+  background-color: @neutral-20;
+  border: 0px solid @black;
   display: none;
   font-style: normal;
   font-size: .8em;
@@ -660,9 +660,11 @@ div[data-tooltip-name] {
   position: absolute;
   width: 20em;
   z-index: 3000;
+  
   .content {
     padding: 0;
     margin: 0;
+    
     p:last-child {
       margin-bottom: 0;
     }
@@ -672,7 +674,7 @@ div[data-tooltip-name] {
   tip appear along the top of the tooltip. */
   .outertip {
     border: 0px solid transparent;
-    border-bottom-color: #000;
+    border-bottom-color: @black;
     content: ' ';
     height: 0;
     position: absolute;
@@ -680,9 +682,10 @@ div[data-tooltip-name] {
     top: -20px;
     width: 0;
   }
+  
   .innertip {
     border: 7px solid transparent;
-    border-bottom-color: #E4E2E0;
+    border-bottom-color: @neutral-20;
     content: ' ';
     height: 0;
     position: absolute;
@@ -691,6 +694,7 @@ div[data-tooltip-name] {
     width: 0;
   }
 }
+
 .tooltip-target {
   border-width: 0;
   border-style: dotted;
@@ -700,13 +704,12 @@ div[data-tooltip-name] {
   text-decoration: none;
 }
 
-
 /* Responsive header/footer */
 
 
-@media screen and (max-width: 769px) {
+.respond-to-max(769px, {
   #header h1,
   #header #logo {
     margin-left: 60px;
   }
-}
+});
