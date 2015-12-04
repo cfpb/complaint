@@ -67,13 +67,13 @@ gulp.task( 'copy:nemojs', function() {
     .pipe( gulp.dest( config.nemojs.dest ) )
 } );
 
-gulp.task( 'copy:assets',
+gulp.task( 'copy:nemo',
   [
-    'copy:templates',
     'copy:nemoless',
     'copy:nemojs'
   ]
 );
+
 
 gulp.task( 'copy',
   [

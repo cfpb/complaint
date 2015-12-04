@@ -71,6 +71,8 @@ node_modules/
 landing_pages/static/
 src/vendor/
 landing_pages/templates/standalone
+src/static/js/nemo*
+src/static/css/nemo*
 
 # Include front-end lib
 !src/js/lib

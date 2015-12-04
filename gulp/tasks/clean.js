@@ -8,6 +8,6 @@ gulp.task( 'clean', function() {
   del( config.dest );
 } );
 
-gulp.task( 'clean:assets', function() {
+gulp.task( 'clean:templates', function() {
   del( config.templ );
 } );
