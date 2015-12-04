@@ -26,9 +26,9 @@ CCDB-content
   npm install --global gulp
   ``` 
 1. install [Autoenv](https://github.com/kennethreitz/autoenv)
-```
-$ pip install autoenv
-```
+  ```
+  $ pip install autoenv
+  ```
 1. copy .env_SAMPLE to .env and cd into root directory to execute .env.
 
 1. run front end build
