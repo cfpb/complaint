@@ -70,6 +70,7 @@ opensource-checklist.md
 node_modules/
 landing_pages/static/
 src/vendor/
+landing_pages/templates/standalone
 
 # Include front-end lib
 !src/js/lib
