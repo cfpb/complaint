@@ -7,3 +7,7 @@ var config = require( '../config' ).clean;
 gulp.task( 'clean', function() {
   del( config.dest );
 } );
+
+gulp.task( 'clean:templates', function() {
+  del( config.templ );
+} );

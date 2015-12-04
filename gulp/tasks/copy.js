@@ -46,6 +46,35 @@ gulp.task( 'copy:vendorjs', function() {
     } ) );
 } );
 
+gulp.task( 'copy:templates', function() {
+  return gulp.src( config.templates.src )
+    .pipe( $.changed( config.templates.dest ) )
+    .on( 'error', handleErrors )
+    .pipe( gulp.dest( config.templates.dest ) )
+} );
+
+gulp.task( 'copy:nemoless', function() {
+    return gulp.src( config.nemoless.src )
+      .pipe( $.changed( config.nemoless.dest ) )
+      .on( 'error', handleErrors )
+      .pipe( gulp.dest( config.nemoless.dest ) )
+} );
+
+gulp.task( 'copy:nemojs', function() {
+  return gulp.src( config.nemojs.src )
+    .pipe( $.changed( config.nemojs.dest ) )
+    .on( 'error', handleErrors )
+    .pipe( gulp.dest( config.nemojs.dest ) )
+} );
+
+gulp.task( 'copy:nemo',
+  [
+    'copy:nemoless',
+    'copy:nemojs'
+  ]
+);
+
+
 gulp.task( 'copy',
   [
     'copy:files',

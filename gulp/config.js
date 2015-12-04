@@ -9,7 +9,8 @@ var loc = {
   src:  './src',
   dist: './landing_pages/static/',
   lib:  JSON.parse( fs.readFileSync( './.bowerrc' ) ).directory, // eslint-disable-line no-sync, no-inline-comments, max-len
-  test: './test'
+  test: './test',
+  templ: './landing_pages/templates/standalone/'
 };
 
 module.exports = {
@@ -36,7 +37,8 @@ module.exports = {
     tests: loc.test
   },
   clean: {
-    dest: loc.dist
+    dest: loc.dist,
+    templ: loc.templ
   },
   styles: {
     cwd:      loc.src + '/static/css',
@@ -98,6 +100,18 @@ module.exports = {
         loc.lib + '/html5shiv/dist/html5shiv-printshiv.min.js'
       ],
       dest: loc.dist + '/js/'
+    },
+    templates: {
+      src:  loc.lib + '/django-assets/templates/*.html',
+      dest: loc.templ
+    },
+    nemoless: {
+      src:  loc.lib + '/django-assets/static/css/*.less',
+      dest: loc.src + '/static/css/'
+    },
+    nemojs: {
+      src:  loc.lib + '/django-assets/static/js/*.js',
+      dest: loc.src + '/static/js/'
     }
   }
 };

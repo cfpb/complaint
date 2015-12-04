@@ -42,6 +42,12 @@ install(){
 build(){
   echo 'Building project...'
   gulp clean
+  # copy django templates to use locally
+  if [ $DEPLOY_ENV == "DEV" ]; then
+    gulp clean:templates
+    gulp copy:templates
+  fi
+  gulp copy:nemo
   gulp build
 }
 
