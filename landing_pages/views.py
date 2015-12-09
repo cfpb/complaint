@@ -15,7 +15,7 @@ class LandingView(TemplateView):
         context = super(LandingView, self).get_context_data(**kwargs)
         context['base_template'] = BASE_TEMPLATE
         response = requests.get("http://files.consumerfinance.gov/ccdb/narratives.json")
-        res_json = json.loads(response.text[11:-2])  # This is to parse out the narratives(); wrap around the json
+        res_json = json.loads(response.text[11:-2])  # This is to parse out the 'narratives();' that wrapped around the json
         context['narratives'] = res_json
         return context
 
