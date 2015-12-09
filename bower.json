@@ -13,9 +13,12 @@
     "url": "https://github.com/cfpb/capital-framework.git"
   },
   "license": "CC0",
-  "dependencies": { 
+  "dependencies": {
     "capital-framework": "^1.0.0",
     "html5shiv": "latest",
     "jquery.easing": "~1.3.0"
+  },
+  "devDependencies": {
+    "django-assets": "https://github.com/virginiacc/django-assets.git"
   }
 }

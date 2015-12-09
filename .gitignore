@@ -1,6 +1,7 @@
 ccdb/settings_secret.py
 *.pyc
 .DS_Store
+.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -69,6 +70,9 @@ opensource-checklist.md
 node_modules/
 landing_pages/static/
 src/vendor/
+landing_pages/templates/standalone
+src/static/js/nemo*
+src/static/css/nemo*
 
 # Include front-end lib
 !src/js/lib
