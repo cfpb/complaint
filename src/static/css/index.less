@@ -3,18 +3,6 @@ body {
   background: none;
 }
 
-#wrapper {
-  .wrapper;
-  padding-left: @grid_gutter-width / 2;
-  padding-right: @grid_gutter-width / 2;
-
-  .respond-to-min(600px, {
-    padding-left: @grid_gutter-width;
-    padding-right: @grid_gutter-width;
-    max-width: 1140px;
-  });
-}
-
 #maincontent {
   padding: 0;
   .page {
@@ -42,17 +30,6 @@ body {
   [data-tooltip-target] {
     color: #0072CC;
     font-size: 14px;
-  }
-  
-  #hero-bg {
-    background-color: #0072CC;
-    margin: 0;
-    padding: 0;
-    height: 350px;
-    width: 100%;
-    z-index: 0;
-    position: absolute;
-    left: 0px;
   }
   
   .ccdb-hero {
@@ -713,3 +690,7 @@ div[data-tooltip-name] {
     margin-left: 60px;
   }
 });
+
+.botshare {
+  display: none;
+}
