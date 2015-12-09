@@ -17,34 +17,34 @@
 {% block content %}
 <div id="ccdb-landing">
   <section class="hero">
-    <div class="hero_wrapper wrapper">
+    <div class="hero_wrapper wrapper wrapper__match-content">
       <div class="hero_text">
         <h1 class="hero_heading">Consumer Complaint Database</h1>
         <p class="hero_subhead">Each week we send thousands of consumers’ complaints about financial products and services to companies for response. Those complaints are published here after the company responds or after 15 days, whichever comes first. By adding their voice, consumers help improve the financial marketplace.</p>
       </div>
-      <div class="hero_image"></div>
+      <div class="hero_image" style="background-image:url({% static 'img/hero.png' %})"></div>
     </div>
   </section>
-  <div class="wrapper content_wrapper">
-    <div class="content_main">
-      <div class="block block__border-bottom">
+  <div class="wrapper  wrapper__match-content content_wrapper">
+    <div class="content_full">
+      <div class="block block__flush-top">
         <div class="section-one ccdb-landing_section content-l">
           <div class="content-l_col content-l_col-1-3">
-            <img class="isocon" src="/wp-content/themes/cfpb_nemo/_/ccdb/narratives-iso.png">
+            <img class="isocon" src="{% static 'img/read.png' %}">
             <p>Consumers have let us know they want to share their complaint descriptions so others can learn from their experience.</p>
             <div class="btn-holder">
               <p><a href="https://data.consumerfinance.gov/d/nsyy-je5y" target="_blank" class="btn">Read consumer narratives</a></p>
             </div>
           </div>
           <div class="content-l_col content-l_col-1-3">
-            <img class="isocon" src="/wp-content/themes/cfpb_nemo/_/ccdb/data-iso.png">
+            <img class="isocon" src="{% static 'img/view.png' %}">
             <p>View, sort, and filter data right in your browser.</p>
             <div class="btn-holder">
               <p><a href="https://data.consumerfinance.gov/d/s6ew-h6mp" target="_blank" class="btn">View complaint data</a></p>
             </div>
           </div>
           <div class="content-l_col content-l_col-1-3">
-            <img class="isocon" src="/wp-content/themes/cfpb_nemo/_/ccdb/download-iso.png">
+            <img class="isocon" src="{% static 'img/download.png' %}">
             <p>All complaint data we publish is freely available for anyone to use, analyze, and build on.</p>
             <div class="btn-holder">
               <p><a href="#download-the-data" class="btn">Download options and API</a></p>
@@ -52,7 +52,7 @@
           </div>
         </div>
       </div>
-      <div class="block block__border-bottom">
+      <div class="block block__border-top block__padded-top">
         <div class="section-two ccdb-landing_section content-l">
           <div class="content-l_col content-l_col-2-3">
             <h2>How one complaint can help millions</h2>
@@ -69,7 +69,7 @@
           </div>
         </div>
       </div>
-      <div class="block block__border-bottom">
+      <div class="block block__border-top block__padded-top">
         <div class="section-three ccdb-landing_section">
           <h2>Consumers’ experiences in their own words</h2>
           <p class="in-their-own-words">These are real complaints from consumers who have opted to share their descriptions of what happened. The complaints were pulled randomly from the database.</p>
@@ -145,7 +145,6 @@
                 <p class="complaint-date"> </p>
                 <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
                 <p class="complaint-company-response"> </p>
-                <hr>
                 <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
                 <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
               </div>
@@ -188,7 +187,6 @@
                 <p class="complaint-date"> </p>
                 <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
                 <p class="complaint-company-response"> </p>
-                <hr>
                 <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
                 <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
               </div>
@@ -231,7 +229,6 @@
                 <p class="complaint-date"> </p>
                 <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
                 <p class="complaint-company-response"> </p>
-                <hr>
                 <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
                 <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
               </div>
@@ -274,7 +271,7 @@
                 <p class="complaint-date"> </p>
                 <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
                 <p class="complaint-company-response"> </p>
-                <hr>
+                
                 <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
                 <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
               </div>
@@ -317,7 +314,7 @@
                 <p class="complaint-date"> </p>
                 <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
                 <p class="complaint-company-response"> </p>
-                <hr>
+                
                 <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
                 <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
               </div>
@@ -360,7 +357,7 @@
                 <p class="complaint-date"> </p>
                 <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
                 <p class="complaint-company-response"> </p>
-                <hr>
+                
                 <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
                 <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
               </div>
@@ -403,7 +400,7 @@
                 <p class="complaint-date"> </p>
                 <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
                 <p class="complaint-company-response"> </p>
-                <hr>
+                
                 <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
                 <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
               </div>
@@ -446,7 +443,7 @@
                 <p class="complaint-date"> </p>
                 <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
                 <p class="complaint-company-response"> </p>
-                <hr>
+                
                 <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
                 <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
               </div>
@@ -489,7 +486,7 @@
                 <p class="complaint-date"> </p>
                 <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
                 <p class="complaint-company-response"> </p>
-                <hr>
+                
                 <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
                 <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
               </div>
@@ -532,7 +529,7 @@
                 <p class="complaint-date"> </p>
                 <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
                 <p class="complaint-company-response"> </p>
-                <hr>
+                
                 <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
                 <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
               </div>
@@ -575,7 +572,7 @@
                 <p class="complaint-date"> </p>
                 <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
                 <p class="complaint-company-response"> </p>
-                <hr>
+                
                 <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
                 <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
               </div>
@@ -584,7 +581,7 @@
           <hr class="last-expandable-bar">
         </div>
       </div>
-      <div class="block block__border-bottom">
+      <div class="block block__border-top block__padded-top">
         <div class="section-four ccdb-landing_section">
           <h2>About the data</h2>
           <div class="content-l">
@@ -600,7 +597,7 @@
           </div>
         </div>
       </div>
-      <div class="block block__border-bottom">
+      <div class="block block__border-top block__padded-top">
         <div class="section-five ccdb-landing_section">
           <h2 id="download-the-data">Download the data</h2>
           <p class="download-text">Our reports highlight some of what we’re seeing in the complaints we handle, but know there are more ways to use, analyze and build on the data. That’s why we make it possible for you to download the data, once we have taken steps to remove personal information.</p>
@@ -651,7 +648,7 @@
           </div>
         </div>
       </div>
-      <div class="block">
+      <div class="block block__border-top block__padded-top">
         <div class="section-six ccdb-landing_section">
           <div class="content-l">
             <div class="content-l_col content-l_col-2-3">
@@ -660,8 +657,11 @@
               <p><a href="/complaintdatabase/technical-documentation/" class="api-documentation internal-link icon-link icon-link__right"><span class="icon-link_text">API documentation</span></a></p>
             </div>
             <div class="content-l_col content-l_col-1-3">
-              <hr class="thick-green-bar">
-              <h3>Field reference</h3>
+              <h3 class="header-slug">
+                  <span class="header-slug_inner">
+                      Field reference
+                  </span>
+              </h3>
               <p>Have a question about a data field?</p>
               <p><a href="/complaintdatabase/technical-documentation/#field-reference" class="internal-link 
       icon-link icon-link__right"><span class="icon-link_text">Check out the database field reference</span></a></p>
