@@ -3,11 +3,10 @@ import json
 from django.shortcuts import render
 from django.views.generic import View, TemplateView
 
-# Create your views here.
 #BASE_TEMPLATE = "base.html"
 
-#BASE_TEMPLATE = "standalone/base_update.html"
-BASE_TEMPLATE = "front/base_update.html"
+BASE_TEMPLATE = "standalone/base_update.html"
+#BASE_TEMPLATE = "front/base_update.html"
 
 class LandingView(TemplateView):
     template_name = "landing-page.html"

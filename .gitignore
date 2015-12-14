@@ -54,7 +54,7 @@ coverage.xml
 # Django stuff:
 *.log
 db.sqlite3
-# landing_pages/static/*
+# ccdb_content/static/*
 *data/
 
 # Sphinx documentation
@@ -68,9 +68,9 @@ opensource-checklist.md
 
 # Build artifacts
 node_modules/
-landing_pages/static/
+ccdb_content/static/
 src/vendor/
-landing_pages/templates/standalone
+ccdb_content/templates/standalone
 src/static/js/nemo*
 src/static/css/nemo*
 

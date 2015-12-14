@@ -18,7 +18,7 @@ setup(
     author_email='tech@cfpb.gov',
     maintainer='cfpb',
     maintainer_email='tech@cfpb.gov',
-    packages=['landing_pages'],
+    packages=['ccdb_content'],
     include_package_data=True,
     description=u'CCDB Landing Pages',
     classifiers=[

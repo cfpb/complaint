@@ -38,6 +38,6 @@ CCDB-content
   sh ./setup.sh
   ``` 
 1. go to landing pages: 
-  - http://127.0.0.1:8000/landing_pages/data-use-content/
-  - http://127.0.0.1:8000/landing_pages/landing-page/
-  - http://127.0.0.1:8000/landing_pages/technical-documentation/
+  - http://127.0.0.1:8000/ccdb_content/data-use-content/
+  - http://127.0.0.1:8000/ccdb_content/landing-page/
+  - http://127.0.0.1:8000/ccdb_content/technical-documentation/
