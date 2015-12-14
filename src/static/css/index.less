@@ -288,7 +288,7 @@ body {
   .select-wrapper {
     overflow: hidden;
     position: relative;
-    background: #ffffff url('/wp-content/themes/cfpb_nemo/_/ccdb/select.png') no-repeat right 0;
+    background: #ffffff url('../img/select.png') no-repeat right 0;
     border: solid 1px #d0d0ce;
     height: 32px;
     font-family: "AvenirNextLTW01-Medium", Arial, sans-serif;
@@ -420,9 +420,30 @@ body {
    Small screens
 ==================================================================== */
 
-.respond-to-max(@bp-xs-max, {
+
+.respond-to-range(600px, 699px, {
+  #ccdb-landing {
+    .stack-col(content-l_col-1-2);
+    .stack-col-thirds();
+    .stack-col-quarters();
+    .hero {
+      &_wrapper,
+      &_text,
+      &_image {
+        display: block;
+        width: 100%;
+      }
+      
+      &_image {
+        margin-top: unit(@grid_gutter-width / @base-font-size-px, em);
+      }
+    }
+  }
+});
+
+.respond-to-max(699px, {
   #ccdb-landing,
-  #maincontent {
+  #maincontent {    
     width: 100%;
     margin: 0;
     padding: 0;
@@ -432,7 +453,7 @@ body {
     .section-one {
       border-top: 1px solid #CDCDCB;
       padding-top: 25px;
-
+      
       .content-l_col {
         padding-bottom: 0;
 
@@ -503,13 +524,6 @@ body {
       .data-selection-container {
         padding-left: 35px;
         padding-right: 35px;
-
-        .content-l_col.content-l_col-1-3 {
-          width: 100%;
-        }
-        .content-l_col {
-          margin-top: 0;
-        }
       }
     }
 
