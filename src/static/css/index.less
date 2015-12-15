@@ -65,26 +65,26 @@ body {
     margin-bottom: 0;
     border-width: 0 0 1px 0;
     
-    .wrapper {
+    &_wrapper {
       position: relative;
     }
     
     &_icon {
       top: 2px;
       left: @grid_gutter-width / 2;
+      
       .respond-to-min(600px, {
         left: @grid_gutter-width
       });
     }
     
-    .database-notification_content {
-      padding-left: @grid_gutter-width;
-    }
-    
     &_text {
-      margin-bottom: unit(10px / @base-font-size-px, em);
-    }    
-
+      padding-left: @grid_gutter-width;
+      
+      p {
+        margin-bottom: 10px;
+      }
+    } 
   }
   
   .section-one {

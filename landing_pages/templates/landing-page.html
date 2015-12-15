@@ -17,13 +17,13 @@
 {% block content %}
 
 <div id="ccdb-landing">
-  <div class="cf-notification cf-notification__warning database-notification {% if database_down %} cf-notification__visible {% endif %}">
-    <div class="wrapper wrapper__match-content">
+  <div class="cf-notification cf-notification__warning {% if database_down %}cf-notification__visible{% endif %} db-notification">
+    <div class="wrapper wrapper__match-content cf-notification_wrapper">
       <span class="cf-notification_icon cf-notification_icon__warning cf-icon cf-icon-error-round"></span>
-        <div class="database-notification_content">
-          <p class="cf-notification_text">We're currently experiencing technical issues that have delayed the refresh of data in the Consumer Complaint database.</p>
-          <p class="short-desc">We expect to refresh the data in the next few days.</p>
-        </div>
+      <div class="cf-notification_text">
+        <p>We're currently experiencing technical issues that have delayed the refresh of data in the Consumer Complaint database.</p>
+        <p class="short-desc">We expect to refresh the data in the next few days.</p>
+      </div>
     </div>
   </div>
           
