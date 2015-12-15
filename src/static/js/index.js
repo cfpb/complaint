@@ -32,53 +32,6 @@ var urlCodes = {
 
 var lastClicked = 'bank-account'; // Tracks the last thing the user clicked to respond to window resize
 
-/**
-  * Reformats "2015-01-31" style date to "1/31/2015" style
-  * @param { string } date - A date of a 2015-01-31 format
-  * @returns { string } A date of the 1/31/2015 format
-  */
-function dateReformat( date ) {
-  if ( typeof date === 'undefined' ) {
-    return '';
-  }
-  var reformatted = date.substr( 0, 10 ),
-      arr = reformatted.split('-');
-  reformatted = Number(arr[1]).toString() + '/' + Number(arr[2]).toString() + '/' + Number(arr[0]).toString();
-  return reformatted;
-}
-
-/**
-  * Inserts text into selector after performing some cleanup activities and checks against
-  * undefined values.
-  * @param { string } selector - A selector, a la CSS/jQuery
-  * @param { string } text - The text to be placed in the element
-  * @param { string } flag - Flags that help with the formatting
-  */
-jQuery.fn.extend({
-  insertText: function ( selector, text, flag ) {
-    if ( typeof text === 'undefined' ) {
-      text = ' ';
-    }
-    if ( text === null ) {
-      text = 'None';
-    }
-    if ( flag === 'quoted' ) {
-      text = '"' + text.trim() + '"';
-    }
-    if ( flag === 'number' ) {
-      text = numToString( text );
-    }
-    if ( flag === 'percent' ) {
-      text += '%';
-    }
-    if ( flag === 'date' ) {
-      text = dateReformat( text );
-    }
-
-    $(this).find( selector ).text( text );
-  }
-});
-
 
 /**
   * Assigns handlers to tooltips
@@ -124,74 +77,8 @@ function toolTipper( $elem ) {
   });
 }
 
-/**
-  * Convert from number to number string (with commas)
-  * @param { number } n - A number
-  * @returns { string } - A string that looks like a number with commas!
-  */
-function numToString(n) {
-  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
 
 $(document).ready( function() {
-  var dataURL = 'http://files.consumerfinance.gov/ccdb/narratives.json',
-      countURL = 'https://data.consumerfinance.gov/resource/u473-64qt.json',
-      response = '',
-      remaps = { 'bank-account' : 'bank_accounts',
-                'credit-card' : 'credit_cards',
-                'credit-reporting' : 'credit_reporting',
-                'debt-collection' : 'debt_collection',
-                'money-transfer' : 'money_transfers',
-                'mortgage' : 'mortgages',
-                'other' : 'other_financial_services',
-                'payday-loan' : 'payday_loans',
-                'prepaid-card' : 'prepaid_cards',
-                'student-loan' : 'student_loans',
-                'consumer-loan' : 'other_consumer_loans'
-                };
-
-  $.ajax({
-    url: dataURL,
-    dataType: 'JSONP',
-    jsonp: false,
-    jsonpCallback: 'narratives',
-    success: function( data ) {
-      $( '.complaint-container' ).each( function() {
-        var category = $(this).attr( 'data-container-for' ),
-            complaintData = data[ remaps[ category ] ];
-
-        if ( remaps.hasOwnProperty( category ) !== -1 ) { // Don't look for complaint data in data.stats!
-          // Set complaint data text
-          $(this).insertText( '.complaint-text', complaintData.complaint_what_happened );
-          $(this).insertText( '.response-text', complaintData.company_public_response );
-          $(this).insertText( '.complaint-company-response', complaintData.company_response );
-          $(this).insertText( '.complaint-subproduct', complaintData.sub_product );
-          $(this).insertText( '.complaint-issue', complaintData.issue );
-          $(this).insertText( '.complaint-state', complaintData.state );
-          $(this).insertText( '.complaint-date', complaintData.date_received, 'date' );
-        }
-
-      });
-      if ( data.hasOwnProperty( 'stats' ) ) {
-        $( '#ccdb-landing' ).insertText( '.percent-timely', data.stats.percent_timely, 'percent' );
-      }
-    }
-  });
-
-  $.get( countURL )
-    .done( function( data ) {
-      var complaintCount = 0,
-          responseCount = 0;
-      $.each( data, function( i, val ) {
-        complaintCount += Number( val.count_complaint_id );
-        if ( val.company_response !== 'Untimely response' ) {
-          responseCount += Number( val.count_complaint_id );
-        }
-      });
-      $( '#ccdb-landing' ).insertText( '.total-complaints', complaintCount, 'number' );
-      $( '#ccdb-landing' ).insertText( '.company-responses', responseCount, 'number' );
-
-    });
 
   $( '.category-buttons button' ).click( function() {
     lastClicked = $(this).attr('data-category');

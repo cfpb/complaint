@@ -1,5 +1,6 @@
 {% extends 'base_responsive.html' %}
 {% load staticfiles %}
+{% load humanize %}
 
 {% block title %}Consumer Complaint Database{% endblock %}
 
@@ -15,7 +16,6 @@
 
 
 {% block content %}
-{{ narratives.other_financial_services.timely }}
 
 <div id="ccdb-landing">
   <section class="hero">
@@ -59,15 +59,15 @@
           <div class="content-l_col content-l_col-2-3">
             <h2>How one complaint can help millions</h2>
             <div class="db-numbers callouts-small">
-              <p class="callout"><span class="numeric-callout company-responses"> &nbsp; </span> company responses to consumer complaints</p>
-              <p class="callout"><span class="numeric-callout percent-timely"> &nbsp; </span> of consumers get timely responses from companies</p>
+              <p class="callout"><span class="numeric-callout company-responses">{{ timely_responses|intcomma }} </span> company responses to consumer complaints</p>
+              <p class="callout"><span class="numeric-callout percent-timely"> {{ stats.percent_timely|floatformat|add:"%" }} </span> of consumers get timely responses from companies</p>
             </div>
             <p>By submitting a complaint, consumers can be heard by financial companies, get help with their own issues, and help others avoid similar ones. Every complaint provides insight into problems that people are experiencing,  helping us identify inappropriate practices and allowing us to stop them before they become major issues. The result: better outcomes for consumers, and a better financial marketplace for everyone.</p>
             <p class="have-an-issue"><strong>Have an issue with a financial product or service? Add your voice. <a href="/complaint/" class="internal-link icon-link icon-link__right"><span class="icon-link_text">Submit a complaint</span></a></strong></p>
           </div>
           <div class="content-l_col content-l_col-1-3 db-numbers callouts-large">
-            <p class="callout"><span class="numeric-callout company-responses"> &nbsp; </span> company responses to consumer complaints</p>
-            <p class="callout"><span class="numeric-callout percent-timely"> &nbsp; </span> of consumers get timely responses from companies</p>
+            <p class="callout"><span class="numeric-callout company-responses"> {{ timely_responses|intcomma }}</span> company responses to consumer complaints</p>
+            <p class="callout"><span class="numeric-callout percent-timely"> {{ stats.percent_timely|floatformat|add:"%" }} </span> of consumers get timely responses from companies</p>
           </div>
         </div>
       </div>
@@ -98,489 +98,56 @@
           </div>
 
           <div class="category-buttons">
-            <button data-category="bank-account" class="selected-button"><span class="text-content">Bank account or service</span><span class="cf-icon cf-icon-bank-account-round"></span></button>
-            <button data-category="credit-card"><span class="text-content">Credit card<span class="arrw"></span></span><span class="cf-icon cf-icon-credit-card-round"></span></button>
-            <button data-category="credit-reporting"><span class="text-content">Credit reporting</span><span class="cf-icon cf-icon-loan-round"></span></button>
-            <button data-category="debt-collection"><span class="text-content">Debt collection</span><span class="cf-icon cf-icon-debt-collection-round"></span></button>
-            <button data-category="money-transfer"><span class="text-content">Money transfer</span><span class="cf-icon cf-icon-money-transfer-round"></span></button>
-            <button data-category="mortgage"><span class="text-content">Mortgage</span><span class="cf-icon cf-icon-owning-home-round"></span></button>
-            <button data-category="other"><span class="text-content">Other financial service</span><span class="cf-icon cf-icon-money-round"></span></button>
-            <button data-category="payday-loan"><span class="text-content">Payday loan</span><span class="cf-icon cf-icon-payday-loan-round"></span></button>
-            <button data-category="prepaid-card"><span class="text-content">Prepaid card</span><span class="cf-icon cf-icon-prepaid-cards-round"></span></button>
-            <button data-category="student-loan"><span class="text-content">Student loan</span><span class="cf-icon cf-icon-paying-college-round"></span></button>
-            <button data-category="consumer-loan"><span class="text-content">Vehicle / consumer loan</span><span class="cf-icon cf-icon-buying-car-round"></span></button>
+            {% for narrative in narratives %}
+              <button data-category="{{narrative.css}}" class="selected-button"><span class="text-content">{{ narrative.title }}</span><span class="cf-icon cf-icon-{{ narrative.icon }}-round"></span></button>
+            {% endfor %}
           </div>
-          <div class="expandable-bar" data-category="bank-account"><span class="cf-icon cf-icon-bank-account-round"></span> Bank account <span class="cf-icon cf-icon-plus-round"></span></div>
-          <div class="complaint-container bank-account-container selected-container" data-container-for="bank-account">
-            <button class="category-next icon-link icon-link__right" data-category="credit-card">Next complaint: Credit card</button>
-            <h3 class="complaint-title">Bank account complaint</h3>
-            <div class="content-l">
-              <div class="content-l_col content-l_col-1-3 details-small">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-              <div class="content-l_col content-l_col-2-3">
-                <h4>Consumer complaint narrative <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-narrative"></span></h4>
-                <div class="complaint-text"> </div>
-                <h4>Company public response <span class="cf-icon cf-icon-help-round" data-tooltip-target="company-public-response"></span></h4>
-                <div class="response-text"> </div>
-                <p><a href="https://data.consumerfinance.gov/d/ytxv-uppu" class="icon-link icon-link__right" target="_blank"><span class="icon-link_text">See bank account complaint data</span></a></p>
-              </div>
-              <div class="content-l_col content-l_col-1-3 details-large">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
+
+          {% for narrative in narratives %}
+            <div class="expandable-bar" data-category="{{narrative.css}}"><span class="cf-icon cf-icon-{{narrative.icon}}-round"></span> {{narrative.title}} <span class="cf-icon cf-icon-plus-round"></span></div>
+            <div class="complaint-container bank-account-container selected-container" data-container-for="{{narrative.css}}">
+              <button class="category-next icon-link icon-link__right" data-category="{{ narrative.next.css }}">Next complaint: {{ narrative.next.title }}</button>
+              <h3 class="complaint-title">{{narrative.title}} complaint</h3>
+              <div class="content-l">
+                <div class="content-l_col content-l_col-1-3 details-small">
+                  <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
+                  <p class="complaint-subproduct"> {{narrative.sub_product}} </p>
+                  <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
+                  <p class="complaint-issue"> {{narrative.issue}} </p>
+                  <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
+                  <p class="complaint-state"> {{narrative.state}} </p>
+                  <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
+                  <p class="complaint-date"> {{narrative.date|date:"m/d/Y"}} </p>
+                  <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
+                  <p class="complaint-company-response"> {{narrative.company_response}} </p>
+                  <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
+                  <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
+                </div>
+                <div class="content-l_col content-l_col-2-3">
+                  <h4>Consumer complaint narrative <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-narrative"></span></h4>
+                  <div class="complaint-text">{{narrative.complaint_what_happened}}</div>
+                  <h4>Company public response <span class="cf-icon cf-icon-help-round" data-tooltip-target="company-public-response"></span></h4>
+                  <div class="response-text"> {{narrative.company_public_response}} </div>
+                  <p><a href="https://data.consumerfinance.gov/d/ytxv-uppu" class="icon-link icon-link__right" target="_blank"><span class="icon-link_text">See {{narrative.title}} complaint data</span></a></p>
+                </div>
+                <div class="content-l_col content-l_col-1-3 details-large">
+                  <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
+                  <p class="complaint-subproduct"> {{narrative.sub_product}} </p>
+                  <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
+                  <p class="complaint-issue"> {{narrative.issue}} </p>
+                  <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
+                  <p class="complaint-state"> {{narrative.state}} </p>
+                  <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
+                  <p class="complaint-date"> {{narrative.date|date:"m/d/Y"}} </p>
+                  <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
+                  <p class="complaint-company-response"> {{narrative.company_response}} </p>
+                  <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
+                  <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="expandable-bar" data-category="credit-card"><span class="cf-icon cf-icon-credit-card-round"></span> Credit card <span class="cf-icon cf-icon-plus-round"></span></div>
-          <div class="complaint-container credit-card-container" data-container-for="credit-card">
-            <button class="category-next icon-link icon-link__right" data-category="credit-reporting">Next complaint: Credit reporting</button>
-            <h3 class="complaint-title">Credit card complaint</h3>
-            <div class="content-l">
-              <div class="content-l_col content-l_col-1-3 details-small">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-              <div class="content-l_col content-l_col-2-3">
-                <h4>Consumer complaint narrative <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-narrative"></span></h4>
-                <div class="complaint-text"> </div>
-                <h4>Company public response <span class="cf-icon cf-icon-help-round" data-tooltip-target="company-public-response"></span></h4>
-                <div class="response-text"> </div>
-                <p><a href="https://data.consumerfinance.gov/d/wycs-qcs4" target="_blank" class="icon-link icon-link__right"><span class="icon-link_text">See credit card complaint data</span></a></p>
-              </div>
-              <div class="content-l_col content-l_col-1-3 details-large" >
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-            </div>
-          </div>
-          <div class="expandable-bar" data-category="credit-reporting"><span class="cf-icon cf-icon-loan-round"></span> Credit reporting <span class="cf-icon cf-icon-plus-round"></span></div>
-          <div class="complaint-container credit-reporting-container" data-container-for="credit-reporting">
-            <button class="category-next icon-link icon-link__right" data-category="debt-collection">Next complaint: Debt collection</button>
-            <h3 class="complaint-title">Credit reporting complaint</h3>
-            <div class="content-l">
-              <div class="content-l_col content-l_col-1-3 details-small">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-              <div class="content-l_col content-l_col-2-3">
-                <h4>Consumer complaint narrative <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-narrative"></span></h4>
-                <div class="complaint-text"> </div>
-                <h4>Company public response <span class="cf-icon cf-icon-help-round" data-tooltip-target="company-public-response"></span></h4>
-                <div class="response-text"> </div>
-                <p><a href="https://data.consumerfinance.gov/d/ur78-i5sn" target="_blank" class="icon-link icon-link__right"><span class="icon-link_text">See credit reporting complaint data</span></a></p>
-              </div>
-              <div class="content-l_col content-l_col-1-3 details-large">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-            </div>
-          </div>
-          <div class="expandable-bar" data-category="debt-collection"><span class="cf-icon cf-icon-debt-collection-round"></span> Debt collection <span class="cf-icon cf-icon-plus-round"></span></div>
-          <div class="complaint-container debt-collection-container" data-container-for="debt-collection">
-            <button class="category-next icon-link icon-link__right" data-category="money-transfer">Next complaint: Money transfer</button>
-            <h3 class="complaint-title">Debt collection complaint</h3>
-            <div class="content-l">
-              <div class="content-l_col content-l_col-1-3 details-small">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-              <div class="content-l_col content-l_col-2-3">
-                <h4>Consumer complaint narrative <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-narrative"></span></h4>
-                <div class="complaint-text"> </div>
-                <h4>Company public response <span class="cf-icon cf-icon-help-round" data-tooltip-target="company-public-response"></span></h4>
-                <div class="response-text"> </div>
-                <p><a href="https://data.consumerfinance.gov/d/dx9u-5nhx" target="_blank" class="icon-link icon-link__right"><span class="icon-link_text">See debt collection complaint data</span></a></p>
-              </div>
-              <div class="content-l_col content-l_col-1-3 details-large">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-            </div>
-          </div>
-          <div class="expandable-bar" data-category="money-transfer"><span class="cf-icon cf-icon-money-transfer-round"></span> Money transfer <span class="cf-icon cf-icon-plus-round"></span></div>
-          <div class="complaint-container money-transfer-container" data-container-for="money-transfer">
-            <button class="category-next icon-link icon-link__right" data-category="mortgage">Next complaint: Mortgage</button>
-            <h3 class="complaint-title">Money transfer complaint</h3>
-            <div class="content-l">
-              <div class="content-l_col content-l_col-1-3 details-small">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-              <div class="content-l_col content-l_col-2-3">
-                <h4>Consumer complaint narrative <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-narrative"></span></h4>
-                <div class="complaint-text"> </div>
-                <h4>Company public response <span class="cf-icon cf-icon-help-round" data-tooltip-target="company-public-response"></span></h4>
-                <div class="response-text"> </div>
-                <p><a href="https://data.consumerfinance.gov/d/njq8-tnnk" target="_blank" class="icon-link icon-link__right"><span class="icon-link_text">See money transfer complaint data</span></a></p>
-              </div>
-              <div class="content-l_col content-l_col-1-3 details-large">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-            </div>
-          </div>
-          <div class="expandable-bar" data-category="mortgage"><span class="cf-icon cf-icon-owning-home-round"></span> Mortgage <span class="cf-icon cf-icon-plus-round"></span></div>
-          <div class="complaint-container mortgage-container" data-container-for="mortgage">
-            <button class="category-next icon-link icon-link__right" data-category="other">Next complaint: Other financial service</button>
-            <h3 class="complaint-title">Mortgage complaint</h3>
-            <div class="content-l">
-              <div class="content-l_col content-l_col-1-3 details-small">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-              <div class="content-l_col content-l_col-2-3">
-                <h4>Consumer complaint narrative <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-narrative"></span></h4>
-                <div class="complaint-text"> </div>
-                <h4>Company public response <span class="cf-icon cf-icon-help-round" data-tooltip-target="company-public-response"></span></h4>
-                <div class="response-text"> </div>
-                <p><a href="https://data.consumerfinance.gov/d/gfmg-6ppu" target="_blank" class="icon-link icon-link__right"><span class="icon-link_text">See mortgage complaint data</span></a></p>
-              </div>
-              <div class="content-l_col content-l_col-1-3 details-large">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-            </div>
-          </div>
-          <div class="expandable-bar" data-category="other"><span class="cf-icon cf-icon-money-round"></span> Other financial service <span class="cf-icon cf-icon-plus-round"></span></div>
-          <div class="complaint-container other-container" data-container-for="other">
-            <button class="category-next icon-link icon-link__right" data-category="payday-loan">Next complaint: Payday loan</button>
-            <h3 class="complaint-title">Other financial service complaint</h3>
-            <div class="content-l">
-              <div class="content-l_col content-l_col-1-3 details-small">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-              <div class="content-l_col content-l_col-2-3">
-                <h4>Consumer complaint narrative <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-narrative"></span></h4>
-                <div class="complaint-text"> </div>
-                <h4>Company public response <span class="cf-icon cf-icon-help-round" data-tooltip-target="company-public-response"></span></h4>
-                <div class="response-text"> </div>
-                <p><a href="https://data.consumerfinance.gov/d/yjne-fppi" target="_blank" class="icon-link icon-link__right"><span class="icon-link_text">See other financial service complaint data</span></a></p>
-              </div>
-              <div class="content-l_col content-l_col-1-3 details-large">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-            </div>
-          </div>
-          <div class="expandable-bar" data-category="payday-loan"><span class="cf-icon cf-icon-payday-loan-round"></span> Payday loan <span class="cf-icon cf-icon-plus-round"></span></div>
-          <div class="complaint-container payday-loan-container" data-container-for="payday-loan">
-            <button class="category-next icon-link icon-link__right" data-category="prepaid-card">Next complaint: Prepaid card</button>
-            <h3 class="complaint-title">Payday loan complaint</h3>
-            <div class="content-l">
-              <div class="content-l_col content-l_col-1-3 details-small">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-              <div class="content-l_col content-l_col-2-3">
-                <h4>Consumer complaint narrative <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-narrative"></span></h4>
-                <div class="complaint-text"> </div>
-                <h4>Company public response <span class="cf-icon cf-icon-help-round" data-tooltip-target="company-public-response"></span></h4>
-                <div class="response-text"> </div>
-                <p><a href="https://data.consumerfinance.gov/d/xiq2-ahjv" target="_blank" class="icon-link icon-link__right"><span class="icon-link_text">See payday loan complaint data</span></a></p>
-              </div>
-              <div class="content-l_col content-l_col-1-3 details-large">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-            </div>
-          </div>
-          <div class="expandable-bar" data-category="prepaid-card"><span class="cf-icon cf-icon-prepaid-cards-round"></span> Prepaid card <span class="cf-icon cf-icon-plus-round"></span></div>
-          <div class="complaint-container prepaid-card-container" data-container-for="prepaid-card">
-            <button class="category-next icon-link icon-link__right" data-category="student-loan">Next complaint: Student loan</button>
-            <h3 class="complaint-title">Prepaid card complaint</h3>
-            <div class="content-l">
-              <div class="content-l_col content-l_col-1-3 details-small">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-              <div class="content-l_col content-l_col-2-3">
-                <h4>Consumer complaint narrative <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-narrative"></span></h4>
-                <div class="complaint-text"> </div>
-                <h4>Company public response <span class="cf-icon cf-icon-help-round" data-tooltip-target="company-public-response"></span></h4>
-                <div class="response-text"> </div>
-                <p><a href="https://data.consumerfinance.gov/d/2t2q-2pud" target="_blank" class="icon-link icon-link__right"><span class="icon-link_text">See prepaid card complaint data</span></a></p>
-              </div>
-              <div class="content-l_col content-l_col-1-3 details-large">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-            </div>
-          </div>
-          <div class="expandable-bar" data-category="student-loan"><span class="cf-icon cf-icon-paying-college-round"></span> Student loan <span class="cf-icon cf-icon-plus-round"></span></div>
-          <div class="complaint-container student-loan-container" data-container-for="student-loan">
-            <button class="category-next icon-link icon-link__right" data-category="consumer-loan">Next complaint: Vehicle / consumer loan</button>
-            <h3 class="complaint-title">Student loan complaint</h3>
-            <div class="content-l">
-              <div class="content-l_col content-l_col-1-3 details-small">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-              <div class="content-l_col content-l_col-2-3">
-                <h4>Consumer complaint narrative <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-narrative"></span></h4>
-                <div class="complaint-text"> </div>
-                <h4>Company public response <span class="cf-icon cf-icon-help-round" data-tooltip-target="company-public-response"></span></h4>
-                <div class="response-text"> </div>
-                <p><a href="https://data.consumerfinance.gov/d/j875-kipn" target="_blank" class="icon-link icon-link__right"><span class="icon-link_text">See student loan complaint data</span></a></p>
-              </div>
-              <div class="content-l_col content-l_col-1-3 details-large">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-            </div>
-          </div>
-          <div class="expandable-bar" data-category="consumer-loan"><span class="cf-icon cf-icon-buying-car-round"></span> Vehicle / consumer loan <span class="cf-icon cf-icon-plus-round"></span></div>
-          <div class="complaint-container consumer-loan-container" data-container-for="consumer-loan">
-            <button class="category-next icon-link icon-link__right" data-category="bank-account">Next complaint: Bank account</button>
-            <h3 class="complaint-title">Vehicle / consumer loan complaint</h3>
-            <div class="content-l">
-              <div class="content-l_col content-l_col-1-3 details-small">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-              <div class="content-l_col content-l_col-2-3">
-                <h4>Consumer complaint narrative <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-narrative"></span></h4>
-                <div class="complaint-text"> </div>
-                <h4>Company public response <span class="cf-icon cf-icon-help-round" data-tooltip-target="company-public-response"></span></h4>
-                <div class="response-text"> </div>
-                <p><a href="https://data.consumerfinance.gov/d/uqjt-9neg" target="_blank" class="icon-link icon-link__right"><span class="icon-link_text">See vehicle / consumer loan complaint data</span></a></p>
-              </div>
-              <div class="content-l_col content-l_col-1-3 details-large">
-                <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
-                <p class="complaint-subproduct"> </p>
-                <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
-                <p class="complaint-issue"> </p>
-                <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
-                <p class="complaint-state"> </p>
-                <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
-                <p class="complaint-date"> </p>
-                <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
-                <p class="complaint-company-response"> </p>
-                
-                <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
-                <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is refreshed nightly.</p>
-              </div>
-            </div>
-          </div>
-          <hr class="last-expandable-bar">
+          {% endfor %}
+          
         </div>
       </div>
       <div class="block block__border-top block__padded-top">
@@ -588,7 +155,7 @@
           <h2>About the data</h2>
           <div class="content-l">
             <div class="content-l_col content-l_col-1-2">
-              <p>The Consumer Complaint Database is a collection of <span class="total-complaints"> &nbsp; </span> complaints, on a range of consumer financial products and services, sent to nearly 3,000 companies for response. We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship between the consumer and the company. <span class="publication-criteria"><a href="http://files.consumerfinance.gov/f/201303_cfpb_Final-Policy-Statement-Disclosure-of-Consumer-Complaint-Data.pdf" class="icon-link icon-link__right"><span class="icon-link_text">See publication criteria</span></a></span></p>
+              <p>The Consumer Complaint Database is a collection of <span class="total-complaints"> {{ total_complaints|intcomma }} </span> complaints, on a range of consumer financial products and services, sent to nearly 3,000 companies for response. We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship between the consumer and the company. <span class="publication-criteria"><a href="http://files.consumerfinance.gov/f/201303_cfpb_Final-Policy-Statement-Disclosure-of-Consumer-Complaint-Data.pdf" class="icon-link icon-link__right"><span class="icon-link_text">See publication criteria</span></a></span></p>
               <p>Since we started accepting complaints in July 2011, we’ve helped consumers connect with financial companies to understand issues with their mortgages, fix errors on their credit reports, stop unlawful calls from debt collectors, and get direct responses about problems with their credit cards, bank accounts, private student loans, and more. We analyze the data to identify trends and problems in the marketplace to help us do a better job supervising companies, enforcing federal consumer financial laws and writing rules and regulations. We publish reports on complaints and share information with state and federal agencies.</p>  
               <p><a href="/complaint/data-use/#reports" class="icon-link icon-link__right"><span class="icon-link_text">View reports</span></a></p>
             </div>
