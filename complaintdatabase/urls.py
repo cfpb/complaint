@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from ccdb_content.views import DataUseView, LandingView, DocsView
+from complaintdatabase.views import DataUseView, LandingView, DocsView
 
 urlpatterns = [
     url(r'^$', LandingView.as_view()),

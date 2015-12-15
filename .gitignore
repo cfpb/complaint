@@ -54,7 +54,7 @@ coverage.xml
 # Django stuff:
 *.log
 db.sqlite3
-# ccdb_content/static/*
+# complaintdatabase/static/*
 *data/
 
 # Sphinx documentation
@@ -68,9 +68,9 @@ opensource-checklist.md
 
 # Build artifacts
 node_modules/
-ccdb_content/static/
+complaintdatabase/static/
 src/vendor/
-ccdb_content/templates/standalone
+complaintdatabase/templates/standalone
 src/static/js/nemo*
 src/static/css/nemo*
 
