@@ -17,6 +17,7 @@ class LandingView(TemplateView):
         response = requests.get("http://files.consumerfinance.gov/ccdb/narratives.json")
         res_json = json.loads(response.text[11:-2])  # This is to parse out the 'narratives();' that wrapped around the json
         context['narratives'] = res_json
+        context['pipeline_down'] = True
         return context
 
 class DataUseView(TemplateView):
