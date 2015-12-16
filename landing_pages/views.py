@@ -4,6 +4,7 @@ from datetime import datetime
 from django.shortcuts import render
 from django.views.generic import View, TemplateView
 from datetime import datetime
+from itertools import cycle
 
 # Create your views here.
 #BASE_TEMPLATE = "base.html"
@@ -35,7 +36,7 @@ class LandingView(TemplateView):
             {'key':'other_consumer_loans', 'title':'Vehicle / consumer loan', 'css':'consumer-loan', 'icon': 'buying-car'}
         ]
 
-        for item in narrative_types:
+        for index, item in enumerate(narrative_types):
             # get json data for this type
             narrative = res_json[item['key']]
 
@@ -46,10 +47,7 @@ class LandingView(TemplateView):
             narrative['date'] = datetime.strptime(narrative['date_received'], "%Y-%m-%dT%H:%M:%S")
 
             # add data for next item
-            if narrative_types.index(item) != len(narrative_types) -1:
-                narrative['next'] = narrative_types[narrative_types.index(item) + 1]
-            else:
-                narrative['next'] = narrative_types[0]
+            narrative['next'] = narrative_types[(index + 1) % len(narrative_types)]
 
             narratives.append(narrative)
 
@@ -66,7 +64,6 @@ class LandingView(TemplateView):
             if item['company_response'] != 'Untimely response':
                 context['timely_responses'] += item_count
         
-        #context['narratives'] = res_json
         context['pipeline_down'] = True
         return context
 
