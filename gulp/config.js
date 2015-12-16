@@ -7,10 +7,10 @@ var fs = require( 'fs' );
  */
 var loc = {
   src:  './src',
-  dist: './landing_pages/static/',
+  dist: './complaintdatabase/static/',
   lib:  JSON.parse( fs.readFileSync( './.bowerrc' ) ).directory, // eslint-disable-line no-sync, no-inline-comments, max-len
   test: './test',
-  templ: './landing_pages/templates/standalone/'
+  templ: './complaintdatabase/templates/standalone/'
 };
 
 module.exports = {
