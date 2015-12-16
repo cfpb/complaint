@@ -18,10 +18,30 @@ body {
 #ccdb-landing {
   .hero {
     background-color: @gray-5;
+    
+    &_wrapper {
+      .respond-to-range(600px, 1229px, {
+          padding-left: @grid_gutter-width;
+          padding-right: @grid_gutter-width;
+      });
+      
+      .respond-to-min(1230px, {
+          padding-right: 0;
+          padding-left: 0;
+      });
+    }
+    
+    &_text {
+       .respond-to-min(600px, {
+         border-left-width: 0;
+       });
+    }
   }
   
-  p {
-    .webfont-regular();
+  .ccdb-landing_section{
+    p {
+      .webfont-regular();
+    }
   }
   
   h2,
@@ -38,6 +58,49 @@ body {
   
   .about-bar {
     height: 1px;
+  }
+  
+  .cf-notification {
+    padding-left: 0;
+    margin-bottom: 0;
+    border-width: 0 0 1px 0;
+    
+    &_wrapper {
+      position: relative;
+    }
+    
+    &_icon {
+      top: 2px;
+      left: @grid_gutter-width / 2;
+      
+      .respond-to-min(600px, {
+        left: @grid_gutter-width
+      });
+    }
+    
+    &_text {
+      padding-left: @grid_gutter-width;
+      
+      p {
+        margin-bottom: 10px;
+      }
+    } 
+    
+    .data-text,
+    .narratives-text {
+      display: none;
+    }
+    
+    &.show-data-notification,
+    &.show-narratives-notification {
+      display: block;
+    }
+    
+    &.show-data-notification .data-text,
+    &.show-narratives-notification .narratives-text {
+      display: block;
+    }
+    
   }
   
   .section-one {
@@ -615,3 +678,4 @@ div[data-tooltip-name] {
 .botshare {
   display: none;
 }
+
