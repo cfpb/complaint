@@ -67,7 +67,6 @@ class LandingView(TemplateView):
                 context['timely_responses'] += item_count
         
         #context['narratives'] = res_json
-        context['narratives'] = res_json
         context['pipeline_down'] = True
         return context
 
