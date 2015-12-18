@@ -57,12 +57,12 @@ In your Django project `settings.py`, you will need to include the following in 
 'complaintdatabase’,
 ```
 
-Add this to your requirements.txt file:
+Add this to your `requirements.txt` file:
 ```
 -e git+https://fake.ghe.domain/CCDB4/CCDB-content.git#egg=complaintdatabase
 ```
 
-Then run the requirements.txt file in your terminal your virtual environment:
+Then run the `requirements.txt` file in your terminal your virtual environment:
 ```
 pip install -r requirements.txt
 ```
