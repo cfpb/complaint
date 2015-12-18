@@ -1,0 +1,166 @@
+@darkgreen: #1e9642;
+#maincontent {
+  width: 100%;
+}
+
+.content_wrapper {
+  .respond-to-min(801px, {
+      max-width: 1140px;
+  });
+}
+
+.data-use {
+  &_list {
+    img {
+       display: none;
+     }
+     .respond-to-max(599px, {
+       padding-left: 1em;
+       .webfont-regular();
+       .list__spaced;
+     });
+
+     .respond-to-min(600px, {
+       img {
+         display: block;
+       }
+       .list__unstyled;
+       .content-l;
+
+       .list_item {
+         .content-l_col-1-2 {
+           border-left-width: 0;
+         }
+         .content-l_col-1-2.short-desc {
+           padding-top: unit((@grid_gutter-width / 2 ) / @base-font-size-px, em)
+         }
+
+         &.top-row {
+           margin-bottom: @grid_gutter-width;
+         }
+
+       }
+     });
+  }
+  
+  .data-use_ordinal {
+    .icon-round;
+    .webfont-demi();
+    float: left;
+    margin-right: 10px;
+    font-size: 14px;
+    color: white;
+    background-color: @darkgreen;
+
+    .respond-to-min(600px, {
+      font-size: 15px;
+      margin-top: 2px;
+    });
+  }
+  
+  table {
+    width: 100%;
+  }
+
+  td.data-type,
+  td.report-type,
+  td.report-year {
+    vertical-align: top;
+  }
+
+  .report-data {
+    display: none;
+  }
+
+  .expandable {
+    background: none;
+  }
+  
+  .respond-to-max(599px, {
+    .expandable-group {
+      border-top: 1px solid @gray-80;
+    }
+
+    .expandable_content {
+      padding-bottom: @grid_gutter-width / 2;
+    }
+
+    tbody {
+      display: block;
+
+      tr {
+        border-bottom-width: 0;
+      }
+
+      td {
+        padding: 0;
+      }
+    }
+
+    .table__stack-on-small td:last-child {
+      margin-bottom: 0;
+    }
+
+    td.data-type,
+    td.report-type {
+      display: none;
+    }
+
+    td.report-year {
+      .heading-5();
+      padding-top: 10px;
+    }
+  });
+  
+  .respond-to-min(600px, {
+    td.report-type {
+      width: 33%;
+    }
+    td.report-year {
+      width: 4.5em;
+    }
+    td.data-type {
+      width: 9.5em;
+    }
+    td.report-link {
+      ul {
+        margin-bottom: 0;
+      }
+    }
+    .expandable_row {
+      display: none;
+    }
+
+    .expandable-group {
+      .expandable_target {
+        display: none;
+      }
+      .expandable__padded {
+        margin: 0;
+        border-bottom: none;
+
+        .expandable_content {
+          padding: 0;
+          margin: 0;
+
+          &:before {
+            display: none;
+          }
+        }
+      }
+    }  
+
+    .report-data {
+      display: inline;
+    }
+  });
+  
+}
+
+
+
+
+
+
+
+

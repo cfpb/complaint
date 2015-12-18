@@ -43,5 +43,9 @@
     "require-dir": "^0.3.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "browser": {
+    "cf-expandables": "./src/vendor/cf-expandables/src/js/cf-expandables.js",
+    "jquery-easing": "./src/vendor/jquery.easing/js/jquery.easing.js"
   }
 }
