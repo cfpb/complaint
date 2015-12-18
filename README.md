@@ -47,12 +47,12 @@ CCDB-content is a standalone Django project that runs the complaint database app
 ###Installing app to your project
 Complaint database app can be installed into other Django project by doing the following:
 
-In your Django project `url.py`, you will need to include the following in your `url patterns`:
+In your Django project `url.py`, you will need to include the following in your `urlpatterns` list:
 ```python
 url(r'^complaintdatabase/', include('complaintdatabase.urls')),
 ```
 
-In your Django project `settings.py`, you will need to include the following in your `INSTALLED_APPS`:
+In your Django project `settings.py`, you will need to include the following in your `INSTALLED_APPS` tuple:
 ```python
 'complaintdatabase’,
 ```
