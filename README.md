@@ -44,7 +44,7 @@ CCDB-content is a standalone Django project that runs the complaint database app
   - http://127.0.0.1:8000/complaintdatabase/technical-documentation/
 
 
-***Installing app to your project
+###Installing app to your project
 Complaint database app can be installed into other Django project by doing the following:
 
 In your Django project `url.py`, you will need to include the following in your `url patterns`:
