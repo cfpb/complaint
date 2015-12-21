@@ -53,7 +53,8 @@ module.exports = {
     }
   },
   scripts: {
-    entrypoint: loc.src + '/static/js/index.js',
+    entrypoint: [loc.src + '/static/js/index.js', loc.src + '/static/js/data-use.js'],
+    entries: ['index.js', 'data-use.js'],
     src: [
       loc.lib + '/jquery/dist/jquery.js',
       loc.lib + '/jquery.easing/js/jquery.easing.js',
@@ -62,7 +63,14 @@ module.exports = {
       loc.src + '/static/js/lib/*.js'
     ],
     dest: loc.dist + '/js/',
-    name: 'main.js'
+    name: 'main.js',
+    outputs: [loc.dist + 'js/index.js', loc.dist + 'js/data-use.js'],
+    common: loc.dist + 'main.js',
+    src: loc.src + '/static/js/'
+  },
+  test: {
+    src: [loc.src + '/static/js/index.js', loc.src + '/static/js/data-use.js', loc.src + '/static/js/handle-resize.js'],
+    tests: loc.test
   },
   browserify: {
     paths: {

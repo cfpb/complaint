@@ -10,15 +10,20 @@ var banner = require( '../config' ).banner;
 var config = require( '../config' ).scripts;
 var handleErrors = require( '../utils/handleErrors' );
 var browserSync = require( 'browser-sync' );
+var factor = require('factor-bundle');
+var vinylify = require('factor-vinylify');
 
 gulp.task( 'scripts', function() {
   var b = browserify({
-    entries: config.entrypoint,
-    debug: true
+      entries: config.entries,
+      basedir: config.src,
+      debug: true
   });
-
+  b.plugin(vinylify, {
+      entries: config.entries,
+      common: 'main.js'
+  });
   b.bundle()
-    .pipe( source( 'main.js' ) )
     .pipe( buffer())
     .pipe( $.sourcemaps.init( { loadMaps: true } ) )
     .pipe( $.uglify() )
