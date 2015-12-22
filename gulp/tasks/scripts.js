@@ -10,7 +10,6 @@ var banner = require( '../config' ).banner;
 var config = require( '../config' ).scripts;
 var handleErrors = require( '../utils/handleErrors' );
 var browserSync = require( 'browser-sync' );
-var factor = require('factor-bundle');
 var vinylify = require('factor-vinylify');
 
 gulp.task( 'scripts', function() {
@@ -21,7 +20,7 @@ gulp.task( 'scripts', function() {
   });
   b.plugin(vinylify, {
       entries: config.entries,
-      common: 'main.js'
+      common: config.common
   });
   b.bundle()
     .pipe( buffer())

@@ -32,10 +32,6 @@ module.exports = {
       'gulp/**/*.js'
     ]
   },
-  test: {
-    src:   loc.src + '/static/js/**/*.js',
-    tests: loc.test
-  },
   clean: {
     dest: loc.dist,
     templ: loc.templ
@@ -53,20 +49,10 @@ module.exports = {
     }
   },
   scripts: {
-    entrypoint: [loc.src + '/static/js/index.js', loc.src + '/static/js/data-use.js'],
     entries: ['index.js', 'data-use.js'],
-    src: [
-      loc.lib + '/jquery/dist/jquery.js',
-      loc.lib + '/jquery.easing/js/jquery.easing.js',
-      loc.lib + '/cf-*/src/js/*.js',
-      loc.src + '/static/js/*.js',
-      loc.src + '/static/js/lib/*.js'
-    ],
+    src: loc.src + '/static/js/',
     dest: loc.dist + '/js/',
-    name: 'main.js',
-    outputs: [loc.dist + 'js/index.js', loc.dist + 'js/data-use.js'],
-    common: loc.dist + 'main.js',
-    src: loc.src + '/static/js/'
+    common: 'main.js'
   },
   test: {
     src: [loc.src + '/static/js/index.js', loc.src + '/static/js/data-use.js', loc.src + '/static/js/handle-resize.js'],
