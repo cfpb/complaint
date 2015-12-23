@@ -2,7 +2,6 @@
 
 require('./nemo');
 require('./nemo-shim');
-require('./submit-a-complaint');
 
 var urlCodes = {
   'all_all' : 's6ew-h6mp',

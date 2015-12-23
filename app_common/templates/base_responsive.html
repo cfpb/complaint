@@ -1,4 +1,13 @@
 {% extends 'standalone/base_update.html' %}
+{% load staticfiles %}
+
+{% block nemo_styles %}
+{% endblock %}
+
+
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
+{% endblock %}
 
 {% block page_viewport %}
 <meta name="viewport" content="width=device-width, initial-scale=1">

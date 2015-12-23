@@ -72,6 +72,7 @@ src/vendor/
 app_common/templates/standalone
 src/static/js/nemo*
 src/static/css/nemo*
+test/unit_test_coverage
 
 # Include front-end lib
 !src/js/lib

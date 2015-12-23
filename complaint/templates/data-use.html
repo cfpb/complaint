@@ -4,367 +4,732 @@
 
 {% block title %}How we use complaint data{% endblock %}
 
-
-{% block page_css %}
-  <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
-  <link rel="stylesheet" href="http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/_/c/cr-003-theme.css?ver=all">
-  <link rel="stylesheet" href="http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/_/c/cr-009-theme.css?ver=all">
-{% endblock %}
-
-
 {% block content %}
-<div class="cr-theme">
-  <div class="sub-theme-quiet sub-theme-quiet--divided">
-      <div class="hero-wrapper_cr-003-data hero-wrapper wrapper">
-          <div class="row-fluid">
-              <div class="span8">
-                  <h1>How we use complaint data</h1>
-                  <h3>Each week we send thousands of consumers’ complaints about financial products and services to companies for response. Data from those complaints help us understand the financial marketplace and protect consumers.</h3>
-                  <h3>Visit the <a href="/complaintdatabase/">Consumer Complaint Database</a></h3>
-              </div>
+<main class="content__2-1 content__bleedbar data-use" role="main">
+  <div class="content_wrapper">
+    <section class="content_main">
+      <h1>
+        How we use complaint data
+      </h1>
+      <p class="h3">
+        Each week we send thousands of consumers’ complaints about financial products and services to companies for response. Data from those complaints help us understand the financial marketplace and protect consumers.
+      </p>
+      
+      <div class="block data-use_list-block">
+        <ul class="data-use_list content-l">
+          <li class="list_item content-l_col-1-2 top-row">
+            <span class="content-l_col-1-2">
+              <img src="{% static 'img/forward.png' %}">
+            </span>
+            <span class="content-l_col-1-2 short-desc">
+              We <strong>forward</strong> each complaint to the appropriate company for a response.
+            </span>
+          </li>
+          <li class="list_item content-l_col-1-2 top-row">
+            <span class="content-l_col-1-2">
+              <img src="{% static 'img/share.png' %}">
+            </span>
+            <span class="content-l_col-1-2 short-desc">
+              We <strong>share</strong> complaint data with state and federal agencies. We also present a report to Congress twice each year.
+            </span>
+          </li>
+          <li class="list_item content-l_col-1-2">
+            <span class="content-l_col-1-2">
+              <img src="{% static 'img/analyze.png' %}">
+            </span>
+            <span class="content-l_col-1-2 short-desc">
+              We <strong>analyze</strong> complaint data to help with our work to supervise companies, enforce federal consumer financial laws, and write  better rules and regulations.
+            </span>
+          </li>
+          <li class="list_item content-l_col-1-2">
+            <span class="content-l_col-1-2">
+              <img src="{% static 'img/publish.png' %}">
+            </span>
+            <span class="content-l_col-1-2 short-desc">
+              We <strong>publish</strong> complaints in the Consumer Complaint Database (without personal information).
+            </span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="block block__border-top block__padded-top">
+         <h2>What we publish in the Consumer Complaint Database</h2>
+         <p class="short-desc">Complaints must meet all of the publication criteria in our <a href="/f/201303_cfpb_Final-Policy-Statement-Disclosure-of-Consumer-Complaint-Data.pdf" class="pdf-link">policy statement</a>, <a href="/f/201503_cfpb_disclosure-of-consumer-complaint-narrative-data.pdf" class="pdf-link">narrative data policy statement</a>, and <a href="/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="pdf-link">narrative scrubbing standard</a>.</p>
+          <h3><span class="data-use_ordinal">1</span/>Data that we always share</h3>
+          
+          <table class="table__stack-on-small shared-data-table">
+            <thead>
+              <tr>
+                <td class="data-type">Data type</td>
+                <td class="data-description">
+                  Description
+                </td>
+              </tr>
+            </thead>
+            <tbody class="expandable-group" data-accordion=true>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Date received</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Date received</span>
+                </td>
+                <td class="data-description expandable_content">
+                  The date the CFPB received the complaint. For example, "05/25/2013"
+                </td>
+              </tr>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Product</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Product</span>
+                </td>
+                <td class="data-description expandable_content">
+                  The type of product the consumer identified in the complaint. For example, "Bank account or service" or "Student loan"
+                </td>
+              </tr>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Sub-product</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Sub-product</span>
+                </td>
+                <td class="data-description expandable_content">
+                  The type of sub-product the consumer identified in the complaint. For example, "Checking account" or "Non-federal student loan"
+                </td>
+              </tr>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Issue</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Issue</span>
+                </td>
+                <td class="data-description expandable_content">
+                  The issue the consumer identified in the complaint. For example, "Deposits and withdrawals" or "Repaying your loan"
+                </td>
+              </tr>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Sub-issue</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Sub-issue</span>
+                </td>
+                <td class="data-description expandable_content">
+                  The sub-issue the consumer identified in the complaint. For example, "Information is not mine"
+                </td>
+              </tr>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Company public response</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Company public response</span>
+                </td>
+                <td class="data-description expandable_content">
+                  The company's optional, public-facing response to a consumer's complaint. Companies provide a public response to the CFPB, for posting on the public database, by selecting a response from a set list of options.
+                </td>
+              </tr>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Company</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Company</span>
+                </td>
+                <td class="data-description expandable_content">
+                  The complaint is about this company. For example, "ABC Bank"
+                </td>
+              </tr>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">State</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">State</span>
+                </td>
+                <td class="data-description expandable_content">
+                  The consumer’s reported mailing state for the complaint
+                </td>
+              </tr>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">ZIP code</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">ZIP code</span>
+                </td>
+                <td class="data-description expandable_content">
+                  Mailing ZIP code provided by the consumer. This field may: i) include the first five digits of a ZIP code; ii) include the first three digits of a ZIP code (if the consumer consented to publication of their complaint narrative); or iii) be blank (if ZIP codes have been submitted with non-numeric values, if there are less than 20,000 people in a given ZIP code, or if the complaint has an address outside of the United States).
+                </td>
+              </tr>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Submitted via</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Submitted via</span>
+                </td>
+                <td class="data-description expandable_content">
+                  How the complaint was submitted to CFPB. For example, "Web or "Phone"
+                </td>
+              </tr>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Date sent to company</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Date sent to company</span>
+                </td>
+                <td class="data-description expandable_content">
+                  The date the CFPB sent the complaint to the company
+                </td>
+              </tr>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Company response to consumer</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Company response to consumer</span>
+                </td>
+                <td class="data-description expandable_content">
+                  This is how the company responded. For example, "Closed with explanation"
+                </td>
+              </tr>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Timely response?</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Timely response?</span>
+                </td>
+                <td class="data-description expandable_content">
+                  Whether the company gave a timely response. For example, "Yes" or "No"
+                </td>
+              </tr>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Consumer disputed?</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Consumer disputed?</span>
+                </td>
+                <td class="data-description expandable_content">
+                  Whether the consumer disputed the company’s response
+                </td>
+              </tr>
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Complaint ID</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Complaint ID</span>
+                </td>
+                <td class="data-description expandable_content">
+                  The unique identification number for a complaint
+                </td>
+              </tr>
+              
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Consumer consent provided?</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Consumer consent provided?</span>
+                </td>
+                <td class="data-description expandable_content">
+                  Identifies whether the consumer opted in to publish their complaint narrative.  We do not publish the narrative unless the consumer consents and consumers can opt-out at any time.
+                </td>
+              </tr>
+              
+              <tr class="expandable expandable__padded">
+                <td class="data-type">
+                  <button class="expandable_header expandable_target" title="Expand content">
+                    <span class="expandable_header-left expandable_label">Complaint tags</span>
+                    <span class="expandable_header-right expandable_link">
+                      <span class="expandable_cue-open">
+                        <span class="u-visually-hidden">Show</span>
+                        <span class="cf-icon cf-icon-plus-round"></span>
+                      </span>
+                      <span class="expandable_cue-close">
+                        <span class="u-visually-hidden">Hide</span>
+                        <span class="cf-icon cf-icon-minus-round"></span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="plain-text">Complaint tags</span>
+                </td>
+                <td class="data-description expandable_content">
+                  Concepts found in complaint narrative to support easier searching and sorting of complaints. 
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <h3><span class="data-use_ordinal">2</span/>Data that we share with the consumer's consent</h3>
+          <p class="short-desc">We share consumer complaint narratives only with consumers' consent. Consumer complaint narrative is the consumer-submitted description of "what happened" from the complaint. Consumers must opt-in to share their narrative. We will not publish the narrative unless the consumer consents, and consumers can opt-out at any time. The CFPB takes reasonable steps to scrub personal information from each complaint that could be used to identify the consumer.</p>
+          <h3><span class="data-use_ordinal">3</span/>Data that stays private to the consumer and the company</h3>
+          <p class="short-desc">All personal information, such as names, contact information, account numbers, social security numbers, and supporting documents help the company identify the consumer. This information is not published.</p>
+      </div>
+      
+      
+      <div class="block block__border-top block__padded-top">
+         <h2>Consumer Response Reports created using the data</h2>
+         <div class="expandable-group reports-tables" data-accordion=true>
+           <table class="table__stack-on-small expandable expandable__padded">
+             <thead>
+               <tr>
+                 <td class="report-type">Type</td>
+                 <td class="report-year">Year</td>
+                 <td class="report-link">Report</td>
+               </tr>
+             </thead>
+             <tbody class="expandable_row">
+               <tr>
+                  <td>
+                    <button class="expandable_header expandable_target" title="Expand content">
+                      <span class="expandable_header-left expandable_label">Reports to Congress</span>
+                      <span class="expandable_header-right expandable_link">
+                        <span class="expandable_cue-open">
+                          <span class="u-visually-hidden">Show</span>
+                          <span class="cf-icon cf-icon-plus-round"></span>
+                        </span>
+                        <span class="expandable_cue-close">
+                          <span class="u-visually-hidden">Hide</span>
+                          <span class="cf-icon cf-icon-minus-round"></span>
+                        </span>
+                      </span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+             <tbody class="expandable_content">
+               <tr>
+                 <td class="report-type" rowspan=4>Reports to Congress</td>
+                 <td class="report-year">2014</td>
+                 <td class="report-link">
+                   <ul class="list list__links">
+                     <li class="list_item">
+                       <a class="list_link" href="/reports/2014-consumer-response-annual-report/">Annual report</a>
+                     </li>
+                     <li class="list_item">
+                       <a class="list_link" href="/reports/semi-annual-report-spring-2014/"> Semi-annual report</a> <span class="report-data">(Oct. 2013-Mar. 2014)</span>
+                     </li>
+                   </ul>
+                 </td>
+               </tr>
+               <tr>
+                  <td class="report-year">2013</td>
+                  <td class="report-link">
+                    <ul class="list list__links">
+                      <li class="list_item">
+                        <a class="list_link" href="/reports/2013-consumer-response-annual-report/">Annual report</a>
+                      </li>
+                    </ul>
+                 </td>
+                </tr>
+                <tr>
+                  <td class="report-year">2012</td>
+                  <td class="report-link">
+                    <ul class="list list__links">
+                      <li class="list_item">
+                        <a class="list_link" href="/reports/consumer-response-annual-report-2/">Annual report</a>
+                      </li>
+                      <li class="list_item">
+                        <a class="list_link" href="/reports/semi-annual-report-2/"> Semi-annual report</a> <span class="report-data">(July-Dec. 2012)</span>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="report-year">2011</td>
+                  <td class="report-link">
+                    <ul class="list list__links">
+                      <li class="list_item">
+                        <a class="list_link" href="/reports/consumer-response-annual-report/">Annual report</a>
+                      </li>
+                      <li class="list_item">
+                        <a class="list_link" href="/reports/semi-annual-report-of-the-consumer-financial-protection-bureau/"> Semi-annual report</a> <span class="report-data">(July-Dec. 2011)</span>
+                      </li>
+                      <li class="list_item">
+                        <a class="list_link" href="/reports/consumer-response-interim-report-on-cfpbs-credit-card-complaint-data/">Consumer Response interim report on CFPB's credit card complaint data</a>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+            
+            
+            <table class="table__stack-on-small expandable expandable__padded">
+              <thead class="u-visually-hidden">
+                 <tr>
+                   <td class="report-type">Type</td>
+                   <td class="report-year">Year</td>
+                   <td class="report-link">Report</td>
+                 </tr>
+               </thead>
+               <tbody class="expandable_row">
+                 <tr>
+                    <td>
+                      <button class="expandable_header expandable_target" title="Expand content">
+                        <span class="expandable_header-left expandable_label">Complaints by the numbers</span>
+                        <span class="expandable_header-right expandable_link">
+                          <span class="expandable_cue-open">
+                            <span class="u-visually-hidden">Show</span>
+                            <span class="cf-icon cf-icon-plus-round"></span>
+                          </span>
+                          <span class="expandable_cue-close">
+                            <span class="u-visually-hidden">Hide</span>
+                            <span class="cf-icon cf-icon-minus-round"></span>
+                          </span>
+                        </span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+               <tbody class="expandable_content">
+                <tr>
+                  <td class="report-type">
+                    Complaints by the numbers
+                  </td>
+                  <td class="report-year">
+                    2015
+                  </td>
+                  <td class="report-link">
+                    <ul class="list list__links">
+                      <li class="list_item">
+                        <a class="list_link pdf-link" href="/f/201503_cfpb_complaints-by-the-numbers.pdf">2015 report</a>
+                      </li>
+                    </ul>
+                  </td>
+                </tr> 
+              </tbody>
+            </table>
+            
+            
+            
+            <table class="table__stack-on-small expandable expandable__padded">
+              <thead class="u-visually-hidden">
+                 <tr>
+                   <td class="report-type">Type</td>
+                   <td class="report-year">Year</td>
+                   <td class="report-link">Report</td>
+                 </tr>
+               </thead>
+               <tbody class="expandable_row">
+                 <tr>
+                    <td>
+                      <button class="expandable_header expandable_target" title="Expand content">
+                        <span class="expandable_header-left expandable_label">Snapshots of complaints received</span>
+                        <span class="expandable_header-right expandable_link">
+                          <span class="expandable_cue-open">
+                            <span class="u-visually-hidden">Show</span>
+                            <span class="cf-icon cf-icon-plus-round"></span>
+                          </span>
+                          <span class="expandable_cue-close">
+                            <span class="u-visually-hidden">Hide</span>
+                            <span class="cf-icon cf-icon-minus-round"></span>
+                          </span>
+                        </span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+               <tbody class="expandable_content">
+                <tr>
+                  <td class="report-type" rowspan=3>
+                    Snapshots of complaints received
+                  </td>
+                  <td class="report-year">2014</td>
+                  <td class="report-link">
+                    <ul class="list list__links">
+                      <li class="list_item">
+                        <a class="list_link pdf-link" href="/f/201407_cfpb_report_consumer-complaint-snapshot.pdf">July Report</a>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="report-year">2013</td>
+                  <td class="report-link">
+                    <ul class="list list__links">
+                      <li class="list_item">
+                        <a class="list_link pdf-link" href="/reports/a-snapshot-of-complaints-received-3/">July Report</a>
+                      </li>
+                      <li class="list_item">
+                        <a class="list_link pdf-link" href="/f/201303_cfpb_Snapshot-March-2013.pdf">March Report</a>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="report-year">2012</td>
+                  <td class="report-link">
+                    <ul class="list list__links">
+                      <li class="list_item">
+                        <a class="list_link pdf-link" href="/f/201206_cfpb_shapshot_complaints-received.pdf">June Report</a>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+            
+            <table class="table__stack-on-small expandable expandable__padded">
+              <thead class="u-visually-hidden">
+                 <tr>
+                   <td class="report-type">Type</td>
+                   <td class="report-year">Year</td>
+                   <td class="report-link">Report</td>
+                 </tr>
+               </thead>
+               <tbody class="expandable_row">
+                 <tr>
+                    <td>
+                      <button class="expandable_header expandable_target" title="Expand content">
+                        <span class="expandable_header-left expandable_label">Monthly Complaint Reports</span>
+                        <span class="expandable_header-right expandable_link">
+                          <span class="expandable_cue-open">
+                            <span class="u-visually-hidden">Show</span>
+                            <span class="cf-icon cf-icon-plus-round"></span>
+                          </span>
+                          <span class="expandable_cue-close">
+                            <span class="u-visually-hidden">Hide</span>
+                            <span class="cf-icon cf-icon-minus-round"></span>
+                          </span>
+                        </span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+               <tbody class="expandable_content">
+                <tr>
+                  <td class="report-type">Monthly Complaint Reports</td>
+                  <td class="report-year">2015</td>
+                  <td class="report-link">
+                    <ul class="list list__links">
+                      <li class="list_item">
+                        <a class="list_link" href="http://www.consumerfinance.gov/reports/monthly-complaint-report-vol-5/">Volume 5</a>
+                      </li>
+                      <li class="list_item">
+                        <a class="list_link" href="http://www.consumerfinance.gov/reports/monthly-complaint-report-vol-4/">Volume 4</a>
+                      </li>
+                      <li class="list_item">
+                        <a class="list_link" href="http://www.consumerfinance.gov/reports/monthly-complaint-report-vol-3/">Volume 3</a>
+                      </li>
+                      <li class="list_item">
+                        <a class="list_link" href="http://www.consumerfinance.gov/reports/monthly-complaint-report-vol-2/">Volume 2</a>
+                      </li>
+                      <li class="list_item">
+                        <a class="list_link" href="http://www.consumerfinance.gov/reports/monthly-complaint-report-vol-1/">Volume 1</a>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
       </div>
-      <!-- END .wrapper -->
-
+      
+    </section>
+    <aside class="content_sidebar">
+      <h3 class="header-slug">
+          <span class="header-slug_inner">
+              Resources
+          </span>
+      </h3>
+      <ul class="list__unstyled list__spaced">
+        <li class="list_item">
+          <span class="jump-link_intro">Have an issue with a financial product or service?</span><br>
+          <a class="list_link jump-link" href="/complaint/" target=\"_blank\">
+            <span class="jump-link_text">Submit a complaint to the CFPB</span>
+          </a>
+        </li>
+        <li class="list_item">
+          <span class="jump-link_intro">Already submitted a complaint?</span><br>
+          <a class="list_link jump-link" href="/complaint/" target=\"_blank\">
+            <span class="jump-link_text">Check the status of your complaint</span>
+          </a>
+        </li>
+        <li class="list_item">
+          <span class="jump-link_intro">Want to see others' complaints?</span><br>
+          <a class="list_link jump-link" href="/complaintdatabase" target=\"_blank\">
+            <span class="jump-link_text">View the Consumer Complaint Database</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
   </div>
-  <!-- END .sub-theme-quiet -->
-
-  <div class="wrapper">
-
-      <div class="l-separated--vertical">
-
-          <div class="row-fluid">
-
-              <div class="span6">
-                  <div class="l-separated--vertical">
-                      <div class="row-fluid">
-                          <div class="span4">
-                              <img src="/wp-content/themes/cfpb_nemo/_/img/isocons-alt-green-company-response.png" alt="" class="isocon-120" />
-                          </div>
-                          <div class="span8">
-                              <h3>We <strong>forward</strong> each complaint to the appropriate company for a response.</h3>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <!-- END .span6 -->
-
-              <div class="span6">
-                  <div class="l-separated--vertical">
-                      <div class="row-fluid">
-                          <div class="span4">
-                              <img src="/wp-content/themes/cfpb_nemo/_/img/isocons-alt-green-analyze-and-report-flipped.png" alt="" class="isocon-120" />
-                          </div>
-                          <div class="span8">
-                              <h3>We <strong>share</strong> complaint data with state and federal agencies. We also present a report to Congress twice each year.</h3>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <!-- END .span6 -->
-
-          </div>
-          <!-- END .row-fluid -->
-
-          <div class="row-fluid">
-
-              <div class="span6">
-                  <div class="l-divided--top">
-                      <div class="l-separated--vertical">
-                          <div class="row-fluid">
-                              <div class="span4">
-                                  <img src="/wp-content/themes/cfpb_nemo/_/img/isocons-alt-green-review-and-investigate.png" alt="" class="isocon-120" />
-                              </div>
-                              <div class="span8">
-                                  <h3>We <strong>analyze</strong> complaint data to help with our work to supervise companies, enforce federal consumer financial laws, and write  better rules and regulations.</h3>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- END .l-divided--top -->
-              </div>
-              <!-- END .span6 -->
-
-              <div class="span6">
-                  <div class="l-divided--top">
-                      <div class="l-separated--vertical">
-                          <div class="row-fluid">
-                              <div class="span4">
-                                  <img src="/wp-content/themes/cfpb_nemo/_/img/isocons-alt-green-data-flipped.png" alt="" class="isocon-120" />
-                              </div>
-                              <div class="span8">
-                                  <h3>We <strong>publish</strong> complaints in the Consumer Complaint Database (without personal information).</h3>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- END .l-divided--top -->
-              </div>
-              <!-- END .span6 -->
-
-          </div>
-          <!-- END .row-fluid -->
-
-          <div class="l-separated--top l-separated--vertical">
-              <div class="l-separated-small--bottom l-divided-medium--bottom-green">
-                  <h2>What we publish in the Consumer Complaint Database</h2>
-                  <p>Complaints must meet all of the publication criteria in our <a href="/f/201303_cfpb_Final-Policy-Statement-Disclosure-of-Consumer-Complaint-Data.pdf" class="pdf-link">policy statement</a>, <a href="/f/201503_cfpb_disclosure-of-consumer-complaint-narrative-data.pdf" class="pdf-link">narrative data policy statement</a>, and <a href="/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="pdf-link">narrative scrubbing standard</a>.</p>
-              </div>
-              <div class="l-separated-small--vertical l-divided-medium--bottom-green">
-                  <div class="row-fluid">
-                      <div class="span3">
-                          <h3>Data that we always share</h3>
-                      </div>
-                      <div class="span9">
-                          <div class="l-separated-small--vertical l-divided--bottom">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">Date received</h4></div>
-                                  <div class="span8">The date the CFPB received the complaint.
-                                      <br/>For example, “05/25/2013”</div>
-                              </div>
-                          </div>
-                          <div class="l-separated-small--vertical l-divided--bottom">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">Product</h4></div>
-                                  <div class="span8">The type of product the consumer identified in the complaint.
-                                      <br/>For example, “Bank account or service” or “Student loan”</div>
-                              </div>
-                          </div>
-                          <div class="l-separated-small--vertical l-divided--bottom">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">Sub-product</h4></div>
-                                  <div class="span8">The type of sub-product the consumer identified in the complaint.
-                                      <br/>For example, “Checking account” or “Non-federal student loan”</div>
-                              </div>
-                          </div>
-                          <div class="l-separated-small--vertical l-divided--bottom">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">Issue</h4></div>
-                                  <div class="span8">The issue the consumer identified in the complaint.
-                                      <br/>For example, “Deposits and withdrawals” or “Repaying your loan”</div>
-                              </div>
-                          </div>
-                          <div class="l-separated-small--vertical l-divided--bottom">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">Sub-issue</h4></div>
-                                  <div class="span8">The sub-issue the consumer identified in the complaint.
-                                      <br/>For example, “Information is not mine”</div>
-                              </div>
-                          </div>
-                          <div class="l-separated-small--vertical l-divided--bottom">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">Company public response</h4>
-                                  </div>
-                                  <div class="span8">The company's optional, public-facing response to a consumer's complaint. Companies provide a public response to the CFPB, for posting on the public database, by selecting a response from a set list of options.</div>
-                              </div>
-                          </div>
-                          <div class="l-separated-small--vertical l-divided--bottom">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">Company</h4></div>
-                                  <div class="span8">The complaint is about this company.
-                                      <br/>For example, “ABC Bank”</div>
-                              </div>
-                          </div>
-                          <div class="l-separated-small--vertical l-divided--bottom">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">State</h4></div>
-                                  <div class="span8">The consumer’s reported mailing state for the complaint</div>
-                              </div>
-                          </div>
-                          <div class="l-separated-small--vertical l-divided--bottom">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">ZIP code</h4>
-                                  </div>
-                                  <div class="span8">Mailing ZIP code provided by the consumer. This field may: i) include the first five digits of a ZIP code; ii) include the first three digits of a ZIP code (if the consumer consented to publication of their complaint narrative); or iii) be blank (if ZIP codes have been submitted with non-numeric values, if there are less than 20,000 people in a given ZIP code, or if the complaint has an address outside of the United States).</div>
-                              </div>
-                          </div>
-                          <div class="l-separated-small--vertical l-divided--bottom">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">Submitted via</h4></div>
-                                  <div class="span8">How the complaint was submitted to CFPB.
-                                      <br/>For example, “Web or “Phone”</div>
-                              </div>
-                          </div>
-                          <div class="l-separated-small--vertical l-divided--bottom">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">Date sent to company</h4></div>
-                                  <div class="span8">The date the CFPB sent the complaint to the company</div>
-                              </div>
-                          </div>
-                          <div class="l-separated-small--vertical l-divided--bottom">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">Company response to consumer</h4></div>
-                                  <div class="span8">This is how the company responded.
-                                      <br/>For example, “Closed with explanation”</div>
-                              </div>
-                          </div>
-                          <div class="l-separated-small--vertical l-divided--bottom">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">Timely response?</h4></div>
-                                  <div class="span8">Whether the company gave a timely response.
-                                      <br/>For example, “Yes” or “No”</div>
-                              </div>
-                          </div>
-                          <div class="l-separated-small--vertical l-divided--bottom">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">Consumer disputed?</h4></div>
-                                  <div class="span8">Whether the consumer disputed the company’s response</div>
-                              </div>
-                          </div>
-                          <div class="l-separated-small--vertical">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">Complaint ID</h4></div>
-                                  <div class="span8">The unique identification number for a complaint</div>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- END .span9 -->
-                  </div>
-                  <!-- END .row-fluid -->
-              </div>
-              <div class="l-separated-small--vertical l-divided-medium--bottom-green">
-                  <div class="row-fluid">
-                      <div class="span3">
-                          <h3>Data that we share with the consumer's consent</h3>
-                      </div>
-                      <div class="span9">
-                          <div class="l-separated-small--vertical">
-                              <div class="row-fluid">
-                                  <div class="span4">
-                                      <h4 class="no-margin">Consumer complaint narrative</h4>
-                                  </div>
-                                  <div class="span8">Consumer complaint narrative is the consumer-submitted description of "what happened" from the complaint. Consumers must opt-in to share their narrative. We will not publish the narrative unless the consumer consents, and consumers can opt-out at any time. The CFPB takes reasonable steps to scrub personal information from each complaint that could be used to identify the consumer.</div>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- END .span9 -->
-                  </div>
-                  <!-- END .row-fluid -->
-              </div>
-              <!-- END .l-separated-small--vertical -->
-              <div class="l-separated-small--vertical">
-                  <div class="row-fluid">
-                      <div class="span3">
-                          <h3>Data that stays private to the consumer and the company</h3>
-                      </div>
-                      <div class="span9">
-                          <p>All personal information, such as names, contact information, account numbers, social security numbers, and supporting documents help the company identify the consumer. This information is not published.</p>
-                      </div>
-                      <!-- END .span9 -->
-                  </div>
-                  <!-- END .row-fluid -->
-              </div>
-              <!-- END .l-separated-small--vertical.l-divided-medium--bottom-green -->
-          </div>
-
-          <div class="l-divided--top l-separated--vertical">
-            <h2 id="reports">Reports created using the data</h2>
-            <div class="row-fluid">
-              <div class="span8 consumer-response-reports">
-                <h3>Consumer Response Reports to Congress</h3>
-                <h4>2014</h4>
-                <ul class="list list__links">
-                  <li class="list_item">
-                    <a class="list_link" href="/reports/2014-consumer-response-annual-report/">Annual report</a>
-                  </li>
-                  <li class="list_item">
-                    <a class="list_link" href="/reports/semi-annual-report-spring-2014/"> Semi-annual report</a> (Oct. 2013-Mar. 2014)
-                  </li>
-                </ul>
-                <h4>2013</h4>
-                <ul class="list list__links">
-                  <li class="list_item">
-                    <a class="list_link" href="/reports/2013-consumer-response-annual-report/">Annual report</a>
-                  </li>
-                </ul>
-                <h4>2012</h4>
-                <ul class="list list__links">
-                  <li class="list_item">
-                    <a class="list_link" href="/reports/consumer-response-annual-report-2/">Annual report</a>
-                  </li>
-                  <li class="list_item">
-                    <a class="list_link" href="/reports/semi-annual-report-2/"> Semi-annual report</a> (July-Dec. 2012)
-                  </li>
-                </ul>
-                <h4>2011</h4>
-                <ul class="list list__links">
-                  <li class="list_item">
-                    <a class="list_link" href="/reports/consumer-response-annual-report/">Annual report</a>
-                  </li>
-                  <li class="list_item">
-                    <a class="list_link" href="/reports/semi-annual-report-of-the-consumer-financial-protection-bureau/"> Semi-annual report</a> (July-Dec. 2011)
-                  </li>
-                  <li class="list_item">
-                    <a class="list_link" href="/reports/consumer-response-interim-report-on-cfpbs-credit-card-complaint-data/">Consumer Response interim report on CFPB's credit card complaint data</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="span4">
-                <h3>Other complaint reports</h3>
-                <ul class="list list__links">
-                  <li class="list_item">
-                    <a class="list_link pdf-link" href="/f/201503_cfpb_complaints-by-the-numbers.pdf">March 2015</a>
-                  </li>
-                  <li class="list_item">
-    <a class="list_link pdf-link" href="/f/201407_cfpb_report_consumer-complaint-snapshot.pdf">July 2014</a>
-  </li>
-                  <li class="list_item">
-    <a class="list_link pdf-link" href="/reports/a-snapshot-of-complaints-received-3/">July 2013</a>
-  </li>
-                  <li class="list_item">
-    <a class="list_link pdf-link" href="/f/201303_cfpb_Snapshot-March-2013.pdf">March 2013</a>
-  </li>
-                  <li class="list_item">
-    <a class="list_link pdf-link" href="/f/201210_cfpb_consumer_response_september-30-snapshot.pdf">October 2012</a>
-  </li>
-                  <li class="list_item">
-    <a class="list_link pdf-link" href="/f/201206_cfpb_shapshot_complaints-received.pdf">June 2012</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <!-- END .l-separated--vertical -->
-
-      </div>
-      <!-- END .l-separated--vertical -->
-
-  </div>
-  <!-- END .wrapper -->
-
-  <div class="sub-theme-quiet">
-      <div class="l-separated-large--vertical">
-          <div class="wrapper">
-              <div class="l-separated-small--bottom">
-                  <h2>Have an issue with a financial product or service?</h2>
-                  <h3>Add your voice. <a href="/complaint/">Submit a complaint</a>.</h3>
-              </div>
-          </div>
-          <!-- END .wrapper -->
-      </div>
-      <!-- END .l-separated-large--vertical -->
-  </div>
-  <!-- END .sub-theme-quiet -->
-
-</div>
-<!-- END .cr-theme -->
+</main>
 {% endblock %}
 
 {% block page_js %}
     <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/data-use.js' %}"></script>
 {% endblock %}
