@@ -25,7 +25,7 @@ class SubmitView(TemplateView):
         return context
 
 class DataUseView(TemplateView):
-    template_name = "data-use-content.html"
+    template_name = "data-use.html"
 
     def get_context_data(self, **kwargs):
         context = super(DataUseView, self).get_context_data(**kwargs)
