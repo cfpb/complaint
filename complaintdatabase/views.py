@@ -72,14 +72,6 @@ class LandingView(TemplateView):
         context['pipeline_down'] = True
         return context
 
-class DataUseView(TemplateView):
-    template_name = "data-use-content.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(DataUseView, self).get_context_data(**kwargs)
-        context['base_template'] = BASE_TEMPLATE
-        return context
-
 class DocsView(TemplateView):
     template_name = "technical-documentation.html"
 
@@ -88,18 +80,18 @@ class DocsView(TemplateView):
         context['base_template'] = BASE_TEMPLATE
         return context
 
-class SubmitView(TemplateView):
-    template_name = "submit-a-complaint.html"
+# class SubmitView(TemplateView):
+#     template_name = "submit-a-complaint.html"
 
-    def get_context_data(self, **kwargs):
-        context = super(SubmitView, self).get_context_data(**kwargs)
-        context['base_template'] = BASE_TEMPLATE
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super(SubmitView, self).get_context_data(**kwargs)
+#         context['base_template'] = BASE_TEMPLATE
+#         return context
 
-class ProcessView(TemplateView):
-    template_name = "process.html"
+# class ProcessView(TemplateView):
+#     template_name = "process.html"
 
-    def get_context_data(self, **kwargs):
-        context = super(ProcessView, self).get_context_data(**kwargs)
-        context['base_template'] = BASE_TEMPLATE
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super(ProcessView, self).get_context_data(**kwargs)
+#         context['base_template'] = BASE_TEMPLATE
+#         return context
