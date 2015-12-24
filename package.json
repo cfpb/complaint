@@ -59,6 +59,10 @@
       "browserify-shim"
     ]
   },
+  "scripts": {
+    "gulp": "gulp",
+    "test": "gulp test"
+  },
   "browserify-shim": {
     "jquery": "global:jQuery"
   },
