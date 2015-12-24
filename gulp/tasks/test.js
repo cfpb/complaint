@@ -14,7 +14,8 @@ gulp.task( 'test:unit', function( cb ) {
     .on( 'finish', function() {
       gulp.src( config.tests + '/unit_tests/*.js' )
         .pipe( $.mocha( {
-          reporter: 'nyan'
+          reporter: 'nyan', 
+          timeout: 20000
         } ) )
         .pipe( $.istanbul.writeReports( {
           dir: config.tests + '/unit_test_coverage'
