@@ -47,6 +47,9 @@ class LandingView(TemplateView):
 
             for attr in ['title', 'css', 'icon']:
                 narrative[attr] = item[attr]
+                
+            # TODO: Get actual tags from narrative data
+            narrative['tags'] = ['Older American', 'Servicemember']
 
             # format date
             narrative['date'] = datetime.strptime(narrative['date_received'], "%Y-%m-%dT%H:%M:%S")
