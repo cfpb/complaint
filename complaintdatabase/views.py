@@ -1,9 +1,8 @@
 import requests
 import json
-from datetime import datetime
+from datetime import datetime, date, timedelta
 from django.shortcuts import render
 from django.views.generic import View, TemplateView
-from datetime import datetime
 from django.conf import settings
 
 try:
@@ -69,7 +68,17 @@ class LandingView(TemplateView):
             if item['company_response'] != 'Untimely response':
                 context['timely_responses'] += item_count
         
-        context['pipeline_down'] = True
+        # show notification starting fifth business day data has not been updated
+        # M-Th, data needs to have been updated 6 days ago; F-S, preceding Monday
+        weekday = datetime.weekday(datetime.now())
+        delta = weekday if weekday > 3 else 6
+        four_business_days_ago = (datetime.now() - timedelta(delta)).strftime("%Y-%m-%d")
+        
+        if res_json['stats']['last_updated'] < four_business_days_ago: 
+            context['data_down'] = True
+        elif res_json['stats']['last_updated_narratives'] < four_business_days_ago: 
+            context['narratives_down'] = True
+        
         return context
 
 class DataUseView(TemplateView):
