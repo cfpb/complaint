@@ -25,7 +25,6 @@ class LandingViewTest(TestCase):
         self.assertTrue('stats' in response.context_data.keys())
         self.assertTrue('total_complaints' in response.context_data.keys())
         self.assertTrue('timely_responses' in response.context_data.keys())
-        self.assertTrue('pipeline_down' in response.context_data.keys())
 
 
 class NarrativeJsonTest(TestCase):
