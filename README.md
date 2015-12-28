@@ -42,23 +42,28 @@ CCDB-content is a standalone Django project that runs the complaint database app
   - http://127.0.0.1:8000/complaintdatabase/
   - http://127.0.0.1:8000/complaintdatabase/data-use/
   - http://127.0.0.1:8000/complaintdatabase/technical-documentation/
+  - http://127.0.0.1:8000/complaint/process/
+  - http://127.0.0.1:8000/complaint/
 
 
 ###Installing app to your project
-Complaint database app can be installed into other Django project by doing the following:
+The Complaint Database and Complaint apps can be installed into other Django projects by doing the following:
 
-In your Django project `url.py`, you will need to include the following in your `urlpatterns` list:
+In your Django project `url.py`, you will need to include the following in your `urlpatterns` list for each app:
 ```python
+url(r'^complaint/', include('complaint.urls')),
 url(r'^complaintdatabase/', include('complaintdatabase.urls')),
 ```
 
 In your Django project `settings.py`, you will need to include the following in your `INSTALLED_APPS` tuple:
 ```python
+'complaint,
 'complaintdatabase’,
 ```
 
 Add this to your `requirements.txt` file:
 ```
+-e git+https://fake.ghe.domain/CCDB4/CCDB-content.git#egg=complaint
 -e git+https://fake.ghe.domain/CCDB4/CCDB-content.git#egg=complaintdatabase
 ```
 

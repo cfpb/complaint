@@ -1,0 +1,130 @@
+{% extends 'base_responsive.html' %}
+{% load staticfiles %}
+
+
+{% block title %}The complaint process{% endblock %}
+
+
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
+  <link rel="stylesheet" href="http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/_/c/cr-003-theme.css?ver=all">
+  <link rel="stylesheet" href="http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/_/c/cr-009-theme.css?ver=all">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="cr-theme">
+  
+  <!-- <div style="height:23px;background:#328ED8;border-bottom:4px solid #2B7AC0;text-align:center;border-top:1px solid #87BAE4;">
+    <img src="/wp-content/themes/cfpb_nemo/_/img/bc-sample.png" style="margin-top:-1px;" />
+  </div> -->
+
+  <div class="sub-theme-quiet sub-theme-quiet--divided">
+
+    <div class="hero-wrapper_cr-003-process hero-wrapper wrapper">
+      <div class="row-fluid">
+        <div class="span8">
+          <h1>The complaint process</h1>
+          <h3>When you submit a complaint to the CFPB, we forward your complaint to the company and work to get a response about your issue.</h3>
+          <h3><a href="/complaint/">Submit a complaint</a> to the CFPB</h3>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- END .sub-theme-quiet -->
+
+  <div class="wrapper">
+
+    <div class="row-fluid l-separated--vertical l-divided--bottom">
+      <div class="span2">
+        <img src="/wp-content/themes/cfpb_nemo/_/img/isocons-alt-green-submit-a-complaint.png" alt="" class="isocon-120" />
+      </div>
+      <div class="span10">
+        <h2><strong>1.</strong> Complaint submitted</h2>
+        <div class="reading-type">
+          <p>You submit a complaint about an issue you have with a company about a consumer financial product or service. You will receive email updates and can <a href="https://help.consumerfinance.gov/app/utils/login_form/">log in</a> to track the status of your complaint.</p>
+        </div>
+      </div>
+    </div><!-- END .row-fluid -->
+
+    <div class="row-fluid l-separated--vertical l-divided--bottom">
+      <div class="span2">
+        <img src="/wp-content/themes/cfpb_nemo/_/img/isocons-alt-green-review-and-route.png" alt="" class="isocon-120" />
+      </div>
+      <div class="span10">
+        <h2><strong>2.</strong> Review and route</h2>
+        <div class="reading-type">
+          <p>We'll forward your complaint and any documents you provide to the company and work to get a response from them. If we find that another government agency would be better able to assist, we will forward your complaint to them and let you know.</p>
+        </div>
+      </div>
+    </div><!-- END .row-fluid -->
+
+    <div class="row-fluid l-separated--vertical l-divided--bottom">
+      <div class="span2">
+        <img src="/wp-content/themes/cfpb_nemo/_/img/isocons-alt-green-company-response.png" alt="" class="isocon-120" />
+      </div>
+      <div class="span10">
+        <h2><strong>3.</strong> Company response</h2>
+        <div class="reading-type">
+          <p>The company reviews your complaint, communicates with you as needed, and reports back about the steps taken or that will be taken on the issue you identify in your complaint.</p>
+        </div>
+      </div>
+    </div><!-- END .row-fluid -->
+
+    <div class="row-fluid l-separated--vertical l-divided--bottom">
+      <div class="span2">
+        <img src="/wp-content/themes/cfpb_nemo/_/img/isocons-alt-green-consumer-review.png" alt="" class="isocon-120" />
+      </div>
+      <div class="span10">
+        <h2><strong>4.</strong> Consumer review</h2>
+        <div class="reading-type">
+          <p>We will let you know when the company responds. You can review that response and give us feedback.</p>
+        </div>
+      </div>
+    </div><!-- END .row-fluid -->
+
+    <div class="row-fluid l-separated--vertical l-divided--bottom">
+      <div class="span2">
+        <img src="/wp-content/themes/cfpb_nemo/_/img/isocons-alt-green-review-and-investigate.png" alt="" class="isocon-120" />
+      </div>
+      <div class="span10">
+        <h2><strong>5.</strong> Review and investigate</h2>
+        <div class="reading-type">
+          <p>Complaint data is shared with state and federal law enforcement agencies. Complaints tell us about business practices that may pose risks to consumers. If we need more information, we'll reach out and let you know.</p>
+        </div>
+      </div>
+    </div><!-- END .row-fluid -->
+
+    <div class="row-fluid l-separated--top l-separated-large--bottom">
+      <div class="span2">
+        <img src="/wp-content/themes/cfpb_nemo/_/img/isocons-alt-green-analyze-and-report.png" alt="" class="isocon-120" />
+      </div>
+      <div class="span10">
+        <h2><strong>6.</strong> Analyze and report</h2>
+        <div class="reading-type">
+          <p>Complaints help with our work to supervise companies, enforce federal consumer financial laws, and write better rules and regulations. We also <a href="/reports/semi-annual-report-2/">report to Congress</a> about the complaints we receive and post some <a href="/complaintdatabase/">consumer complaint data</a>.</p>
+        </div>
+      </div>
+    </div><!-- END .row-fluid -->
+
+  </div><!-- END .wrapper -->
+
+  <div class="sub-theme-quiet">
+    <div class="l-separated-large--vertical">
+      <div class="wrapper">
+        <div class="l-separated-small--bottom">
+          <h2>Have an issue with a financial product or service?</h2>
+          <h3><a href="/complaint/">Submit a complaint</a> to the CFPB</h3>
+        </div>
+      </div><!-- END .wrapper -->
+    </div><!-- END .l-separated-large-\-vertical -->
+  </div><!-- END .sub-theme-quiet -->
+
+</div><!-- END .cr-theme -->
+
+{% endblock %}
+
+{% block page_js %}
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

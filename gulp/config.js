@@ -7,10 +7,10 @@ var fs = require( 'fs' );
  */
 var loc = {
   src:  './src',
-  dist: './complaintdatabase/static/',
+  dist: './app_common/static/',
   lib:  JSON.parse( fs.readFileSync( './.bowerrc' ) ).directory, // eslint-disable-line no-sync, no-inline-comments, max-len
   test: './test',
-  templ: './complaintdatabase/templates/standalone/'
+  templ: './app_common/templates/standalone/'
 };
 
 module.exports = {
@@ -49,7 +49,7 @@ module.exports = {
     }
   },
   scripts: {
-    entries: ['index.js', 'data-use.js'],
+    entries: ['index.js', 'data-use.js', 'submit-a-complaint.js'],
     src: loc.src + '/static/js/',
     dest: loc.dist + '/js/',
     common: 'main.js'
