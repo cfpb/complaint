@@ -12,7 +12,7 @@ except:  # pragma: no cover
     STANDALONE = False
 
 if STANDALONE:
-    BASE_TEMPLATE = "app_common/standalone/base_update.html"
+    BASE_TEMPLATE = "standalone/base_update.html"
 else:  # pragma: no cover
     BASE_TEMPLATE = "front/base_update.html"
 
