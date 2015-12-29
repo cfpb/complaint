@@ -80,27 +80,3 @@ class LandingView(TemplateView):
             context['narratives_down'] = True
         
         return context
-
-class DocsView(TemplateView):
-    template_name = "technical-documentation.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(DocsView, self).get_context_data(**kwargs)
-        context['base_template'] = BASE_TEMPLATE
-        return context
-
-# class SubmitView(TemplateView):
-#     template_name = "submit-a-complaint.html"
-
-#     def get_context_data(self, **kwargs):
-#         context = super(SubmitView, self).get_context_data(**kwargs)
-#         context['base_template'] = BASE_TEMPLATE
-#         return context
-
-# class ProcessView(TemplateView):
-#     template_name = "process.html"
-
-#     def get_context_data(self, **kwargs):
-#         context = super(ProcessView, self).get_context_data(**kwargs)
-#         context['base_template'] = BASE_TEMPLATE
-#         return context
