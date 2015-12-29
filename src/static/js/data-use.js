@@ -2,6 +2,8 @@
 
 require('jquery-easing');
 require('./expandable');
+require('./nemo');
+require('./nemo-shim');
 var resizeHandler = require('./handle-resize');
 
 
