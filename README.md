@@ -57,13 +57,13 @@ url(r'^complaintdatabase/', include('complaintdatabase.urls')),
 
 In your Django project `settings.py`, you will need to include the following in your `INSTALLED_APPS` tuple:
 ```python
+'complaint_common',
 'complaint,
 'complaintdatabase’,
 ```
 
 Add this to your `requirements.txt` file:
 ```
--e git+https://fake.ghe.domain/CCDB4/CCDB-content.git#egg=complaint
 -e git+https://fake.ghe.domain/CCDB4/CCDB-content.git#egg=complaintdatabase
 ```
 
