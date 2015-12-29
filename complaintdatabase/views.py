@@ -4,7 +4,6 @@ from datetime import datetime, date, timedelta
 from django.shortcuts import render
 from django.views.generic import View, TemplateView
 from django.conf import settings
-import complaintdatabase.data
 
 try:
     STANDALONE = settings.STANDALONE
@@ -34,13 +33,6 @@ class LandingView(TemplateView):
         
         return context
 
-class DataUseView(TemplateView):
-    template_name = "data-use-content.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(DataUseView, self).get_context_data(**kwargs)
-        context['base_template'] = BASE_TEMPLATE
-        return context
 
 class DocsView(TemplateView):
     template_name = "technical-documentation.html"

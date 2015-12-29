@@ -8,7 +8,7 @@ from django.http import HttpResponse, HttpRequest
 from django.test import Client
 from django.core.urlresolvers import reverse
 from datetime import datetime
-from .views import LandingView, DataUseView, DocsView, get_narratives_json, format_narratives, get_count_info
+from .views import LandingView, DocsView, get_narratives_json, format_narratives, get_count_info
 
 class LandingViewTest(TestCase):
     def setUp(self):
@@ -135,18 +135,6 @@ class CountInfoTest(TestCase):
         res_complaints, res_timely = get_count_info()
         self.assertEqual(res_complaints, 15)
         self.assertEqual(res_timely, 11)
-
-class DataUseViewTest(TestCase):
-    def setUp(self):
-        # Every test needs access to the request factory.
-        self.factory = RequestFactory()
-
-    def test_get_context_data_exist(self):
-        # Create an instance of a GET request.
-        request = self.factory.get('/data-use')
-        response = DataUseView.as_view()(request)
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue('base_template' in response.context_data.keys())
 
 class DocsViewTest(TestCase):
     def setUp(self):
