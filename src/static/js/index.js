@@ -1,8 +1,5 @@
 'use strict';
 
-require('./nemo');
-require('./nemo-shim');
-
 var urlCodes = {
   'all_all' : 's6ew-h6mp',
   'all_narratives' : 'nsyy-je5y',
