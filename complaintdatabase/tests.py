@@ -8,7 +8,7 @@ from django.http import HttpResponse, HttpRequest
 from django.test import Client
 from django.core.urlresolvers import reverse
 from datetime import datetime
-from .views import LandingView, DocsView, get_narratives_json, format_narratives, get_count_info
+from .views import LandingView, DocsView, get_narratives_json, format_narratives, get_count_info, get_now, is_data_not_updated
 
 class LandingViewTest(TestCase):
     def setUp(self):
@@ -135,6 +135,178 @@ class CountInfoTest(TestCase):
         res_complaints, res_timely = get_count_info()
         self.assertEqual(res_complaints, 15)
         self.assertEqual(res_timely, 11)
+
+
+
+class DataUpdatedTest(TestCase):
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_monday_down(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 21, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-14", 'last_updated_narratives': "2015-12-14"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertTrue(data_down)
+        self.assertFalse(narratives_down)
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_monday_up(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 21, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-15", 'last_updated_narratives': "2015-12-15"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertFalse(data_down)
+        self.assertFalse(narratives_down)
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_monday_narratives_down(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 21, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-15", 'last_updated_narratives': "2015-12-14"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertFalse(data_down)
+        self.assertTrue(narratives_down)
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_tuesday_down(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 22, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-15", 'last_updated_narratives': "2015-12-15"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertTrue(data_down)
+        self.assertFalse(narratives_down)    
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_tuesday_up(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 22, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-16", 'last_updated_narratives': "2015-12-16"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertFalse(data_down)
+        self.assertFalse(narratives_down) 
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_tuesday_narratives_down(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 22, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-16", 'last_updated_narratives': "2015-12-15"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertFalse(data_down)
+        self.assertTrue(narratives_down) 
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_wednesday_down(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 23, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-16", 'last_updated_narratives': "2015-12-16"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertTrue(data_down)
+        self.assertFalse(narratives_down)    
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_wednesday_up(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 23, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-17", 'last_updated_narratives': "2015-12-17"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertFalse(data_down)
+        self.assertFalse(narratives_down) 
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_wednesday_narratives_down(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 23, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-17", 'last_updated_narratives': "2015-12-16"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertFalse(data_down)
+        self.assertTrue(narratives_down)
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_thursday_down(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 24, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-17", 'last_updated_narratives': "2015-12-17"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertTrue(data_down)
+        self.assertFalse(narratives_down)    
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_thursday_up(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 24, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-18", 'last_updated_narratives': "2015-12-18"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertFalse(data_down)
+        self.assertFalse(narratives_down) 
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_thursday_narratives_down(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 24, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-18", 'last_updated_narratives': "2015-12-17"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertFalse(data_down)
+        self.assertTrue(narratives_down)
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_friday_down(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 25, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-18", 'last_updated_narratives': "2015-12-18"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertTrue(data_down)
+        self.assertFalse(narratives_down)    
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_friday_up(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 25, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-21", 'last_updated_narratives': "2015-12-21"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertFalse(data_down)
+        self.assertFalse(narratives_down) 
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_friday_narratives_down(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 25, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-21", 'last_updated_narratives': "2015-12-18"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertFalse(data_down)
+        self.assertTrue(narratives_down)
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_saturday_down(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 26, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-18", 'last_updated_narratives': "2015-12-18"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertTrue(data_down)
+        self.assertFalse(narratives_down)    
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_saturday_up(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 26, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-21", 'last_updated_narratives': "2015-12-21"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertFalse(data_down)
+        self.assertFalse(narratives_down) 
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_saturday_narratives_down(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 26, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-21", 'last_updated_narratives': "2015-12-18"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertFalse(data_down)
+        self.assertTrue(narratives_down)
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_saturday_down(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 27, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-18", 'last_updated_narratives': "2015-12-18"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertTrue(data_down)
+        self.assertFalse(narratives_down)    
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_saturday_up(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 27, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-21", 'last_updated_narratives': "2015-12-21"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertFalse(data_down)
+        self.assertFalse(narratives_down) 
+
+    @patch('complaintdatabase.views.get_now')
+    def test_data_not_updated_saturday_narratives_down(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 27, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated': "2015-12-21", 'last_updated_narratives': "2015-12-18"}}
+        data_down, narratives_down = is_data_not_updated(input_json)
+        self.assertFalse(data_down)
+        self.assertTrue(narratives_down)
 
 class DocsViewTest(TestCase):
     def setUp(self):

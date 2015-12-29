@@ -93,14 +93,17 @@ def get_count_info():
 
     return (total_complaints, timely_responses)
 
+def get_now():
+    return datetime.now()
+
 def is_data_not_updated(res_json):
     data_down = False
     narratives_down = False
     # show notification starting fifth business day data has not been updated
     # M-Th, data needs to have been updated 6 days ago; F-S, preceding Monday
-    weekday = datetime.weekday(datetime.now())
+    weekday = datetime.weekday(get_now())
     delta = weekday if weekday > 3 else 6
-    four_business_days_ago = (datetime.now() - timedelta(delta)).strftime("%Y-%m-%d")
+    four_business_days_ago = (get_now() - timedelta(delta)).strftime("%Y-%m-%d")
     
     if res_json['stats']['last_updated'] < four_business_days_ago: 
         data_down = True
