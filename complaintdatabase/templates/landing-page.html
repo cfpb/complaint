@@ -8,9 +8,9 @@
 
 <div id="ccdb-landing">
   <!--
-    If the data pipeline is down, add class 'show-data-notification' to cf-notification?
-    If Socrata is down, add class 'show-narratives-notification'?-->
-  <div class="cf-notification cf-notification__warning {% if pipeline_down %} show-data-notification {% elif socrata_down %} show-narratives-notification {% endif %} ">
+    If the data has not been updated, add class 'show-data-notification' to cf-notification
+    If narratives have not been updated, add class 'show-narratives-notification'-->
+  <div class="cf-notification cf-notification__warning {% if data_down %} show-data-notification {% elif narratives_down %} show-narratives-notification {% endif %} ">
     <div class="wrapper wrapper__match-content cf-notification_wrapper">
       <span class="cf-notification_icon cf-notification_icon__warning cf-icon cf-icon-error-round"></span>
       <div class="cf-notification_text">
