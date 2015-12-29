@@ -54,7 +54,7 @@ coverage.xml
 # Django stuff:
 *.log
 db.sqlite3
-# app_common/static/*
+# complaint_common/static/*
 *data/
 
 # Sphinx documentation
@@ -68,9 +68,9 @@ opensource-checklist.md
 
 # Build artifacts
 node_modules/
-app_common/static/
+complaint_common/static/
 src/vendor/
-app_common/templates/standalone
+complaint_common/templates/standalone
 src/static/js/nemo*
 src/static/css/nemo*
 test/unit_test_coverage
