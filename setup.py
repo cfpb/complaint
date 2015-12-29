@@ -18,7 +18,7 @@ setup(
     author_email='tech@cfpb.gov',
     maintainer='cfpb',
     maintainer_email='tech@cfpb.gov',
-    packages=['app_common','complaint','complaintdatabase'],
+    packages=['complaint_common','complaint','complaintdatabase'],
     include_package_data=True,
     description=u'CCDB Landing Pages',
     classifiers=[
