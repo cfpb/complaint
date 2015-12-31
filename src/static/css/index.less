@@ -311,9 +311,6 @@ body {
         .webfont-regular();
       }
 
-      .content-l_col.content-l_col-1-3.details-small {
-          display: none;
-      }
     }
 
     .last-expandable-bar {
@@ -557,14 +554,6 @@ body {
       .in-their-own-words {
         width: 100%;
       }
-      .complaint-container {
-        .content-l_col.content-l_col-1-3.details-large {
-          display: none;
-        }
-        .content-l_col.content-l_col-1-3.details-small {
-          display: block;
-        }
-      }
     }
 
     a.icon-link.full-width {
@@ -597,6 +586,17 @@ body {
     }
   }
   
+});
+
+/* Complaint column order */
+.respond-to-min(700px, {
+    .content-l_col.content-l_col-1-3.complaint-details {
+      .grid_push(8);
+    }
+    
+    .content-l_col.content-l_col-2-3.complaint-contents {
+      .grid_pull(4);
+    }
 });
 
 /* Tooltips */
