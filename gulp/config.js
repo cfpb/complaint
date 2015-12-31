@@ -49,7 +49,7 @@ module.exports = {
     }
   },
   scripts: {
-    entries: ['index.js', 'data-use.js', 'submit-a-complaint.js'],
+    entries: ['index.js', 'data-use.js', 'submit-a-complaint.js', 'complaint-process.js'],
     src: loc.src + '/static/js/',
     dest: loc.dist + '/js/',
     common: 'main.js'
