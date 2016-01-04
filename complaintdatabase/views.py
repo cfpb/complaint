@@ -130,6 +130,11 @@ def get_count_info():
         print("There is a problem with getting data from the URL")
         print(e)
 
+    except ValueError as e:
+        print("get_count_info:ValueError")
+        print("The text from the response doesn't follow the correct format to be parse as json")
+        print(e)
+
     except KeyError as e:
         print("get_count_info:KeyError")
         print("There is problem accessing with the given key, which probably means the json has missing data")

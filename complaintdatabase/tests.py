@@ -1,14 +1,16 @@
 import unittest
 import collections
+from requests.exceptions import ConnectionError
 
-from mock import patch
+from mock import patch, Mock
 import django
 from django.test import RequestFactory, TestCase
 from django.http import HttpResponse, HttpRequest
 from django.test import Client
 from django.core.urlresolvers import reverse
 from datetime import datetime
-from .views import LandingView, DocsView, get_narratives_json, format_narratives, get_count_info, get_now, is_data_not_updated
+from StringIO import StringIO
+from .views import LandingView, DocsView, get_narratives_json, format_narratives, get_stats, get_count_info, get_now, is_data_not_updated
 
 class LandingViewTest(TestCase):
     def setUp(self):
@@ -37,6 +39,24 @@ class NarrativeJsonTest(TestCase):
         res_json = get_narratives_json()
         self.assertEqual(res_json, {})
 
+    @patch('requests.get')
+    def test_request_exception_get_narratives_json(self, mock_requests_get):
+        mock_requests_get.side_effect = ConnectionError(Mock(return_value={'status': 404}), 'not found')
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            res_json = get_narratives_json()
+            self.assertEqual(res_json, {})
+            self.assertIn('requests.exceptions.RequestException', fakeOutput.getvalue().strip())
+
+    @patch('requests.get')
+    def test_incorrect_text_get_narratives_json(self, mock_requests_get):
+        Response = collections.namedtuple('Response', 'text')
+        mock_requests_get.return_value = Response(text="This is not a correct set of narratives")
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            res_json = get_narratives_json()
+            self.assertEqual(res_json, {})
+            self.assertIn('ValueError', fakeOutput.getvalue().strip())
+
+
 class FormatNarrativesTest(TestCase):
     def test_format_narratives(self):
         input_json = {
@@ -56,71 +76,101 @@ class FormatNarrativesTest(TestCase):
                     {
                     'date_received': '2015-04-08T20:32:15', 
                     'title': 'Bank account', 'css': 'bank-account', 'icon':'bank-account',
+                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 8, 20, 32, 15),
                     'next': {'key':'credit_cards', 'title':'Credit card', 'css':'credit-card', 'icon':'credit-card'}
                     },
                     {
                     'date_received': '2015-04-08T20:32:16',
                     'title':'Credit card', 'css':'credit-card', 'icon':'credit-card',
+                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 8, 20, 32, 16),
                     'next': {'key':'credit_reporting', 'title':'Credit Reporting', 'css':'credit-reporting', 'icon':'loan'}
                     },
                     {
                     'date_received': '2015-04-08T20:32:17',
                     'title':'Credit Reporting', 'css':'credit-reporting', 'icon':'loan',
+                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 8, 20, 32, 17),
                     'next': {'key':'debt_collection', 'title':'Debt Collection', 'css':'debt-collection', 'icon': 'debt-collection'}
                     },
                     {
                     'date_received': '2015-04-08T20:32:18',
                     'title':'Debt Collection', 'css':'debt-collection', 'icon': 'debt-collection',
+                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 8, 20, 32, 18),
                     'next': {'key':'money_transfers', 'title':'Money Transfer', 'css':'money-transfer', 'icon': 'money-transfer'}
                     },
                     {
                     'date_received': '2015-04-08T20:32:19',
                     'title':'Money Transfer', 'css':'money-transfer', 'icon': 'money-transfer',
+                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 8, 20, 32, 19),
                     'next': {'key':'mortgages', 'title':'Mortgage', 'css':'mortgage', 'icon': 'owning-home'}
                     },
                     {
                     'date_received': '2015-04-08T21:32:15',
                     'title':'Mortgage', 'css':'mortgage', 'icon': 'owning-home',
+                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 8, 21, 32, 15),
                     'next': {'key':'other_financial_services', 'title':'Other financial service', 'css':'other', 'icon': 'money'}
                     },
                     {
                     'date_received': '2015-04-09T20:32:15',
                     'title':'Other financial service', 'css':'other', 'icon': 'money',
+                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 9, 20, 32, 15),
                     'next': {'key':'payday_loans', 'title':'Payday Loan', 'css':'payday-loan', 'icon': 'payday-loan'}
                     },
                     {
                     'date_received': '2015-04-10T20:32:15',
                     'title':'Payday Loan','css':'payday-loan','icon': 'payday-loan',
+                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 10, 20, 32, 15),
                     'next': {'key':'prepaid_cards', 'title':'Prepaid Card', 'css':'prepaid-card', 'icon': 'prepaid-cards'}
                     },
                     {
                     'date_received': '2015-04-11T20:32:15',
                     'title':'Prepaid Card', 'css':'prepaid-card', 'icon': 'prepaid-cards',
+                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 11, 20, 32, 15),
                     'next': {'key':'student_loans', 'title':'Student Loan', 'css':'student-loan', 'icon': 'paying-college'}
                     },
                     {
                     'date_received': '2015-04-12T20:32:15',
                     'title':'Student Loan', 'css':'student-loan', 'icon': 'paying-college',
+                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 12, 20, 32, 15),
                     'next': {'key':'other_consumer_loans', 'title':'Vehicle / consumer loan', 'css':'consumer-loan', 'icon': 'buying-car'}
                     },
                     {
                     'date_received': '2015-04-13T20:32:15',
                     'title':'Vehicle / consumer loan', 'css':'consumer-loan', 'icon': 'buying-car',
+                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 13, 20, 32, 15),
                     'next': {'key': 'bank_accounts', 'title': 'Bank account', 'css': 'bank-account', 'icon':'bank-account'}
                     }]
         res = format_narratives(input_json)
         self.assertEqual(res, exp_res)
+
+    def test_invalid_json_format_narratives(self):
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            res = format_narratives({})
+            self.assertEqual(res, [])
+            self.assertIn('KeyError', fakeOutput.getvalue().strip())
+
+class GetStatsTest(TestCase):
+    def test_get_stats(self):
+        input_json = {'stats': {'test': 1}}
+        res = get_stats(input_json)
+        self.assertEqual({'test': 1}, res)
+
+    def test_no_key_get_stats(self):
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            res = get_stats({})
+            self.assertEqual({}, res)
+            self.assertIn('KeyError', fakeOutput.getvalue().strip())
+
 
 class CountInfoTest(TestCase):
     @patch('requests.get')
@@ -136,7 +186,34 @@ class CountInfoTest(TestCase):
         self.assertEqual(res_complaints, 15)
         self.assertEqual(res_timely, 11)
 
+    @patch('requests.get')
+    def test_request_exception_get_count_info(self, mock_requests_get):
+        mock_requests_get.side_effect = ConnectionError(Mock(return_value={'status': 404}), 'not found')
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            res_complaints, res_timely = get_count_info()
+            self.assertEqual(res_complaints, 0)
+            self.assertEqual(res_timely, 0)
+            self.assertIn('requests.exceptions.RequestException', fakeOutput.getvalue().strip())
 
+    @patch('requests.get')
+    def test_incorrect_text_get_count_info(self, mock_requests_get):
+        Response = collections.namedtuple('Response', 'text')
+        mock_requests_get.return_value = Response(text="This is not a correct set of info")
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            res_complaints, res_timely = get_count_info()
+            self.assertEqual(res_complaints, 0)
+            self.assertEqual(res_timely, 0)
+            self.assertIn('ValueError', fakeOutput.getvalue().strip())
+
+    @patch('requests.get')
+    def test_no_key_get_count_info(self, mock_requests_get):
+        Response = collections.namedtuple('Response', 'text')
+        mock_requests_get.return_value = Response(text="[ {\"count\": \"1\"}, {\"count\": \"2\"} ]")
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            res_complaints, res_timely = get_count_info()
+            self.assertEqual(res_complaints, 0)
+            self.assertEqual(res_timely, 0)
+            self.assertIn('KeyError', fakeOutput.getvalue().strip())
 
 class DataUpdatedTest(TestCase):
 
@@ -307,6 +384,16 @@ class DataUpdatedTest(TestCase):
         data_down, narratives_down = is_data_not_updated(input_json)
         self.assertFalse(data_down)
         self.assertTrue(narratives_down)
+
+    @patch('complaintdatabase.views.get_now')
+    def test_incorrect_json_data_not_updated_saturday(self, mock_get_now):
+        mock_get_now.return_value = datetime(2015, 12, 27, 19, 20, 10, 975427)
+        input_json = {'stats': {'last_updated_narratives': "2015-12-21"}}
+        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+            data_down, narratives_down = is_data_not_updated(input_json)
+            self.assertTrue(data_down)
+            self.assertTrue(narratives_down) 
+            self.assertIn('KeyError', fakeOutput.getvalue().strip())
 
 class DocsViewTest(TestCase):
     def setUp(self):
