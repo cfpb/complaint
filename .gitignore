@@ -68,7 +68,7 @@ opensource-checklist.md
 
 # Build artifacts
 node_modules/
-complaint_common/static/
+complaint_common/static*
 src/vendor/
 complaint_common/templates/standalone
 src/static/js/nemo*
