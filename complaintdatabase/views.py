@@ -25,7 +25,7 @@ class LandingView(TemplateView):
         res_json = get_narratives_json()
 
         context['narratives'] = format_narratives(res_json)
-        context['stats'] = res_json['stats']
+        context['stats'] = get_stats(res_json)
         context['total_complaints'], context['timely_responses'] = get_count_info()
 
         context['data_down'], context['narratives_down'] = is_data_not_updated(res_json)
@@ -47,8 +47,14 @@ def get_narratives_json():
         response = requests.get("http://files.consumerfinance.gov/ccdb/narratives.json")
         res_json = json.loads(response.text[11:-2]) # This is to parse out the 'narratives();' that wrapped around the json
     except requests.exceptions.RequestException as e:
+        print("get_narratives_json:requests.exceptions.RequestException")
+        print("There is a problem with getting data from the URL")
         print(e)
         res_json = json.loads('{}') 
+    except ValueError as e:
+        print("get_narratives_json:ValueError")
+        print("The text from the response doesn't follow the correct format to be parse as json")
+        res_json = json.loads('{}')
     return res_json
 
 def format_narratives(res_json):
@@ -89,10 +95,22 @@ def format_narratives(res_json):
             narratives.append(narrative)
 
     except KeyError as e:
+        print("format_narratives:KeyError")
+        print("There is problem accessing with the given key, which probably means the json has missing data")
         print(e)
-        # If it gets here, the narrative may have been empty
 
     return narratives
+
+def get_stats(res_json):
+    res_stat = {}
+    try:
+        res_stat = res_json['stats']
+    except KeyError as e:
+        print("get_stats:KeyError")
+        print("There is problem accessing with the given key, which probably means the json has missing data")
+        print(e)
+
+    return res_stat
 
 def get_count_info():
     total_complaints = 0
@@ -108,9 +126,13 @@ def get_count_info():
                 timely_responses += item_count
 
     except requests.exceptions.RequestException as e:
+        print("get_count_info:requests.exceptions.RequestException")
+        print("There is a problem with getting data from the URL")
         print(e)
 
     except KeyError as e:
+        print("get_count_info:KeyError")
+        print("There is problem accessing with the given key, which probably means the json has missing data")
         print(e)
         total_complaints = 0
         timely_responses = 0
@@ -136,6 +158,8 @@ def is_data_not_updated(res_json):
         elif res_json['stats']['last_updated_narratives'] < four_business_days_ago: 
             narratives_down = True
     except KeyError as e:
+        print("is_data_not_updated:KeyError")
+        print("There is problem accessing with the given key, which probably means the json has missing data")
         print(e)
         data_down = True
         narratives_down = True
