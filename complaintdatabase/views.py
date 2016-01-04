@@ -43,8 +43,13 @@ class DocsView(TemplateView):
         return context
 
 def get_narratives_json():
-    response = requests.get("http://files.consumerfinance.gov/ccdb/narratives.json")
-    return json.loads(response.text[11:-2])  # This is to parse out the 'narratives();' that wrapped around the json
+    try:
+        response = requests.get("http://files.consumerfinance.gov/ccdb/narratives.json")
+        res_json = json.loads(response.text[11:-2]) # This is to parse out the 'narratives();' that wrapped around the json
+    except requests.exceptions.RequestException as e:
+        print(e)
+        res_json = json.loads('{}') 
+    return res_json
 
 def format_narratives(res_json):
     
@@ -63,33 +68,49 @@ def format_narratives(res_json):
         {'key':'other_consumer_loans', 'title':'Vehicle / consumer loan', 'css':'consumer-loan', 'icon': 'buying-car'}
     ]
 
-    for index, item in enumerate(narrative_types):
-        # get json data for this type
-        narrative = res_json[item['key']]
+    try: 
 
-        for attr in ['title', 'css', 'icon']:
-            narrative[attr] = item[attr]
+        for index, item in enumerate(narrative_types):
+            # get json data for this type
+            narrative = res_json[item['key']]
 
-        # format date
-        narrative['date'] = datetime.strptime(narrative['date_received'], "%Y-%m-%dT%H:%M:%S")
+            for attr in ['title', 'css', 'icon']:
+                narrative[attr] = item[attr]
 
-        # add data for next item
-        narrative['next'] = narrative_types[(index + 1) % len(narrative_types)]
+            # format date
+            narrative['date'] = datetime.strptime(narrative['date_received'], "%Y-%m-%dT%H:%M:%S")
 
-        narratives.append(narrative)
+            # add data for next item
+            narrative['next'] = narrative_types[(index + 1) % len(narrative_types)]
+
+            narratives.append(narrative)
+
+    except KeyError as e:
+        print(e)
+        # If it gets here, the narrative may have been empty
 
     return narratives
 
 def get_count_info():
-    count_response = requests.get('https://data.consumerfinance.gov/resource/u473-64qt.json')
-    count_json = json.loads(count_response.text)     
     total_complaints = 0
     timely_responses = 0
-    for item in count_json:
-        item_count = int(item['count_complaint_id'])
-        total_complaints += item_count
-        if item['company_response'] != 'Untimely response':
-            timely_responses += item_count
+    try:
+        count_response = requests.get('https://data.consumerfinance.gov/resource/u473-64qt.json')
+        count_json = json.loads(count_response.text)
+
+        for item in count_json:
+            item_count = int(item['count_complaint_id'])
+            total_complaints += item_count
+            if item['company_response'] != 'Untimely response':
+                timely_responses += item_count
+
+    except requests.exceptions.RequestException as e:
+        print(e)
+
+    except KeyError as e:
+        print(e)
+        total_complaints = 0
+        timely_responses = 0
 
     return (total_complaints, timely_responses)
 
@@ -105,9 +126,15 @@ def is_data_not_updated(res_json):
     delta = weekday if weekday > 3 else 6
     four_business_days_ago = (get_now() - timedelta(delta)).strftime("%Y-%m-%d")
     
-    if res_json['stats']['last_updated'] < four_business_days_ago: 
+    try:
+
+        if res_json['stats']['last_updated'] < four_business_days_ago: 
+            data_down = True
+        elif res_json['stats']['last_updated_narratives'] < four_business_days_ago: 
+            narratives_down = True
+    except KeyError as e:
+        print(e)
         data_down = True
-    elif res_json['stats']['last_updated_narratives'] < four_business_days_ago: 
         narratives_down = True
 
     return (data_down, narratives_down)
