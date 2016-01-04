@@ -54,6 +54,7 @@ def get_narratives_json():
     except ValueError as e:
         print("get_narratives_json:ValueError")
         print("The text from the response doesn't follow the correct format to be parse as json")
+        print(e)
         res_json = json.loads('{}')
     return res_json
 
