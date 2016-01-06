@@ -4,571 +4,566 @@
 
 {% block title %}Submit a Complaint{% endblock %}
 
-
-{% block page_css %}
-  <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
-  <link rel="stylesheet" href="http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/_/c/cr-003-theme.css?ver=all">
-  <link rel="stylesheet" href="http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/_/c/cr-009-theme.css?ver=all">
-{% endblock %}
-
-
 {% block content %}
  <!--[if lt IE 10]>
    <style>
      input[type="radio"]{padding:0px;background-color:transparent;}
    </style>
  <!--<![endif]-->
-<div class="cr-theme">
 
-  <div class="sub-theme-bold sub-theme-bold--textured sub-theme-bold--divided">
-    <div class="l-separated-small--vertical">
-      <div class="hero-wrapper wrapper">
+ <div id="submit-a-complaint" class="submit-a-complaint">
+   <section class="hero">
+     <div class="hero_wrapper wrapper wrapper__match-content">
+       <div class="hero_text">
+         <h1 class="hero_heading">Submit a complaint</h1>
+         <p class="hero_subhead">Have an issue with a financial product or service? We'll forward your complaint to the company and work to get a response from them.</p>
+       </div>
+       <div class="hero_image">
+         <h5>Check Your Complaint Status</h5>
+         <div class="status-check">
+           <a href="https://help.consumerfinance.gov/app/utils/login_form/" class="btn btn-primary status-check_btn"><span class="cf-icon cf-icon-user"></span> Check status</a>
+           <span>
+             <a href="https://help.consumerfinance.gov/app/utils/account_assistance" class="small-type status-check_link hero_cta">First login?</a>
+           </span>
+         </div>
+         <h4>Para presentar una queja en español, llamar al (855) 411-2372</h4>
+       </div>
+     </div>
+   </section>
 
-        <div class="row-fluid">
-          <div class="span7">
-            <h1 class="display-type">Submit a complaint</h1>
-            <h3>Have an issue with a financial product or service? We'll forward your complaint to the company and work to get a response from them.</h3>
-          </div>
-          <div class="span4 offset1">
-            <div class="l-separated--top">
-              <h5 class="l-separated-small--bottom no-margin">Check Your Complaint Status</h5>
-              <div class="l-separated--bottom">
-                <a href="https://help.consumerfinance.gov/app/utils/login_form/" class="btn btn-primary btn-with-leading-icon"><i class="icon-user"></i> Check status</a>
-                <span class="l-separated-small--left">
-                  <a href="https://help.consumerfinance.gov/app/utils/account_assistance" class="small-type">First login?</a>
-                </span>
+   <div class="submit-a-complaint_wizard">
+     <div class="wrapper  wrapper__match-content content_wrapper">
+       <div class="content_full">
+           
+           <div class="content-l submit-a-complaint_categories g-container G_ACTIVE" id="main">
+             <div class="content-l_col content-l_col-1-3">
+               <h2>Choose a product or service to get started</h2>
+               <p>If you don’t want to submit a complaint, you can <a href="https://help.consumerfinance.gov/app/tellyourstory">tell your story</a>.</p>
+               <p>Want to find others like you? Visit the <a href="../complaintdatabase">complaint database</a> to read about consumers' experiences, in their own words.</p>
+             </div>
+             
+             <div class="content-l_col content-l_col-2-3">
+               <div class="categories-section">
+                 <h5>Loans</h5>
+                 <ul class="list__unstyled content-l">
+                   <li class="content-l_col content-l_col-1-3">
+                     <h4 class="heading-with-icon heading-with-icon__lrg"><a  href="#mortgage">
+                       <span class="heading-with-icon_icon cf-icon-owning-home-round cf-icon"></span>
+                       <span class="heading-with-icon_text"><span class="link">Mortgage</span></span>
+                     </a></h4>
+                   </li>
+                   <li class="content-l_col content-l_col-1-3">
+                    <h4 class="heading-with-icon heading-with-icon__lrg"><a class="g-goto unstyled-link" href="#student-loan">
+                    <span class="cf-icon-paying-college-round cf-icon heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text"><span class="link">Student loan</span></span>
+                    </a></h4>
+                    </li>
+                  <li class="content-l_col content-l_col-1-3">
+                    <h4 class="heading-with-icon heading-with-icon__lrg"><a class="" href="#vehicle">
+                    <span class="cf-icon-buying-car-round cf-icon heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text"><span class="link">Vehicle loan or lease</span></span>
+                    </a></h4>
+                    </li>
+                    <li class="content-l_col content-l_col-1-3">
+                    <h4 class="heading-with-icon heading-with-icon__lrg"><a class="g-goto unstyled-link" href="#payday-loan">
+                    <span class="cf-icon-payday-loan-round cf-icon heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text"><span class="link">Payday loan</span></span>
+                    </a></h4>
+                    </li>
+                    <li class="content-l_col content-l_col-1-3">
+                    <h4 class="heading-with-icon heading-with-icon__lrg"><a class="g-goto unstyled-link" href="#other-loan">
+                    <span class="cf-icon-loan-round cf-icon heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text"><span class="link">Other consumer loan</span></span>
+                    </a></h4>
+                  </li>
+                </ul>
               </div>
-              <h4 class="no-margin">Para presentar una queja en español, llamar al (855) 411-2372</h4>
-            </div>
-          </div>
-        </div><!-- END .row-fluid -->
+              
+              <div class="categories-section other-categories">
+                <h5>Products and Services</h5>
+                <ul class="list__unstyled content-l">
+                  <li class="content-l_col content-l_col-1-3">
+                    <h4 class="heading-with-icon heading-with-icon__lrg"><a class="g-goto unstyled-link position-icon" href="#bank-account">
+                      <span class="cf-icon-bank-account-round cf-icon heading-with-icon_icon icon-larger"></span>
+                      <span class="heading-with-icon_text"><span class="link">Bank account or service</span></span>
+                    </a></h4>
+                  </li>
+                  <li class="content-l_col content-l_col-1-3">
+                    <h4 class="heading-with-icon heading-with-icon__lrg"><a class="g-goto unstyled-link" href="#credit-card">
+                      <span class="cf-icon-credit-card-round cf-icon heading-with-icon_icon icon-larger"></span>
+                      <span class="heading-with-icon_text"><span class="link">Credit card or prepaid card</span></span>
+                    </a></h4>
+                  </li>      
+                  <li class="content-l_col content-l_col-1-3">
+                     <h4 class="heading-with-icon heading-with-icon__lrg"><a class="g-goto unstyled-link" href="#credit-reporting">
+                       <span class="cf-icon-credit-report-round cf-icon heading-with-icon_icon icon-larger"></span>
+                       <span class="heading-with-icon_text"><span class="link">Credit reporting</span></span>
+                     </a></h4>
+                   </li>          
+                   <li class="content-l_col content-l_col-1-3">
+                     <h4 class="heading-with-icon heading-with-icon__lrg"><a class="g-goto unstyled-link" href="#debt-collection">
+                       <span class="cf-icon-debt-collection-round cf-icon heading-with-icon_icon icon-larger"></span>
+                       <span class="heading-with-icon_text"><span class="link">Debt collection</span></span>
+                     </a></h4>
+                   </li>
+                  <li class="content-l_col content-l_col-1-3">
+                    <h4 class="heading-with-icon heading-with-icon__lrg"><a class="g-goto unstyled-link" href="#money-transfer">
+                      <span class="cf-icon-money-transfer-round cf-icon heading-with-icon_icon icon-larger"></span>
+                      <span class="heading-with-icon_text"><span class="link">Money transfer or virtual currency</span></span>
+                    </a></h4>
+                  </li>
+                  <li class="content-l_col content-l_col-1-3">
+                    <h4 class="heading-with-icon heading-with-icon__lrg"><a class="g-goto unstyled-link" href="#other-service">
+                      <span class="cf-icon-money-round cf-icon heading-with-icon_icon icon-larger"></span>
+                      <span class="heading-with-icon_text"><span class="link">Other financial service</span></span>
+                    </a></h4>
+                  </li>
+                </ul>
+              </div><!-- END other products & services section -->
+             </div><!-- END .content-l_col-2-3 -->
+           </div><!-- END .submit-a-complaint_categories -->
+            <div class="content-l submit-a-complaint_category">
+              
+              <div class="g-container l-separated--vertical l-divided--top" id="mortgage">
+                <div class="content-l_col content-l_col-1-3">
+                  <h2 class="h2-demi heading-with-icon heading-with-icon__lrg">
+                    <span class="cf-icon cf-icon-owning-home-round heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text">Mortgage</span>
+                  </h2>
+                  <p>You can submit a complaint about applying for a mortgage, being approved or denied credit, understanding the loan, making payments, signing the agreement, or specific problems when you’re unable to pay.</p>
+                  <p>If you’re behind on your mortgage, or having a hard time making payments, you should get in touch with a HUD-approved housing counselor. <a href="/mortgagehelp/">Learn how to get help</a></p>
+                  <h4><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="cf-icon cf-icon-left"></i> <span class="link">Choose a different product</span></a></h4>
 
+                </div>
+                <div class="content-l_col content-l_col-2-3">
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide">
+                    <div>
+                      <h2 class="h2-demi">Submit a mortgage complaint to the CFPB</h2>
+                    </div>
+                    <div class="content-l">
+                      <div class="content-l_col-1-3">
+                        <a href="https://help.consumerfinance.gov/app/mortgage/ask" class="btn btn__super btn__primary">Get started</a>
+                      </div>
+                      <div class="content-l_col-2-3">
+                        <p>You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
+                      </div>
+                    </div><!-- END .content-l -->
+                  </div><!-- END .block -->
+                </div><!-- END .content-l_col-2-3 -->
+              </div><!-- END #mortgage -->
+
+              <div class="g-container l-separated--vertical l-divided--top" id="student-loan">
+                <div class="content-l_col content-l_col-1-3">
+                  <h2 class="h2-demi heading-with-icon heading-with-icon__lrg">
+                    <span class="cf-icon cf-icon-paying-college-round heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text">Student loan</span>
+                  </h2>
+                  <p>You can submit a complaint about private student loans, which are often issued by a bank, a credit union, your school, or another lending institution. Federal student loans, which are different from private student loans, typically have names such as Stafford, Grad PLUS, Direct or Perkins.</p>
+                  <p>If you need advice on repaying student loans, visit <a href="/paying-for-college/repay-student-debt/">Repaying Student Debt</a> to learn more about your options, or <a href="/askcfpb/search?selected_facets=category_exact:student-loans">AskCFPB</a>.</p>
+                  <h4><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="cf-icon cf-icon-left"></i> <span class="link">Choose a different product</span></a></h4>
+
+                </div>
+                <div class="content-l_col content-l_col-2-3">
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide">
+                    <div>
+                      <h2 class="h2-demi">Submit a student loan complaint to the CFPB</h2>
+                    </div>
+                    <div class="content-l">
+                      <div class="content-l_col-1-3">
+                        <a href="https://help.consumerfinance.gov/app/studentloan/ask" class="btn btn__super btn__primary">Get started</a>
+                      </div>
+                      <div class="content-l_col-2-3">
+                        <p>You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
+                      </div>
+                    </div><!-- END .content-l -->
+                  </div><!-- END .block -->
+                </div><!-- END .content-l_col-2-3 -->
+              </div><!-- END #student-loan -->
+
+              <div class="g-container l-separated--vertical l-divided--top" id="vehicle">
+                <div class="content-l_col content-l_col-1-3">
+                  <h2 class="h2-demi heading-with-icon heading-with-icon__lrg">
+                    <span class="cf-icon cf-icon-buying-car-round heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text">Vehicle loan or lease</span>
+                  </h2>
+                  <p>You can submit a complaint about loan tactics, applying for a loan, making payments, signing the agreement, or specific problems when you’re unable to pay.</p>
+                  <p>You can also submit a complaint about problems with installment loans and personal lines of credit.</p>
+                  
+                  <h4><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="cf-icon cf-icon-left"></i> <span class="link">Choose a different product</span></a></h4>
+
+                </div>
+                <div class="content-l_col content-l_col-2-3">
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide">
+                    <div>
+                      <h2 class="h2-demi">Submit a vehicle loan or lease complaint to the CFPB</h2>
+                    </div>
+                    <div class="content-l">
+                      <div class="content-l_col-1-3">
+                        <a href="https://help.consumerfinance.gov/app/vehicleconsumerloan/ask" class="btn btn__super btn__primary">Get started</a>
+                      </div>
+                      <div class="content-l_col-2-3">
+                        <p>You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
+                      </div>
+                    </div><!-- END .content-l -->
+                  </div><!-- END .block -->
+                </div><!-- END .content-l_col-2-3 -->
+              </div><!-- END #vehicle -->
+
+              <div class="g-container l-separated--vertical l-divided--top" id="payday-loan">
+                <div class="content-l_col content-l_col-1-3">
+                  <h2 class="h2-demi heading-with-icon heading-with-icon__lrg">
+                    <span class="cf-icon cf-icon-payday-loan-round heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text">Payday loan</span>
+                  </h2>
+                  <p>You can submit a complaint about loans that are typically a few hundred dollars or less, usually due on your next payday.</p>
+                  
+                  <h4><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="cf-icon cf-icon-left"></i> <span class="link">Choose a different product</span></a></h4>
+
+                </div>
+                <div class="content-l_col content-l_col-2-3">
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide">
+                    <div>
+                      <h2 class="h2-demi">Submit a payday loan complaint to the CFPB</h2>
+                    </div>
+                    <div class="content-l">
+                      <div class="content-l_col-1-3">
+                        <a href="https://help.consumerfinance.gov/app/payday/ask" class="btn btn__super btn__primary">Get started</a>
+                      </div>
+                      <div class="content-l_col-2-3">
+                        <p>You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
+                      </div>
+                    </div><!-- END .content-l -->
+                  </div><!-- END .block -->
+                </div><!-- END .content-l_col-2-3 -->
+              </div><!-- END #payday-loan -->
+
+              <div class="g-container l-separated--vertical l-divided--top" id="other-loan">
+                <div class="content-l_col content-l_col-1-3">
+                  <h2 class="h2-demi heading-with-icon heading-with-icon__lrg">
+                    <span class="cf-icon cf-icon-loan-round heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text">Other consumer loan</span>
+                  </h2>
+                  <p>Other loan complaints can be about problems with pawn loans, title loans, and installment loans such those used for Rent-to-Own or medical debt.</p> 
+                  <p>Complaints can be about about loan tactics, applying for a loan, making payments, or specific problems when you’re unable to pay.</p>
+                  
+                  <h4><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="cf-icon cf-icon-left"></i> <span class="link">Choose a different product</span></a></h4>
+
+                </div>
+                <div class="content-l_col content-l_col-2-3">
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide">
+                    <div>
+                      <h2 class="h2-demi">Submit a payday or other loan complaint to the CFPB</h2>
+                    </div>
+                    <div class="content-l">
+                      <div class="content-l_col-1-3">
+                        <a href="https://help.consumerfinance.gov/app/payday/ask" class="btn btn__super btn__primary">Get started</a>
+                      </div>
+                      <div class="content-l_col-2-3">
+                        <p>You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
+                      </div>
+                    </div><!-- END .content-l -->
+                  </div><!-- END .block -->
+                </div><!-- END .content-l_col-2-3 -->
+              </div><!-- END #other-loan -->
+
+              <div class="g-container l-separated--vertical l-divided--top" id="bank-account">
+                <div class="content-l_col content-l_col-1-3">
+                  <h2 class="h2-demi heading-with-icon heading-with-icon__lrg">
+                    <span class="cf-icon cf-icon-bank-account-round heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text">Bank account or service</span>
+                  </h2>
+                  <p>You can submit a complaint about products or services offered by a bank or credit union. These complaints can be about opening an account, accessing money, fees, or other issues. They can also be about debit cards that draw from your account.</p>
+                  <h4><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="cf-icon cf-icon-left"></i> <span class="link">Choose a different product</span></a></h4>
+
+                </div>
+                <div class="content-l_col content-l_col-2-3">
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide">
+                    <div>
+                      <h2 class="h2-demi">Submit a bank account or service complaint to the CFPB</h2>
+                    </div>
+                    <div class="content-l">
+                      <div class="content-l_col-1-3">
+                        <a href="https://help.consumerfinance.gov/app/bankaccountorservice/ask" class="btn btn__super btn__primary">Get started</a>
+                      </div>
+                      <div class="content-l_col-2-3">
+                        <p>You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
+                      </div>
+                    </div><!-- END .content-l -->
+                  </div><!-- END .block -->
+                </div><!-- END .content-l_col-2-3 -->
+              </div><!-- END #bank-account -->
+
+              <div class="g-container l-separated--vertical l-divided--top" id="credit-card">
+                <div class="content-l_col content-l_col-1-3">
+                  <h2 class="h2-demi heading-with-icon heading-with-icon__lrg">
+                    <span class="cf-icon cf-icon-credit-card-round heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text">Credit card or prepaid card</span>
+                  </h2>
+                  <p>You can submit complaints about credit cards, debit cards, prepaid cards, and other prepaid services such as payroll cards, government benefit cards, gift cards, and mobile wallet.</p>
+                  <p> Complaints can be about managing your account, billing disputes, changes to your APR, fees, unauthorized transactions, and many other issues.</p>
+                  <h4><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="cf-icon cf-icon-left"></i> <span class="link">Choose a different product</span></a></h4>
+
+                </div>
+                <div class="content-l_col content-l_col-2-3">
+                  <div class="sub-product-radios">
+                    <h3>What type of card is your complaint about?</h3>
+                    <div class="content-l">
+                      <div class="content-l_col content-l_col-1-2">
+                        <label class="block-label"><input name="radio-ccpp" type="radio" id="radio-credit-card">Credit card<span class="block-sub-label">Used to purchase items on credit</span></label>
+                        <label class="block-label"><input name="radio-ccpp" type="radio" id="radio-debit-card">Debit card <span class="block-sub-label">Used to access money in a bank account</span></label>
+                      </div>
+                      <div class="content-l_col content-l_col-1-2">
+                        <label class="block-label"><input name="radio-ccpp" type="radio" id="radio-prepaid-card">Prepaid card<span class="block-sub-label">Used to access prepaid funds, such as a gift card, payroll card, EBT card, or mobile wallet</span></label>
+                      </div>
+                    </div>
+                  </div><!-- END .sub-product-radios -->
+
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide submit-a-complaint_guide-conditional" id="submit-credit-card">
+                    <div>
+                      <h2 class="h2-demi">Submit a credit card complaint to the CFPB</h2>
+                    </div>
+                    <div class="content-l">
+                      <div class="content-l_col-1-3">
+                        <a href="https://help.consumerfinance.gov/app/creditcard/ask" class="btn btn__super btn__primary">Get started</a>
+                      </div>
+                      <div class="content-l_col-2-3">
+                        <p>You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
+                      </div>
+                    </div><!-- END .content-l -->
+                  </div><!-- END .block -->
+
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide submit-a-complaint_guide-conditional" id="submit-debit-card">
+                    <div>
+                      <h2 class="h2-demi">Submit a debit card complaint to the CFPB</h2>
+                    </div>
+                    <div class="content-l">
+                      <div class="content-l_col-1-3">
+                        <a href="https://help.consumerfinance.gov/app/bankaccountorservice/ask" class="btn btn__super btn__primary">Get started</a>
+                      </div>
+                      <div class="content-l_col-2-3">
+                        <p>You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
+                      </div>
+                    </div><!-- END .content-l -->
+                  </div><!-- END .block -->
+
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide submit-a-complaint_guide-conditional" id="submit-prepaid-card">
+                    <div>
+                      <h2 class="h2-demi">Submit a prepaid card complaint to the CFPB</h2>
+                    </div>
+                    <div class="content-l">
+                      <div class="content-l_col-1-3">
+                        <a href="https://help.consumerfinance.gov/app/prepaid/ask" class="btn btn__super btn__primary">Get started</a>
+                      </div>
+                      <div class="content-l_col-2-3">
+                        <p>You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
+                      </div>
+                    </div><!-- END .content-l -->
+                  </div><!-- END .block -->
+
+                </div><!-- END .content-l_col-2-3 -->
+              </div><!-- END #credit-card -->
+
+              <div class="g-container l-separated--vertical l-divided--top" id="credit-reporting">
+                <div class="content-l_col content-l_col-1-3">
+                  <h2 class="h2-demi heading-with-icon heading-with-icon__lrg">
+                    <span class="cf-icon cf-icon-credit-report-round heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text">Credit Reporting</span>
+                  </h2>
+                  <p>You can submit a complaint about problems with credit reporting companies or information about their credit reports.</p>
+                  <h4><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="cf-icon cf-icon-left"></i> <span class="link">Choose a different product</span></a></h4>
+
+                </div>
+                <div class="content-l_col content-l_col-2-3">
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide">
+                    <div>
+                      <h2 class="h2-demi">Submit a credit reporting complaint to the CFPB</h2>
+                    </div>
+                    <div class="content-l">
+                      <div class="content-l_col-1-3">
+                        <a href="https://help.consumerfinance.gov/app/creditreporting/ask" class="btn btn__super btn__primary">Get started</a>
+                      </div>
+                      <div class="content-l_col-2-3">
+                        <p><em>This form is for submitting complaints about credit reporting companies.</em></p>
+                        <p>To submit a complaint about a company that reported information about you to a credit reporting company, use the complaint form for the financial product or service provided by that company.</p>
+                      </div>
+                    </div><!-- END .content-l -->
+                  </div><!-- END .block -->
+                </div><!-- END .content-l_col-2-3 -->
+              </div><!-- END #credit-reporting -->
+
+              <div class="g-container l-separated--vertical l-divided--top" id="debt-collection">
+                <div class="content-l_col content-l_col-1-3">
+                  <h2 class="h2-demi heading-with-icon heading-with-icon__lrg">
+                    <span class="cf-icon cf-icon-debt-collection-round heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text">Debt Collection</span>
+                  </h2>
+                  <p>You can submit a complaint about problems with companies or debt collectors trying to collect on a debt, regardless of whether it’s a debt on a credit card, mortgage, or anything else.</p>
+                  <h4><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="cf-icon cf-icon-left"></i> <span class="link">Choose a different product</span></a></h4>
+
+                </div>
+                <div class="content-l_col content-l_col-2-3">
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide">
+                    <div>
+                      <h2 class="h2-demi">Submit a debt collection complaint to the CFPB</h2>
+                    </div>
+                    <div class="content-l">
+                      <div class="content-l_col-1-3">
+                        <a href="https://help.consumerfinance.gov/app/debtcollection/ask" class="btn btn__super btn__primary">Get started</a>
+                      </div>
+                      <div class="content-l_col-2-3">
+                        <p>You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
+                      </div>
+                    </div><!-- END .content-l -->
+                  </div><!-- END .block -->
+                </div><!-- END .content-l_col-2-3 -->
+              </div><!-- END #debt-collection -->
+          
+              <div class="g-container l-separated--vertical l-divided--top" id="money-transfer">
+                <div class="content-l_col content-l_col-1-3">
+                  <h2 class="h2-demi heading-with-icon heading-with-icon__lrg">
+                    <span class="cf-icon cf-icon-money-transfer-round heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text">Money transfer or virtual currency</span>
+                  </h2>
+                  <p>You can submit a complaint about sending money to someone else or transferring money between two accounts. These complaints can be about transfers within the United States or international transfers.</p>
+                  <p>You can also submit a complaint about virtual currencies. Virtual currencies are a way to track, store, and send value over the Internet. They are also sometimes referred to as digital currencies or cryptocurrencies.</p>
+                  <h4><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="cf-icon cf-icon-left"></i> <span class="link">Choose a different product</span></a></h4>
+
+                </div>
+                <div class="content-l_col content-l_col-2-3">
+                  <div class="sub-product-radios">
+                    <h3>What type of service is your complaint about?</h3>
+                    <div class="content-l">
+                      <div class="content-l_col content-l_col-1-2">
+                        <label class="block-label"><input id="radio-money-transfer" name="radio-mtvc" type="radio" />Money transfer<span class="block-sub-label">Used to send money to someone else or transfer money between two accounts</span></label>
+                      </div>
+                      <div class="content-l_col content-l_col-1-2">
+                        <label class="block-label"><input id="radio-virtual-currency" name="radio-mtvc" type="radio" />Virtual currency<span class="block-sub-label">Used to track, store, and send value over the Internet</span></label>
+                      </div>
+                    </div>
+                  </div><!-- END .sub-product-radios -->
+
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide submit-a-complaint_guide-conditional" id="submit-money-transfer2">
+                    <div>
+                      <h2 class="h2-demi">Submit a money transfer complaint to the CFPB</h2>
+                    </div>
+                    <div class="content-l">
+                      <div class="content-l_col-1-3">
+                        <a href="https://help.consumerfinance.gov/app/moneytransfers/ask" class="btn btn__super btn__primary">Get started</a>
+                      </div>
+                      <div class="content-l_col-2-3">
+                        <p>You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
+                      </div>
+                    </div><!-- END .content-l -->
+                  </div><!-- END .block -->
+                </div><!-- END .content-l_col-2-3 -->
+              </div><!-- END #money-transfer -->
+              
+              <div class="g-container l-separated--vertical l-divided--top" id="other-service">
+                <div class="content-l_col content-l_col-1-3">
+                  <h2 class="h2-demi heading-with-icon heading-with-icon__lrg">
+                    <span class="cf-icon cf-icon-money-round heading-with-icon_icon"></span>
+                    <span class="heading-with-icon_text">Other financial service</span>
+                  </h2>
+                  <p>You can submit a complaint about check cashing, credit repair, debt settlement, foreign exchange services, traveler’s checks, tax refund anticipation checks, and money order providers.</p>
+                  <p>Complaints can be about unclear or unfair marketing and advertising, fees, customer service, lost or stolen checks or other issues.</p>
+                  <h4><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="cf-icon cf-icon-left"></i> <span class="link">Choose a different product</span></a></h4>
+
+                </div>
+                <div class="content-l_col content-l_col-2-3">
+                  <div class="sub-product-radios">
+                    <h3>What type of service is your complaint about?</h3>
+                    <div class="content-l">
+                      <div class="content-l_col content-l_col-1-2">
+                        <label class="block-label"><input name="radio-money" type="radio" id="radio-check-cashing">Check cashing<span class="block-sub-label">A store that cashes a check for a fee</span></label>
+                        <label class="block-label"><input name="radio-money" type="radio" id="radio-credit-repair">Credit repair<span class="block-sub-label">Services for improving your credit report</span></label>
+                        <label class="block-label"><input name="radio-money" type="radio" id="radio-debt-settlement">Debt settlement<span class="block-sub-label">Services for reducing your debt balance</span></label>
+                        <label class="block-label"><input name="radio-money" type="radio" id="radio-foreign-currency-exchange">Foreign currency exchange<span class="block-sub-label">Transactions that convert money between currencies</span></label>
+                      </div>
+                      <div class="content-l_col content-l_col-1-2">
+                        <label class="block-label"><input name="radio-money" type="radio" id="radio-money-order">Money order<span class="block-sub-label">A prepaid check for a set amount of money</span></label>
+                        <label class="block-label"><input name="radio-money" type="radio" id="radio-refund-anticipation-check">Refund anticipation check<span class="block-sub-label">A check paid to you by a bank or company with your expected tax refund</span></label>
+                        <label class="block-label"><input name="radio-money" type="radio" id="radio-travelers-check">Traveler's check / Cashier's check<span class="block-sub-label">A check with secured funds from a bank or other financial institution</span></label>
+                      </div>
+                    </div>
+                  </div><!-- END .sub-product-radios -->
+
+                  <div class="sub-product-radios" id="credit-repair_conditional">
+                    <h3>Which of these best describes your issue?</h3>
+                    <div class="row">
+                        <label class="block-label"><input name="radio-money_conditional" type="radio" id="radio2-credit-report">I have a problem with my credit report or score.</label>
+                    </div>
+                    <div class="row">
+                        <label class="block-label"><input name="radio-money_conditional" type="radio" id="radio2-credit-repair">I have a problem with a company that I hired to help improve my credit.</label>
+                    </div>
+                  </div><!-- END .sub-product-radios #credit-repair_conditional -->
+
+                  <div class="sub-product-radios" id="debt-settlement_conditional">
+                    <h3>Which of these best describes your issue?</h3>
+                    <div class="row">
+                      <div class="row">
+                        <label class="block-label"><input name="radio-money_conditional" type="radio" id="radio2-debt-collector">I have a problem with a debt collector.</label>
+                      </div>
+                        <label class="block-label"><input name="radio-money_conditional" type="radio" id="radio2-debt-settlement">I have a problem with a company that I hired to help reduce or settle my debt.</label>
+                    </div>
+                  </div><!-- END .sub-product-radios #debt-settlement_conditional -->
+
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide submit-a-complaint_guide-conditional" id="submit-money-service">
+                    <div>
+                      <h2 class="h2-demi">Submit an other financial service complaint to the CFPB</h2>
+                    </div>
+                    <div class="content-l">
+                      <div class="content-l_col-1-3">
+                        <a href="https://help.consumerfinance.gov/app/other/ask/p_id/258" class="btn btn__super btn__primary">Get started</a>
+                      </div>
+                      <div class="content-l_col-2-3">
+                        <p>You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
+                      </div>
+                    </div><!-- END .content-l -->
+                  </div><!-- END .block -->
+
+                </div><!-- END .content-l_col-2-3 -->
+              </div><!-- END #other-service -->               
+                                                     
+            </div><!-- END .submit-a-complaint_category -->
+        </div><!-- END .content-full -->
       </div><!-- END .wrapper -->
-    </div><!-- END l-separated-small-\-vertical -->
-  </div><!-- END .blue-hero -->
-
-  <div class="sub-theme-quiet sub-theme-quiet--divided l-separated-large--vertical cr-complaints-portal-wizard">
-    <div class="wrapper">
-
-      <div class="row-fluid G_ACTIVE" id="main">
-
-        <div class="span4">
-          <h2>Choose a product or service to get started</h2>
-          <p>If you don’t want to submit a complaint, you can <a href="https://help.consumerfinance.gov/app/tellyourstory">tell your story</a>.</p>
-        </div><!-- END .span4 -->
-
-        <div class="span8">
-
-          <div class="l-divided--bottom">
-            <h5>Loans</h5>
+    </div><!-- END .submit-a-complaint_wizard -->
+    
+    
+    <div class="wrapper  wrapper__match-content content_wrapper">
+       <div class="content_full">
+       <div class="block block__flush-top block__padded-top">
+        <div class="content-l">
+          <div class="content-l_col content-l_col-3-4">
+            <h2>What happens after I submit a complaint?</h2>
+            <div>
+              <p>We’ll forward your complaint to the company and work to get a response. After we forward your complaint, the company has 15 days to respond to you and the CFPB. Companies are expected to close all but the most complicated complaints within 60 days.</p>
+              <p>You’ll be able to review the response and give us feedback. If we find that another agency would be better able to assist, we will forward your complaint and let you know.</p>
+            </div>
+            <a href="/complaint/process/" class="btn btn__super btn__secondary">Learn more</a>
           </div>
-          <div class="row-fluid">
-            <div class="span4">
-              <h4 class="heading-with-icon no-margin l-separated-small--vertical"><a class="g-goto unstyled-link" href="#mortgage">
-                <i class="icon-owning-home-alt icon-larger heading-with-icon_icon"></i>
-                <span class="heading-with-icon_text"><span class="link">Mortgage</span></span>
-              </a></h4>
-            </div>
-            <div class="span4">
-              <h4 class="heading-with-icon no-margin l-separated-small--vertical"><a class="g-goto unstyled-link" href="#student-loan">
-                <i class="icon-paying-college-alt heading-with-icon_icon icon-larger"></i>
-                <span class="heading-with-icon_text"><span class="link">Student loan</span></span>
-              </a></h4>
-            </div>   
-            <div class="span4">
-              <h4 class="heading-with-icon no-margin l-separated-small--vertical"><a class="g-goto unstyled-link" href="#vehicle">
-                <i class="icon-buying-car-alt heading-with-icon_icon icon-larger"></i>
-                <span class="heading-with-icon_text"><span class="link">Vehicle loan or lease</span></span>
-              </a></h4>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <h4 class="heading-with-icon no-margin l-separated-small--vertical"><a class="g-goto unstyled-link" href="#payday-loan">
-                  <i class="icon-payday-loan-alt heading-with-icon_icon icon-larger"></i>
-                  <span class="heading-with-icon_text"><span class="link">Payday loan</span></span>
-                </a></h4>
-              </div>
-              <div class="span4">
-                <h4 class="heading-with-icon no-margin l-separated-small--vertical"><a class="g-goto unstyled-link" href="#other-loan">
-                  <i class="icon-loan-alt heading-with-icon_icon icon-larger"></i>
-                  <span class="heading-with-icon_text"><span class="link">Other consumer loan</span></span>
-                </a></h4>
-              </div>
-            </div><!-- END .row-fluid -->                     
+          <div class="content-l_col content-l_col-1-4">
+            <img src="{% static 'img/landing-process.png' %}" class="isocon-200">
           </div>
-
-          <div class="l-separated--vertical">
-            <div class="l-divided--bottom">
-              <h5>Products and services</h5>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <h4 class="heading-with-icon no-margin l-separated-small--vertical"><a class="g-goto unstyled-link position-icon" href="#bank-account">
-                  <i class="icon-bank-account-alt heading-with-icon_icon icon-larger"></i>
-                  <span class="heading-with-icon_text"><span class="link">Bank account or service</span></span>
-                </a></h4>
-              </div>
-              <div class="span4">
-                <h4 class="heading-with-icon no-margin l-separated-small--vertical"><a class="g-goto unstyled-link" href="#credit-card">
-                  <i class="icon-credit-card-alt heading-with-icon_icon icon-larger"></i>
-                  <span class="heading-with-icon_text"><span class="link">Credit card or prepaid card</span></span>
-                </a></h4>
-              </div>
-              <div class="span4">
-                <h4 class="heading-with-icon no-margin l-separated-small--vertical"><a class="g-goto unstyled-link" href="#credit-report">
-                  <i class="icon-credit-report-alt heading-with-icon_icon icon-larger"></i>
-                  <span class="heading-with-icon_text"><span class="link">Credit reporting</span></span>
-                </a></h4>
-              </div>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <h4 class="heading-with-icon no-margin l-separated-small--vertical"><a class="g-goto unstyled-link" href="#debt-collection">
-                  <i class="icon-debt-collection-alt heading-with-icon_icon icon-larger"></i>
-                  <span class="heading-with-icon_text"><span class="link">Debt collection</span></span>
-                </a></h4>
-              </div>
-              <div class="span4">
-                <h4 class="heading-with-icon no-margin l-separated-small--vertical"><a class="g-goto unstyled-link" href="#money-transfer">
-                  <i class="icon-money-transfer-alt heading-with-icon_icon icon-larger"></i>
-                  <span class="heading-with-icon_text"><span class="link">Money transfer</span></span>
-                </a></h4>
-              </div>
-              <div class="span4">
-                <h4 class="heading-with-icon no-margin l-separated-small--vertical"><a class="g-goto unstyled-link" href="#other-service">
-                  <i class="icon-money-alt heading-with-icon_icon icon-larger"></i>
-                  <span class="heading-with-icon_text"><span class="link">Other financial service</span></span>
-                </a></h4>
-              </div>
-            </div><!-- END .row-fluid -->                    
-          </div><!-- END .l-separated-\-vertical -->
-
-        </div><!-- END .span8 -->
-      </div><!-- END #main -->
-
-      <div class="row-fluid g-container l-separated--vertical l-divided--top" id="mortgage">
-
-        <div class="span4">
-          <h2 class="m-loud heading-with-icon l-separated-small--bottom no-margin"><i class="icon-owning-home-alt icon-larger heading-with-icon_icon"></i> <span class="heading-with-icon_text">Mortgage</span></h2>
-          <p class="l-separated-medium--bottom no-margin">You can submit a complaint about applying for a mortgage, being approved or denied credit, understanding the loan, making payments, signing the agreement, or specific problems when you’re unable to pay.</p>
-          <p class="l-separated-medium--bottom no-margin">If you’re behind on your mortgage, or having a hard time making payments, you should get in touch with a HUD-approved housing counselor. <a href="/mortgagehelp/">Learn how to get help</a></p>
-          <h4 class="no-margin"><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="icon-left"></i> <span class="link">Choose a different product</span></a></h4>
-        </div><!-- END .span4 -->
-
-        <div class="span8">
-          <div class="well">
-            <div class="l-separated--bottom">
-              <h2 class="m-loud no-margin">Submit a mortgage complaint to the CFPB</h2>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <a href="https://help.consumerfinance.gov/app/mortgage/ask" class="btn btn-large btn-primary">Get started</a>
-              </div>
-              <div class="span8">
-                <p class="no-margin">You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
-              </div>
-            </div>
-            <div style="clear:both;"></div>
-          </div><!-- END .well -->
-        </div><!-- END .span8 -->
-
-      </div><!-- END #mortgage -->
-
-      <div class="row-fluid g-container l-separated--vertical l-divided--top" id="debt-collection">
-
-        <div class="span4">
-          <h2 class="m-loud heading-with-icon l-separated-small--bottom no-margin"><i class="icon-debt-collection-alt icon-larger heading-with-icon_icon"></i> <span class="heading-with-icon_text">Debt Collection</span></h2>
-          <p class="l-separated-medium--bottom no-margin">You can submit a complaint about problems with companies or debt collectors trying to collect on a debt, regardless of whether it’s a debt on a credit card, mortgage, or anything else.</p>
-          <h4 class="no-margin"><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="icon-left"></i> <span class="link">Choose a different product</span></a></h4>
-        </div><!-- END .span4 -->
-
-        <div class="span8">
-          <div class="well">
-            <div class="l-separated--bottom">
-              <h2 class="m-loud no-margin">Submit a debt collection complaint to the CFPB</h2>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <a href="https://help.consumerfinance.gov/app/debtcollection/ask" class="btn btn-large btn-primary">Get started</a>
-              </div>
-              <div class="span8">
-                <p class="no-margin">You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
-              </div>
-            </div>
-            <div style="clear:both;"></div>
-          </div><!-- END .well -->
-        </div><!-- END .span8 -->
-
-      </div><!-- END #debt-collection -->
-
-      <div class="row-fluid g-container l-separated--vertical l-divided--top" id="credit-report">
-
-        <div class="span4">
-          <h2 class="m-loud heading-with-icon l-separated-small--bottom no-margin"><i class="icon-credit-report-alt icon-larger heading-with-icon_icon"></i> <span class="heading-with-icon_text">Credit reporting</span></h2>
-          <p class="l-separated-medium--bottom no-margin">You can submit a complaint about problems with credit reporting companies or information about their credit reports.</p>
-          <h4 class="no-margin"><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="icon-left"></i> <span class="link">Choose a different product</span></a></h4>
-        </div><!-- END .span4 -->
-
-        <div class="span8">
-          <div class="well">
-            <div class="l-separated--bottom">
-              <h2 class="m-loud no-margin">Submit a credit reporting complaint to the CFPB</h2>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <a href="https://help.consumerfinance.gov/app/creditreporting/ask" class="btn btn-large btn-primary">Get started</a>
-              </div>
-              <div class="span8">
-                <p class="no-margin">You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
-              </div>
-            </div>
-            <div style="clear:both;"></div>
-          </div>
-        </div><!-- END .span8 -->
-
-      </div><!-- END #credit-report -->
-
-      <div class="row-fluid g-container l-separated--vertical l-divided--top" id="bank-account">
-
-        <div class="span4">
-          <h2 class="m-loud heading-with-icon l-separated-small--bottom no-margin"><i class="icon-bank-account-alt icon-larger heading-with-icon_icon"></i> <span class="heading-with-icon_text">Bank account or service</span></h2>
-          <p class="l-separated-medium--bottom no-margin">You can submit a complaint about products or services offered by a bank or credit union. These complaints can be about opening an account, accessing money, fees, or other issues. They can also be about debit cards that draw from your account.</p>
-          <h4 class="no-margin"><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="icon-left"></i> <span class="link">Choose a different product</span></a></h4>
-        </div><!-- END .span4 -->
-
-        <div class="span8">
-          <div class="well">
-            <div class="l-separated--bottom">
-              <h2 class="m-loud no-margin">Submit a bank account or service complaint to the CFPB</h2>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <a href="https://help.consumerfinance.gov/app/bankaccountorservice/ask" class="btn btn-large btn-primary">Get started</a>
-              </div>
-              <div class="span8">
-                <p class="no-margin">You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
-              </div>
-            </div>
-            <div style="clear:both;"></div>
-          </div>
-        </div><!-- END .span8 -->
-
-      </div><!-- END #bank-account -->
-
-      <div class="row-fluid g-container l-separated--vertical l-divided--top" id="credit-card">
-
-        <div class="span4">
-          <h2 class="m-loud heading-with-icon l-separated-small--bottom no-margin"><i class="icon-credit-card-alt icon-larger heading-with-icon_icon"></i> <span class="heading-with-icon_text">Credit card or prepaid card</span></h2>
-          <p class="l-separated-medium--bottom no-margin">You can submit complaints about credit cards, debit cards, prepaid cards, and other prepaid services such as payroll cards, government benefit cards, gift cards, and mobile wallet.</p>
-          <p class="l-separated-medium--bottom no-margin"> Complaints can be about managing your account, billing disputes, changes to your APR, fees, unauthorized transactions, and many other issues.</p>
-          <h4 class="no-margin"><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="icon-left"></i> <span class="link">Choose a different product</span></a></h4>
-        </div><!-- END .span4 -->
-
-        <div class="span8">
-          <div class="sub-product-radios">
-            <h3>What type of card is your complaint about?</h3>
-            <div class="row">
-              <div class="span6">
-                <label class="block-label"><input name="radio-ccpp" type="radio" id="radio-credit-card">Credit card<span class="block-sub-label">Used to purchase items on credit</span></label>
-                <label class="block-label"><input name="radio-ccpp" type="radio" id="radio-debit-card">Debit card <span class="block-sub-label">Used to access money in a bank account</span></label>
-              </div>
-              <div class="span6">
-                <label class="block-label"><input name="radio-ccpp" type="radio" id="radio-prepaid-card">Prepaid card<span class="block-sub-label">Used to access prepaid funds, such as a gift card, payroll card, EBT card, or mobile wallet</span></label>
-              </div>
-            </div>
-          </div><!-- END .sub-product-radios -->
-          <div class="well" id="submit-credit-card">
-            <div class="l-separated--bottom">
-              <h2 class="m-loud no-margin">Submit a credit card complaint to the CFPB</h2>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <a href="https://help.consumerfinance.gov/app/creditcard/ask" class="btn btn-large btn-primary">Get started</a>
-              </div>
-              <div class="span8">
-                <p class="no-margin">You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
-              </div>
-            </div>
-            <div style="clear:both;"></div>
-          </div><!-- END .well #submit-credit-card -->
-          <div class="well" id="submit-debit-card">
-            <div class="l-separated--bottom">
-              <h2 class="m-loud no-margin">Submit a bank account or service complaint to the CFPB</h2>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <a href="https://help.consumerfinance.gov/app/bankaccountorservice/ask" class="btn btn-large btn-primary">Get started</a>
-              </div>
-              <div class="span8">
-                <p class="no-margin">You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
-              </div>
-            </div>
-            <div style="clear:both;"></div>
-          </div><!-- END .well #submit-debit-card -->
-          <div class="well" id="submit-prepaid-card">
-            <div class="l-separated--bottom">
-              <h2 class="m-loud no-margin">Submit a prepaid card complaint to the CFPB</h2>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <a href="https://help.consumerfinance.gov/app/prepaid/ask" class="btn btn-large btn-primary">Get started</a>
-              </div>
-              <div class="span8">
-                <p class="no-margin">You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
-              </div>
-            </div>
-            <div style="clear:both;"></div>
-          </div><!-- END .well #submit-prepaid-card -->
-        </div><!-- END .span8 -->
-
-      </div><!-- END #credit-card -->
-
-      <div class="row-fluid g-container l-separated--vertical l-divided--top" id="money-transfer">
-
-        <div class="span4">
-          <h2 class="m-loud heading-with-icon l-separated-small--bottom no-margin"><i class="icon-money-transfer-alt icon-larger heading-with-icon_icon"></i> <span class="heading-with-icon_text">Money transfer</span></h2>
-          <p class="l-separated-medium--bottom no-margin">You can submit a complaint about sending money to someone else or transferring money between two accounts. These complaints can be about transfers within the United States or international transfers.</p>
-          <h4 class="no-margin"><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="icon-left"></i> <span class="link">Choose a different product</span></a></h4>
-        </div><!-- END .span4 -->
-
-        <div class="span8">
-          <div class="well" id="submit-money-transfer">
-            <div class="l-separated--bottom">
-              <h2 class="m-loud no-margin">Submit a money transfer complaint to the CFPB</h2>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <a href="https://help.consumerfinance.gov/app/moneytransfers/ask" class="btn btn-large btn-primary">Get started</a>
-              </div>
-              <div class="span8">
-                <p class="no-margin">You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
-              </div>
-            </div>
-            <div style="clear:both;"></div>
-          </div> <!-- END .well #submit-money-transfer-->
-        </div><!-- END .span8 -->
-
-      </div><!-- END #money-transfer -->        
-
-      <div class="row-fluid g-container l-separated--vertical l-divided--top" id="other-service">
-
-        <div class="span4">
-          <h2 class="m-loud heading-with-icon l-separated-small--bottom no-margin"><i class="icon-money-alt icon-larger heading-with-icon_icon"></i> <span class="heading-with-icon_text">Other financial service</span></h2>
-          <p class="l-separated-medium--bottom no-margin">You can submit a complaint about check cashing, credit repair, debt settlement, foreign exchange services, traveler’s checks, tax refund anticipation checks, and money order providers.</p>
-          <p class="l-separated-medium--bottom no-margin">Complaints can be about unclear or unfair marketing and advertising, fees, customer service, lost or stolen checks or other issues.</p>
-          <h4 class="no-margin"><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="icon-left"></i> <span class="link">Choose a different product</span></a></h4>
-        </div><!-- END .span4 -->
-
-        <div class="span8">
-          <div class="sub-product-radios">
-            <h3>What type of service is your complaint about?</h3>
-            <div class="row">
-              <div class="span6">
-                <label class="block-label"><input name="radio-money" type="radio" id="radio-check-cashing">Check cashing<span class="block-sub-label">A store that cashes a check for a fee</span></label>
-                <label class="block-label"><input name="radio-money" type="radio" id="radio-credit-repair">Credit repair<span class="block-sub-label">Services for improving your credit report</span></label>
-                <label class="block-label"><input name="radio-money" type="radio" id="radio-debt-settlement">Debt settlement<span class="block-sub-label">Services for reducing your debt balance</span></label>
-                <label class="block-label"><input name="radio-money" type="radio" id="radio-foreign-currency-exchange">Foreign currency exchange<span class="block-sub-label">Transactions that convert money between currencies</span></label>
-              </div>
-              <div class="span6">
-                <label class="block-label"><input name="radio-money" type="radio" id="radio-money-order">Money order<span class="block-sub-label">A prepaid check for a set amount of money</span></label>
-                <label class="block-label"><input name="radio-money" type="radio" id="radio-refund-anticipation-check">Refund anticipation check<span class="block-sub-label">A check paid to you by a bank or company with your expected tax refund</span></label>
-                <label class="block-label"><input name="radio-money" type="radio" id="radio-travelers-check">Traveler's check / Cashier's check<span class="block-sub-label">A check with secured funds from a bank or other financial institution</span></label>
-              </div>
-            </div>
-          </div><!-- END .sub-product-radios -->
-
-          <div class="sub-product-radios" id="credit-repair_conditional">
-            <h3>Which of these best describes your issue?</h3>
-            <div class="row">
-                <label class="block-label"><input name="radio-money_conditional" type="radio" id="radio2-credit-report">I have a problem with my credit report or score.</label>
-            </div>
-            <div class="row">
-                <label class="block-label"><input name="radio-money_conditional" type="radio" id="radio2-credit-repair">I have a problem with a company that I hired to help improve my credit.</label>
-            </div>
-          </div><!-- END .sub-product-radios #credit-repair_conditional -->
-
-          <div class="sub-product-radios" id="debt-settlement_conditional">
-            <h3>Which of these best describes your issue?</h3>
-            <div class="row">
-              <div class="row">
-                <label class="block-label"><input name="radio-money_conditional" type="radio" id="radio2-debt-collector">I have a problem with a debt collector.</label>
-              </div>
-                <label class="block-label"><input name="radio-money_conditional" type="radio" id="radio2-debt-settlement">I have a problem with a company that I hired to help reduce or settle my debt.</label>
-            </div>
-          </div><!-- END .sub-product-radios #debt-settlement_conditional -->
-
-          <div class="well" id="submit-money-service">
-            <div class="l-separated--bottom">
-              <h2 class="m-loud no-margin">Submit an other financial service complaint to the CFPB</h2>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <a href="https://help.consumerfinance.gov/app/other/ask/p_id/258" class="btn btn-large btn-primary" id="money-service-hashlink">Get started</a>
-              </div>
-              <div class="span8">
-                <p class="no-margin">You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
-              </div>
-            </div>
-            <div style="clear:both;"></div>
-          </div><!-- END .well #submit-money-service -->
         </div>
-      </div><!-- END #other-service -->
-
-      <div class="row-fluid g-container l-separated--vertical l-divided--top" id="payday-loan">
-
-        <div class="span4">
-          <h2 class="m-loud heading-with-icon l-separated-small--bottom no-margin"><i class="icon-payday-loan-alt icon-larger heading-with-icon_icon"></i> <span class="heading-with-icon_text">Payday loan</span></h2>
-          <p class="l-separated-medium--bottom no-margin">You can submit a complaint about loans that are typically a few hundred dollars or less, usually due on your next payday.</p>
-          <h4 class="no-margin"><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="icon-left"></i> <span class="link">Choose a different product</span></a></h4>
-        </div><!-- END .span4 -->
-
-        <div class="span8">
-          <div class="well">
-            <div class="l-separated--bottom">
-              <h2 class="m-loud no-margin">Submit a payday loan complaint to the CFPB</h2>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <a href="https://help.consumerfinance.gov/app/payday/ask/p_id/249" class="btn btn-large btn-primary">Get started</a>
-              </div>
-              <div class="span8">
-                <p class="no-margin">You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
-              </div>
-            </div>
-            <div style="clear:both;"></div>
-          </div>
-        </div><!-- END .span8 -->
-
-      </div><!-- END #payday-loan -->
-
-      <div class="row-fluid g-container l-separated--vertical l-divided--top" id="other-loan">
-
-        <div class="span4">
-          <h2 class="m-loud heading-with-icon l-separated-small--bottom no-margin"><i class="icon-loan-alt icon-larger heading-with-icon_icon"></i> <span class="heading-with-icon_text">Other consumer loan</span></h2>
-          <p class="l-separated-medium--bottom no-margin">Other loan complaints can be about problems with pawn loans, title loans, and installment loans such those used for Rent-to-Own or medical debt.</p> 
-          <p class="l-separated-medium--bottom no-margin">Complaints can be about about loan tactics, applying for a loan, making payments, or specific problems when you’re unable to pay.</p>
-          <h4 class="no-margin"><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="icon-left"></i> <span class="link">Choose a different product</span></a></h4>
-        </div><!-- END .span4 -->
-
-        <div class="span8">
-          <div class="well">
-            <div class="l-separated--bottom">
-              <h2 class="m-loud no-margin">Submit a payday or other loan complaint to the CFPB</h2>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <a href="https://help.consumerfinance.gov/app/payday/ask" class="btn btn-large btn-primary">Get started</a>
-              </div>
-              <div class="span8">
-                <p class="no-margin">You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
-              </div>
-            </div>
-            <div style="clear:both;"></div>
-          </div>
-        </div><!-- END .span8 -->
-
-      </div><!-- END #payday-loan -->
-
-      <div class="row-fluid g-container l-separated--vertical l-divided--top" id="student-loan">
-
-        <div class="span4">
-          <h2 class="m-loud heading-with-icon l-separated-small--bottom no-margin"><i class="icon-paying-college-alt icon-larger heading-with-icon_icon"></i> <span class="heading-with-icon_text">Student loan</span></h2>
-          <p class="l-separated-medium--bottom no-margin tight-type">You can submit a complaint about private student loans, which are often issued by a bank, a credit union, your school, or another lending institution. Federal student loans, which are different from private student loans, typically have names such as Stafford, Grad PLUS, Direct or Perkins.</p>
-          <p class="l-separated-medium--bottom no-margin">If you need advice on repaying student loans, visit <a href="/paying-for-college/repay-student-debt/">Repaying Student Debt</a> to learn more about your options, or <a href="/askcfpb/search?selected_facets=category_exact:student-loans">AskCFPB</a>.</p>
-          <h4 class="no-margin"><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="icon-left"></i> <span class="link">Choose a different product</span></a></h4>
-        </div><!-- END .span4 -->
-
-        <div class="span8">
-          <div class="well">
-            <div class="l-separated--bottom">
-              <h2 class="m-loud no-margin">Submit a student loan complaint to the CFPB</h2>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <a href="https://help.consumerfinance.gov/app/studentloan/ask" class="btn btn-large btn-primary">Get started</a>
-              </div>
-              <div class="span8">
-                <p class="no-margin">You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
-              </div>
-            </div>
-            <div style="clear:both;"></div>
-          </div>
-        </div><!-- END .span8 -->
-
-      </div><!-- END #student-loan -->
-
-      <div class="row-fluid g-container l-separated--vertical l-divided--top" id="vehicle">
-
-        <div class="span4">
-          <h2 class="m-loud heading-with-icon l-separated-small--bottom no-margin"><i class="icon-buying-car-alt icon-larger heading-with-icon_icon"></i> <span class="heading-with-icon_text">Vehicle loan or lease</span></h2>
-          <p class="l-separated-medium--bottom no-margin">You can submit a complaint about loan tactics, applying for a loan, making payments, signing the agreement, or specific problems when you’re unable to pay.</p>
-          <p class="l-separated-medium--bottom no-margin">You can also submit a complaint about problems with installment loans and personal lines of credit.</p>
-          <h4 class="no-margin"><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="icon-left"></i> <span class="link">Choose a different product</span></a></h4>
-        </div><!-- END .span4 -->
-
-        <div class="span8">
-          <div class="well">
-            <div class="l-separated--bottom">
-              <h2 class="m-loud no-margin">Submit a vehicle loan or lease complaint to the CFPB</h2>
-            </div>
-            <div class="row-fluid">
-              <div class="span4">
-                <a href="https://help.consumerfinance.gov/app/vehicleconsumerloan/ask" class="btn btn-large btn-primary">Get started</a>
-              </div>
-              <div class="span8">
-                <p class="no-margin">You can attach documents to your complaint, such as statements, contracts, receipts, and letters to help us better understand your issue.</p>
-              </div>
-            </div>
-            <div style="clear:both;"></div>
-          </div>
-        </div><!-- END .span8 -->
-
-      </div><!-- END #other -->
-
-    </div><!-- END .wrapper -->
-
-  </div><!-- END .sub-theme-quiet.cr-complaints-portal-wizard -->
-
-  <div class="wrapper">
-
-    <div class=" l-separated-large--vertical l-divided--bottom">
-      <div class="row-fluid">
-        <div class="span9">
-          <h2>What happens after I submit a complaint?</h2>
-          <div class="reading-type l-separated-small--bottom">
-            <p>We’ll forward your complaint to the company and work to get a response. After we forward your complaint, the company has 15 days to respond to you and the CFPB. Companies are expected to close all but the most complicated complaints within 60 days.</p>
-            <p>You’ll be able to review the response and give us feedback. If we find that another agency would be better able to assist, we will forward your complaint and let you know.</p>
-          </div>
-          <a href="/complaint/process/" class="btn btn-large">Learn more</a>
-        </div>
-        <div class="span3">
-          <img src="/wp-content/themes/cfpb_nemo/_/img/cr-003-landing-process.png" alt="" class="isocon-200" />
-          <!-- <img src="/wp-content/themes/cfpb_nemo/_/img/cr-003-landing-process.png" alt="" class="isocon-200" /> -->
-        </div>
-      </div><!-- END .row-fluid -->
-    </div><!-- END .l-separated-\-vertical.l-divided-\-bottom -->
-
-    <div class="l-separated--vertical">
-      <div class="row-fluid">
-        <div class="span9">
-          <h2>How will you use my information?</h2>
-          <div class="reading-type l-separated-small--bottom">
-            <p>We forward the information you provide so the company can identify you and address your issue. We also share complaint data with state and federal agencies who oversee financial products and services, and we publish a database of non-personal complaint information so the public knows what kinds of complaints we receive and how companies respond.</p>
-          </div>
-          <a href="/complaint/data-use/" class="btn btn-large">Learn more</a>
-        </div>
-        <div class="span3">
-          <img src="/wp-content/themes/cfpb_nemo/_/img/cr-003-landing-data.png" alt="" class="isocon-200" />
-          <!-- <img src="/wp-content/themes/cfpb_nemo/_/img/cr-003-landing-data.png" alt="" class="isocon-200" /> -->
-        </div>
-      </div><!-- END .row-fluid -->
-    </div><!-- END .l-separated-\-vertical -->
-
-    <br>
-
-  </div><!-- END .wrapper -->
-
-</div><!-- END .cr-theme -->
+       </div>
+      </div>
+      <div class="block block__border-top block__padded-top">
+       <div class="content-l">
+         <div class="content-l_col content-l_col-3-4">
+           <h2>How will you use my information?</h2>
+           <div>
+             <p>We forward the information you provide so the company can identify you and address your issue. We also share complaint data with state and federal agencies who oversee financial products and services, and we publish a database of non-personal complaint information so the public knows what kinds of complaints we receive and how companies respond.</p>
+           </div>
+           <a href="/complaint/process/" class="btn btn__super btn__secondary">Learn more</a>
+         </div>
+         <div class="content-l_col content-l_col-1-4">
+           <img src="{% static 'img/landing-data.png' %}" class="isocon-200">
+         </div>
+       </div>
+      </div>
+   </div>
+ </div>
 
 
 {% endblock %}
