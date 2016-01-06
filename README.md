@@ -72,3 +72,10 @@ Then run the `requirements.txt` file in your terminal your virtual environment:
 pip install -r requirements.txt
 ```
 
+
+## Testing
+For Python/Django tests, in the base directory, run the following:
+
+```shell
+python manage.py test
+```
