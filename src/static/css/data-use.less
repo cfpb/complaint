@@ -67,6 +67,16 @@
   table {
     width: 100%;
   }
+  
+  .reports-tables {
+    tr {
+      border-bottom-width: 0;
+    }
+
+    td {
+      border-bottom: 1px solid @table-border;
+    }
+  }  
 
   td.data-type,
   td.report-type,
@@ -90,22 +100,27 @@
     .expandable_content {
       padding-bottom: @grid_gutter-width / 2;
     }
+    
+    .expandable_header-left {
+      width: 90%;
+    }
 
     tbody {
       display: block;
-
-      tr {
-        border-bottom-width: 0;
-      }
 
       td {
         padding: 0;
       }
     }
     
-    td {
-      width: 100%\9;
-      float: left\9;
+    tr {
+      border-bottom-width: 0;
+    }
+    
+    .reports-tables {
+      td {
+        border-bottom-width: 0;
+      }
     }
 
     .reports-tables {
@@ -181,6 +196,30 @@
   .content_sidebar {
     .list_item {
       .webfont-regular();
+    }
+  }
+  
+  .list__links .list_item + .list_item  a {
+    border-top-width: 0;
+  }
+}
+
+//Fix IE9 & IE10 issues with displaying table as expandable group
+
+@ie-mobile: ~"screen and (min-width: 0\0)";
+@mobile-max-ems: unit((@bp-xs-max / @base-font-size-px), em);
+
+@media @ie-mobile and (max-width: @mobile-max-ems) {
+  .data-use {
+    
+    td {
+      width: 100%;
+      float: left;
+    }
+    
+    .shared-data-table tr {
+      float: left;
+      width: 100%;
     }
   }
   
