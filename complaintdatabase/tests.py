@@ -391,8 +391,8 @@ class DataUpdatedTest(TestCase):
         input_json = {'stats': {'last_updated_narratives': "2015-12-21"}}
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
             data_down, narratives_down = is_data_not_updated(input_json)
-            self.assertTrue(data_down)
-            self.assertTrue(narratives_down) 
+            self.assertFalse(data_down)
+            self.assertFalse(narratives_down) 
             self.assertIn('KeyError', fakeOutput.getvalue().strip())
 
 class DocsViewTest(TestCase):

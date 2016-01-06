@@ -167,7 +167,5 @@ def is_data_not_updated(res_json):
         print("is_data_not_updated:KeyError")
         print("There is problem accessing with the given key, which probably means the json has missing data")
         print(e)
-        data_down = True
-        narratives_down = True
 
     return (data_down, narratives_down)
