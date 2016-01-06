@@ -21,6 +21,7 @@
     "browserify": "^12.0.1",
     "browserify-shim": "^3.8.11",
     "chai": "^3.4.1",
+    "debounce": "^1.0.0",
     "del": "^1.2.0",
     "factor-bundle": "^2.5.0",
     "factor-vinylify": "^3.0.4",
