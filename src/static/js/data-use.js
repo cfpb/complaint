@@ -7,7 +7,7 @@ require('./nemo-shim');
 var resizeHandler = require('./handle-resize');
 
 
-function checkExpandableVisibility () {
+function isExpandableVisible () {
   return $('.expandable_target').is(':visible');
 }
 
@@ -28,7 +28,7 @@ function toggleExpandables (expandablesVisible) {
 }
 
 $(document).ready( function() {
-  var expandableHandler = new resizeHandler(checkExpandableVisibility, toggleExpandables);
+  var expandableHandler = new resizeHandler(isExpandableVisible, toggleExpandables);
   expandableHandler.init();
 });
 
