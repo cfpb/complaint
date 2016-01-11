@@ -408,7 +408,7 @@
               <tr class="expandable expandable__padded">
                 <td class="data-type">
                   <button class="expandable_header expandable_target" title="Expand content">
-                    <span class="expandable_header-left expandable_label">Complaint tags</span>
+                    <span class="expandable_header-left expandable_label">Tags</span>
                     <span class="expandable_header-right expandable_link">
                       <span class="expandable_cue-open">
                         <span class="u-visually-hidden">Show</span>
@@ -420,7 +420,7 @@
                       </span>
                     </span>
                   </button>
-                  <span class="plain-text">Complaint tags</span>
+                  <span class="plain-text">Tags</span>
                 </td>
                 <td class="data-description expandable_content">
                   Concepts found in complaint narrative to support easier searching and sorting of complaints. 
@@ -437,7 +437,7 @@
       
       
       <div class="block block__border-top block__padded-top">
-         <h2>Consumer Response Reports created using the data</h2>
+         <h2>Reports created using the data</h2>
          <div class="expandable-group reports-tables" data-accordion=true>
            <table class="table__stack-on-small expandable expandable__padded">
              <thead>
@@ -700,27 +700,9 @@
       </div>
       
     </section>
-    <aside class="content_sidebar">
-      <h3 class="header-slug">
-          <span class="header-slug_inner">
-              Related Links
-          </span>
-      </h3>
-      <ul class="list__unstyled list__spaced">
-        <li class="list_item">
-          <span class="jump-link_intro">Have an issue with a financial product or service?</span><br>
-          <a class="list_link jump-link" href="/complaint/" target=\"_blank\">
-            <span class="jump-link_text">Submit a complaint to the CFPB</span>
-          </a>
-        </li>
-        <li class="list_item">
-          <span class="jump-link_intro">Already submitted a complaint?</span><br>
-          <a class="list_link jump-link" href="https://help.consumerfinance.gov/app/utils/login_form/" target=\"_blank\">
-            <span class="jump-link_text">Check the status of your complaint</span>
-          </a>
-        </li>
-      </ul>
-    </aside>
+    
+    {% include 'includes/related_links.html' %}
+
   </div>
 </main>
 {% endblock %}
