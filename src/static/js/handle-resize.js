@@ -1,4 +1,5 @@
 'use strict';
+var debounce = require('debounce');
 
 var defaultOpts = {setup: true};
 // TODO: polyfills for addEventListener & bind for IE8
@@ -31,6 +32,7 @@ function resizeHandler (test, cb, opts) {
 
 resizeHandler.prototype.handleResize = function () { 
   var currentResult = this.test();
+  
   if (currentResult !== this.prevResult) {
     this.cb(currentResult);
   }
@@ -38,7 +40,7 @@ resizeHandler.prototype.handleResize = function () {
 }
 
 resizeHandler.prototype.init = function () {
-  window.addEventListener('resize', this.handleResize.bind(this));
+  window.addEventListener('resize', debounce(this.handleResize.bind(this), 50));
   if (this.opts.setup) {
     this.handleResize();
   }
