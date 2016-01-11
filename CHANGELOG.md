@@ -4,9 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
-## 1.0.0 - 2015-01-08
-### Added
+## [1.1.0] - 2015-01-11
 - Initial release of the complaint and complaint database.
 
+## 1.0.0 - 2015-12-04
+### Added
+- Version 1 Django app + Jinja templates
 
-[unreleased]: https://github.com/cfpb/owning-a-home/compare/v1.0.0...HEAD
+
+[unreleased]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.0...HEAD
+[1.1.0]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.0.0...v1.1.0
