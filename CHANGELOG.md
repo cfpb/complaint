@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 
 ## [1.1.0] - 2015-01-11
+### Added
 - Initial release of the complaint and complaint database.
 
 ## 1.0.0 - 2015-12-04
