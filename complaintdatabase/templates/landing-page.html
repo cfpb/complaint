@@ -174,13 +174,19 @@
           <h2>About the data</h2>
           <div class="content-l">
             <div class="content-l_col content-l_col-1-2">
-              <p>The Consumer Complaint Database is a collection of <span class="total-complaints"> {{ total_complaints|intcomma }} </span> complaints, on a range of consumer financial products and services, sent to nearly 3,000 companies for response. We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship between the consumer and the company. <span class="publication-criteria"><a href="http://files.consumerfinance.gov/f/201303_cfpb_Final-Policy-Statement-Disclosure-of-Consumer-Complaint-Data.pdf" class="icon-link icon-link__right"><span class="icon-link_text">See publication criteria</span></a></span></p>
+              <p>The Consumer Complaint Database is a collection of <span class="total-complaints"> {{ total_complaints|intcomma }} </span> complaints, on a range of consumer financial products and services, sent to nearly 3,000 companies for response. We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship between the consumer and the company. <span class="publication-criteria"><a href="http://files.consumerfinance.gov/f/201303_cfpb_Final-Policy-Statement-Disclosure-of-Consumer-Complaint-Data.pdf" class="icon-link icon-link__right">
+                <span class="icon-link_text">See publication criteria</span>
+              </a></span></p>
               <p>Since we started accepting complaints in July 2011, we’ve helped consumers connect with financial companies to understand issues with their mortgages, fix errors on their credit reports, stop unlawful calls from debt collectors, and get direct responses about problems with their credit cards, bank accounts, private student loans, and more. We analyze the data to identify trends and problems in the marketplace to help us do a better job supervising companies, enforcing federal consumer financial laws and writing rules and regulations. We publish reports on complaints and share information with state and federal agencies.</p>  
-              <p><a href="/complaint/data-use/#reports" class="icon-link icon-link__right"><span class="icon-link_text">View reports</span></a></p>
+              <p><a href="/complaint/data-use/#reports" class="icon-link icon-link__right">
+                <span class="icon-link_text">View reports</span>
+              </a></p>
             </div>
             <div class="content-l_col content-l_col-1-2">
-              <p>The database updates nightly, and contains certain information for each complaint, including the source of the complaint, the date of submission, and the company the complaint was sent to for response. The database also includes information about the actions taken by the company in response to the complaint, such as, whether the company’s response was timely, how the company responded, and whether the consumer disputed the company’s response. If the consumer opts to share it and after we take steps to remove personal information, we publish the consumer’s description of what happened. Companies also have the option to select a public response.</p>
-              <p><a href="/complaint/data-use/" class="icon-link icon-link__right"><span class="icon-link_text">More on how we collect and use the data</span></a></p>
+              <p>The database updates nightly, and contains certain information for each complaint, including the source of the complaint, the date of submission, and the company the complaint was sent to for response. The database also includes information about the actions taken by the company in response to the complaint, such as, whether the company’s response was timely, how the company responded, and whether the consumer disputed the company’s response. If the consumer opts to share it and after we take steps to remove personal information, we publish the consumer’s description of what happened. Companies also have the option to select a public response. Company level information should be considered in context of company size and/or market share. Complaints referred to other regulators, such as complaints about depository institutions with less than $10 billion in assets, are not published in the Consumer Complaint Database.</p>
+              <p><a href="/complaint/data-use/" class="icon-link icon-link__right">
+                <span class="icon-link_text">More on how we collect and use the data</span>
+              </a></p>
             </div>
           </div>
         </div>
@@ -240,9 +246,11 @@
         <div class="section-six ccdb-landing_section">
           <div class="content-l">
             <div class="content-l_col content-l_col-2-3">
-              <h2>Use our API</h2>
-              <p>If you’re looking for more control over what data you get, try our RESTful API.</p>
-              <p><a href="/complaintdatabase/technical-documentation/" class="api-documentation internal-link icon-link icon-link__right"><span class="icon-link_text">API documentation</span></a></p>
+              <h2>Use our data</h2>
+              <p>Looking to export our data and have more control over it? Use our Open Data API.</p>
+              <p><a href="https://dev.socrata.com/foundry/#/data.consumerfinance.gov/jhzv-w97w" class="api-documentation internal-link icon-link icon-link__right">
+                <span class="icon-link_text">For instructions and examples, refer to Socrata’s API documentation</span>
+              </a></p>
             </div>
             <div class="content-l_col content-l_col-1-3">
               <h3 class="header-slug">
@@ -251,8 +259,10 @@
                   </span>
               </h3>
               <p>Have a question about a data field?</p>
-              <p><a href="/complaintdatabase/technical-documentation/#field-reference" class="internal-link 
-      icon-link icon-link__right"><span class="icon-link_text">Check out the database field reference</span></a></p>
+              <p><a href="https://cfpb.github.io/api/ccdb/fields.html" class="internal-link 
+      icon-link icon-link__right">
+                <span class="icon-link_text">Check out our database field reference</span>
+              </a></p>
             </div>
           </div>
         </div>
