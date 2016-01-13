@@ -337,7 +337,7 @@ body {
         font-size: .875em;
         text-transform: uppercase;
       }
-      input[type="radio"] {
+      label {
         margin-bottom: 20px;
       }
     }
@@ -464,6 +464,10 @@ body {
         .content-l_col.content-l_col-1-3 {
           width: 50%;
         }
+        .content-l_col + .content-l_col {
+          margin-top: 0;
+        }
+        
         .hidden-in-medium {
           display: none;
         }
@@ -576,6 +580,10 @@ body {
       .data-selection-container {
         padding-left: 35px;
         padding-right: 35px;
+        
+        .content-l_col.content-l_col-1-3 {
+          width: 100%;
+        }
       }
     }
 
