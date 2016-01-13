@@ -55,7 +55,7 @@ module.exports = {
     common: 'main.js'
   },
   test: {
-    src: [loc.src + '/static/js/index.js', loc.src + '/static/js/data-use.js', loc.src + '/static/js/handle-resize.js'],
+    src: [loc.src + '/static/js/index.js', loc.src + '/static/js/data-use.js', loc.src + '/static/js/handle-resize.js', loc.src + '/static/js/expandable-helpers.js', loc.src + '/static/js/tab-expandables.js'],
     tests: loc.test
   },
   browserify: {

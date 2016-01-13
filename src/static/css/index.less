@@ -263,9 +263,7 @@ body {
     }
 
     .complaint-container {
-      clear: both;
-      display: none;
-      padding-top: 30px;
+      padding-top: 15px;
 
       .content-l_col {
         margin-top: 0em;
@@ -311,10 +309,6 @@ body {
         .webfont-regular();
       }
 
-    }
-
-    .last-expandable-bar {
-        display: none;
     }
 
   }
@@ -376,6 +370,30 @@ body {
   }
 }
 
+.respond-to-min(@bp-lg-min, {
+  #ccdb-landing {
+    .expandable_header {
+      display: none;
+    }
+  
+    .expandable__padded .expandable_content {
+      margin: 0;
+    
+      &:before {
+        height: 0;
+      }
+    }
+  
+    .expandable-group .expandable {
+      border-width: 0;
+      display: none;
+    
+      &.expandable__expanded {
+        display: block;
+      }
+    }
+  }
+});
 
 /* ====================================================================
    Medium screens
@@ -432,32 +450,6 @@ body {
         display: none;
       }
 
-      .expandable-bar {
-        border-top: 1px solid #CDCDCB;
-        display: block;
-        .webfont-regular();
-        line-height: 3;
-        white-space: nowrap;
-
-        .cf-icon.cf-icon-plus-round,
-        .cf-icon.cf-icon-minus-round {
-          color: #2B71B8;
-          float: right;
-          margin-top: 1em;
-        }
-      }
-
-      .expandable-bar > *,
-      .complaint-container > * {
-        margin-left: 15px;
-        margin-right: 15px;
-      }
-
-      .last-expandable-bar {
-        display: block;
-        margin-top: 0px;
-        color: black;
-      }
     }
     .section-five {
       .data-selection-container {
@@ -586,6 +578,24 @@ body {
     }
   }
   
+});
+/* Expandable padding */
+
+.respond-to-max(1023px, {
+  #ccdb-landing {
+    .section-three {
+      .complaint-container {
+        padding-top: 0;
+      }
+      .category-tabs {
+        border-top: 1px solid @expandable-group-divider;
+
+        .expandable_label {
+          font-size: 1em;
+        }
+      }
+    }
+  }
 });
 
 /* Complaint column order */

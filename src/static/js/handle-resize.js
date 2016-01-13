@@ -1,7 +1,6 @@
 'use strict';
-var debounce = require('debounce');
+var assign = require('object-assign');
 
-var defaultOpts = {setup: true};
 // TODO: polyfills for addEventListener & bind for IE8
 
 /**
@@ -20,34 +19,40 @@ var defaultOpts = {setup: true};
  * @param  {function} cb 
  * @param  {object} opts optional
  */
- 
-function resizeHandler (test, cb, opts) {
-  // TODO: handle errors in args
-  // test & cb are required functions;
-  // opts is optional object
-  this.test = test;
-  this.cb = cb;
-  this.opts = opts || defaultOpts;
-}
 
-resizeHandler.prototype.handleResize = function () { 
-  var currentResult = this.test();
-  
-  if (currentResult !== this.prevResult) {
-    this.cb(currentResult);
-  }
-  this.prevResult = currentResult;
-}
+function handleResize (test, cb, opts) {
+ var prevResult, 
+     currentResult, 
+     defaultOpts = {setup: true};
 
-resizeHandler.prototype.init = function () {
-  window.addEventListener('resize', debounce(this.handleResize.bind(this), 50));
-  if (this.opts.setup) {
-    this.handleResize();
-  }
-}
+ if (typeof test !== 'function' || typeof cb !== 'function') {
+   throw new Error("Resize handler needs test and callback.");
+ }
 
-resizeHandler.prototype.destroy = function () {
-  window.removeEventListener('resize', this.handleResize);
-}
+ opts = assign(defaultOpts, opts);
 
-module.exports = resizeHandler;
+ function onResize () { 
+   currentResult = test();
+   if (currentResult !== prevResult) {
+     cb(currentResult);
+   }
+   prevResult = currentResult;
+ }
+
+ function init () {
+   if (opts.setup) {
+     onResize();
+   }
+   window.addEventListener('resize', onResize);
+ }
+
+ function destroy () {
+   window.removeEventListener('resize', onResize);
+ }
+
+ return {
+   init: init,
+   destroy: destroy
+ }
+}
+module.exports = handleResize;
