@@ -41,7 +41,6 @@ CCDB-content is a standalone Django project that runs the complaint database app
 1. go to landing pages: 
   - http://127.0.0.1:8000/complaintdatabase/
   - http://127.0.0.1:8000/complaintdatabase/data-use/
-  - http://127.0.0.1:8000/complaintdatabase/technical-documentation/
   - http://127.0.0.1:8000/complaint/process/
   - http://127.0.0.1:8000/complaint/
 
@@ -72,3 +71,10 @@ Then run the `requirements.txt` file in your terminal your virtual environment:
 pip install -r requirements.txt
 ```
 
+
+## Testing
+For Python/Django tests, in the base directory, run the following:
+
+```shell
+python manage.py test
+```
