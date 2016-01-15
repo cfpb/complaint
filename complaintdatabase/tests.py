@@ -118,35 +118,30 @@ class FormatNarrativesTest(TestCase):
                     {
                     'date_received': '2015-04-09T20:32:15',
                     'title':'Other financial service', 'css':'other', 'icon': 'money',
-                    'tags': [],
                     'date': datetime(2015, 4, 9, 20, 32, 15),
                     'next': {'key':'payday_loans', 'title':'Payday Loan', 'css':'payday-loan', 'icon': 'payday-loan'}
                     },
                     {
                     'date_received': '2015-04-10T20:32:15',
                     'title':'Payday Loan','css':'payday-loan','icon': 'payday-loan',
-                    'tags': [],
                     'date': datetime(2015, 4, 10, 20, 32, 15),
                     'next': {'key':'prepaid_cards', 'title':'Prepaid Card', 'css':'prepaid-card', 'icon': 'prepaid-cards'}
                     },
                     {
                     'date_received': '2015-04-11T20:32:15',
                     'title':'Prepaid Card', 'css':'prepaid-card', 'icon': 'prepaid-cards',
-                    'tags': [],
                     'date': datetime(2015, 4, 11, 20, 32, 15),
                     'next': {'key':'student_loans', 'title':'Student Loan', 'css':'student-loan', 'icon': 'paying-college'}
                     },
                     {
                     'date_received': '2015-04-12T20:32:15',
                     'title':'Student Loan', 'css':'student-loan', 'icon': 'paying-college',
-                    'tags': [],
                     'date': datetime(2015, 4, 12, 20, 32, 15),
                     'next': {'key':'other_consumer_loans', 'title':'Vehicle / consumer loan', 'css':'consumer-loan', 'icon': 'buying-car'}
                     },
                     {
                     'date_received': '2015-04-13T20:32:15',
                     'title':'Vehicle / consumer loan', 'css':'consumer-loan', 'icon': 'buying-car',
-                    'tags': [],
                     'date': datetime(2015, 4, 13, 20, 32, 15),
                     'next': {'key': 'bank_accounts', 'title': 'Bank account', 'css': 'bank-account', 'icon':'bank-account'}
                     }]
