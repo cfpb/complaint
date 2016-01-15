@@ -83,9 +83,10 @@ def format_narratives(res_json):
             
             for attr in ['title', 'css', 'icon']:
                 narrative[attr] = item[attr]
-
-            narrative['tags'] = item.get('tags', [])
-
+            
+            #prevent error for missing tags
+            narrative['tags'] = narrative.get('tags', [])
+            
             # format date
             narrative['date'] = datetime.strptime(narrative['date_received'], "%Y-%m-%dT%H:%M:%S")
 
