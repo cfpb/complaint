@@ -2,7 +2,17 @@ CCDB-content
 ============
 CCDB-content is a standalone Django project that runs the complaint database app.
 
-## setup
+## Dependencies
+
+- Unix-based OS (including Macs). Windows is not supported at this time.
+- [Virtualenv](https://virtualenv.pypa.io/en/latest/) and [Virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/en/latest/#), Python modules that keep dependencies  project specific and in their own virtual environments.
+- [Autoenv](https://github.com/kennethreitz/autoenv)
+- [Node](http://nodejs.org/)
+- [Gulp](http://gulpjs.com/)
+- [Capital Framework](http://cfpb.github.io/capital-framework/)
+- [LESS](http://lesscss.org/)
+
+## Setup
 
 1. copy settings_secret.py.template to settings_secret.py
 1. set up virtual environment 
