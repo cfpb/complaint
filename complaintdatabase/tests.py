@@ -60,12 +60,12 @@ class NarrativeJsonTest(TestCase):
 class FormatNarrativesTest(TestCase):
     def test_format_narratives(self):
         input_json = {
-            'bank_accounts': {'date_received': '2015-04-08T20:32:15'},
-            'credit_cards': {'date_received': '2015-04-08T20:32:16'},
-            'credit_reporting': {'date_received': '2015-04-08T20:32:17'},
-            'debt_collection': {'date_received': '2015-04-08T20:32:18'},
-            'money_transfers': {'date_received': '2015-04-08T20:32:19'},
-            'mortgages': {'date_received': '2015-04-08T21:32:15'},
+            'bank_accounts': {'date_received': '2015-04-08T20:32:15', 'tags': ['Older American', 'Servicemember']},
+            'credit_cards': {'date_received': '2015-04-08T20:32:16', 'tags': ['Older American', 'Servicemember']},
+            'credit_reporting': {'date_received': '2015-04-08T20:32:17', 'tags': ['Older American', 'Servicemember']},
+            'debt_collection': {'date_received': '2015-04-08T20:32:18', 'tags': ['Older American', 'Servicemember']},
+            'money_transfers': {'date_received': '2015-04-08T20:32:19', 'tags': ['Older American', 'Servicemember']},
+            'mortgages': {'date_received': '2015-04-08T21:32:15', 'tags': ['Older American', 'Servicemember']},
             'other_financial_services': {'date_received': '2015-04-09T20:32:15'},
             'payday_loans': {'date_received': '2015-04-10T20:32:15'},
             'prepaid_cards': {'date_received': '2015-04-11T20:32:15'},
@@ -118,35 +118,30 @@ class FormatNarrativesTest(TestCase):
                     {
                     'date_received': '2015-04-09T20:32:15',
                     'title':'Other financial service', 'css':'other', 'icon': 'money',
-                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 9, 20, 32, 15),
                     'next': {'key':'payday_loans', 'title':'Payday Loan', 'css':'payday-loan', 'icon': 'payday-loan'}
                     },
                     {
                     'date_received': '2015-04-10T20:32:15',
                     'title':'Payday Loan','css':'payday-loan','icon': 'payday-loan',
-                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 10, 20, 32, 15),
                     'next': {'key':'prepaid_cards', 'title':'Prepaid Card', 'css':'prepaid-card', 'icon': 'prepaid-cards'}
                     },
                     {
                     'date_received': '2015-04-11T20:32:15',
                     'title':'Prepaid Card', 'css':'prepaid-card', 'icon': 'prepaid-cards',
-                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 11, 20, 32, 15),
                     'next': {'key':'student_loans', 'title':'Student Loan', 'css':'student-loan', 'icon': 'paying-college'}
                     },
                     {
                     'date_received': '2015-04-12T20:32:15',
                     'title':'Student Loan', 'css':'student-loan', 'icon': 'paying-college',
-                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 12, 20, 32, 15),
                     'next': {'key':'other_consumer_loans', 'title':'Vehicle / consumer loan', 'css':'consumer-loan', 'icon': 'buying-car'}
                     },
                     {
                     'date_received': '2015-04-13T20:32:15',
                     'title':'Vehicle / consumer loan', 'css':'consumer-loan', 'icon': 'buying-car',
-                    'tags': ['Older American', 'Servicemember'],
                     'date': datetime(2015, 4, 13, 20, 32, 15),
                     'next': {'key': 'bank_accounts', 'title': 'Bank account', 'css': 'bank-account', 'icon':'bank-account'}
                     }]
