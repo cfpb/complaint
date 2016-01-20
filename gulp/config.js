@@ -52,7 +52,8 @@ module.exports = {
     entries: ['index.js', 'data-use.js', 'submit-a-complaint.js', 'complaint-process.js'],
     src: loc.src + '/static/js/',
     dest: loc.dist + '/js/',
-    common: 'main.js'
+    common: 'main.js',
+    ie8: [loc.lib + '/respond/src/respond.js', loc.lib + '/ie8/build/ie8.js']
   },
   test: {
     src: [loc.src + '/static/js/index.js', loc.src + '/static/js/data-use.js', loc.src + '/static/js/handle-resize.js', loc.src + '/static/js/expandable-helpers.js', loc.src + '/static/js/tab-expandables.js'],

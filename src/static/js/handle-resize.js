@@ -1,8 +1,6 @@
 'use strict';
 var assign = require('object-assign');
 
-// TODO: polyfills for addEventListener & bind for IE8
-
 /**
  * Facilitates functionality that depends on window size.
  * Takes a test function and a callback function,

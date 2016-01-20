@@ -28,8 +28,23 @@ gulp.task( 'scripts', function() {
     .pipe( $.uglify() )
     .pipe( $.sourcemaps.write( './' ) )
     .pipe( gulp.dest( config.dest ) )
-    .pipe( browserSync.stream() );
-
+    .pipe( browserSync.reload( {
+       stream: true
+     } ) );
+    
+  gulp.src(config.ie8)
+    .pipe( $.sourcemaps.init() )
+    .pipe( $.concat('ie8.js') )
+    .pipe( $.uglify() )
+    .on( 'error', handleErrors )
+    .pipe( $.rename( {
+      suffix: ".min"
+     } ) )
+     .pipe( $.sourcemaps.write( '.' ) )
+     .pipe( gulp.dest( config.dest ) )
+     .pipe( browserSync.reload( {
+       stream: true
+     } ) );
   // return gulp.src( config.src )
   //   .pipe( $.sourcemaps.init() )
   //   .pipe( $.concat( config.name ) )
