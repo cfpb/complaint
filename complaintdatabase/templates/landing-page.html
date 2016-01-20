@@ -143,7 +143,7 @@
                       <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
                       <p class="complaint-issue"> {{narrative.issue}} </p>
                       {% if narrative.tags %}
-                      <h4>Complaint tags <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-tags"></span></h4>
+                      <h4>Tags <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-tags"></span></h4>
                       <p class="complaint-tags"> 
                         {% for tag in narrative.tags %}<span>{% if forloop.counter > 1 %}, {% endif %}{{tag}}</span>{% endfor %}
                       </p>
