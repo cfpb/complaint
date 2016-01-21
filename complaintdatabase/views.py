@@ -64,14 +64,14 @@ def format_narratives(res_json):
     narrative_types = [
         {'key': 'bank_accounts', 'title': 'Bank account', 'css': 'bank-account', 'icon':'bank-account'},
         {'key':'credit_cards', 'title':'Credit card', 'css':'credit-card', 'icon':'credit-card'},
-        {'key':'credit_reporting', 'title':'Credit Reporting', 'css':'credit-reporting', 'icon':'loan'},
-        {'key':'debt_collection', 'title':'Debt Collection', 'css':'debt-collection', 'icon': 'debt-collection'},
-        {'key':'money_transfers', 'title':'Money Transfer', 'css':'money-transfer', 'icon': 'money-transfer'},
+        {'key':'credit_reporting', 'title':'Credit reporting', 'css':'credit-reporting', 'icon':'loan'},
+        {'key':'debt_collection', 'title':'Debt collection', 'css':'debt-collection', 'icon': 'debt-collection'},
+        {'key':'money_transfers', 'title':'Money transfer', 'css':'money-transfer', 'icon': 'money-transfer'},
         {'key':'mortgages', 'title':'Mortgage', 'css':'mortgage', 'icon': 'owning-home'},
         {'key':'other_financial_services', 'title':'Other financial service', 'css':'other', 'icon': 'money'},
-        {'key':'payday_loans', 'title':'Payday Loan', 'css':'payday-loan', 'icon': 'payday-loan'},
-        {'key':'prepaid_cards', 'title':'Prepaid Card', 'css':'prepaid-card', 'icon': 'prepaid-cards'},
-        {'key':'student_loans', 'title':'Student Loan', 'css':'student-loan', 'icon': 'paying-college'},
+        {'key':'payday_loans', 'title':'Payday loan', 'css':'payday-loan', 'icon': 'payday-loan'},
+        {'key':'prepaid_cards', 'title':'Prepaid card', 'css':'prepaid-card', 'icon': 'prepaid-cards'},
+        {'key':'student_loans', 'title':'Student loan', 'css':'student-loan', 'icon': 'paying-college'},
         {'key':'other_consumer_loans', 'title':'Vehicle / consumer loan', 'css':'consumer-loan', 'icon': 'buying-car'}
     ]
 
