@@ -77,7 +77,7 @@ Add this to your `requirements.txt` file:
 ```
 
 Then run the `requirements.txt` file in your terminal your virtual environment:
-```
+```shell
 pip install -r requirements.txt
 ```
 
