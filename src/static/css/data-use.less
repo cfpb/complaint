@@ -66,6 +66,7 @@
   
   table {
     width: 100%;
+    margin: 0px;
   }
   
   .reports-tables {
@@ -163,26 +164,24 @@
       display: none;
     }
 
-    .expandable-group {
-      .expandable_target {
-        display: none;
-      }
-      .expandable__padded {
+    .expandable_target {
+      display: none;
+    }
+    .expandable__padded {
+      margin: 0;
+      
+      .expandable_content {
         margin: 0;
-        
-        .expandable_content {
-          margin: 0;
 
-          &:before {
-            display: none;
-          }
-        }
-        
-        tbody.expandable_content {
-          padding: 0;
+        &:before {
+          display: none;
         }
       }
-    }  
+      
+      tbody.expandable_content {
+        padding: 0;
+      }
+    } 
 
     .report-data {
       display: inline;
@@ -224,3 +223,11 @@
   }
   
 }
+.lt-ie9 {
+  
+  .data-use .expandable__padded .expandable_content:before {
+    display: none;
+  }
+  
+}
+  

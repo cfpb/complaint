@@ -6,6 +6,7 @@ var toolTipper = require('./tooltipper');
 var configureComplaintURL = require('./complaint-urls');
 var tabExpandables = require('./tab-expandables');
 
+
 $(document).ready( function() {
   // sync tabs with expandables
   tabExpandables().init();
