@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
+## [1.1.5] - 2016-02-17
+### Added
+- Copy updates for Tags field on complaint database landing page and Data use page
+- Fix Submit a complaint page title
+
 ## [1.1.4] - 2016-02-04
 ### Added
 - Copy fixes on complaint database landing page
