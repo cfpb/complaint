@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
+## [1.1.6] - 2016-02-22
+### Added
+- Copy updates to Submit a complaint page
+
 ## [1.1.5] - 2016-02-17
 ### Added
 - Copy updates for Tags field on complaint database landing page and Data use page
@@ -36,7 +40,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Version 1 Django app + Jinja templates
 
 
-[unreleased]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.5...HEAD
+[unreleased]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.6...HEAD
+[1.1.6]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.5...v1.1.6
 [1.1.5]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.4...v1.1.5
 [1.1.4]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.3...v1.1.4
 [1.1.3]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.2...v1.1.3
