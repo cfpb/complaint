@@ -158,15 +158,41 @@
                     <span class="cf-icon cf-icon-paying-college-round heading-with-icon_icon"></span>
                     <span class="heading-with-icon_text">Student loan</span>
                   </h2>
-                  <p>You can submit a complaint about private student loans, which are often issued by a bank, a credit union, your school, or another lending institution. Federal student loans, which are different from private student loans, typically have names such as Stafford, Grad PLUS, Direct or Perkins.</p>
+                  <p>You can submit a complaint about a private student loan or about the servicer of your federal student loan. Private student loans are often issued by a bank, a credit union, your school, or another lending institution, while federal student loans typically have names such as Stafford, Grad PLUS, Direct or Perkins.</p>
                   <p>If you need advice on repaying student loans, visit <a href="/paying-for-college/repay-student-debt/">Repaying Student Debt</a> to learn more about your options, or <a href="/askcfpb/search?selected_facets=category_exact:student-loans">AskCFPB</a>.</p>
                   <h4><a href="#main" class="g-goto unstyled-link link-with-icon"><i class="cf-icon cf-icon-left"></i> <span class="link">Choose a different product</span></a></h4>
 
                 </div>
                 <div class="content-l_col content-l_col-2-3">
-                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide">
+                  <div class="sub-product-radios">
+                    <h3>What type of student loan is your complaint about?</h3>
+                    <div class="content-l">
+                      <div class="content-l_col content-l_col-1-2">
+                        <label class="block-label"><input id="radio-student-loan-federal" name="radio-student-loan" type="radio" />Federal student loan<span class="block-sub-label">Stafford, Direct, PLUS, Perkins</span></label>
+                      </div>
+                      <div class="content-l_col content-l_col-1-2">
+                        <label class="block-label"><input id="radio-student-loan-private" name="radio-student-loan" type="radio" />Private student loan<span class="block-sub-label">Issued by a bank, credit union, or your school</span></label>
+                      </div>
+                    </div>
+                  </div><!-- END .sub-product-radios -->
+
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide submit-a-complaint_guide-conditional" id="submit-student-loan-federal">
                     <div>
-                      <h2 class="h2-demi">Submit a student loan complaint to the CFPB</h2>
+                      <h2 class="h2-demi">Submit a federal student loan complaint</h2>
+                    </div>
+                    <div class="content-l">
+                      <div class="content-l_col-1-3">
+                        <a href="https://studentaid.ed.gov/sa/repay-loans/disputes/prepare/contact-ombudsman" class="btn btn__super btn__primary">Get started</a>
+                      </div>
+                      <div class="content-l_col-2-3">
+                        <p>Complaints about financial aid eligibility or receiving your money for your federal student loan should be directed to the U.S. Department of Education’s <a href="https://studentaid.ed.gov/sa/repay-loans/disputes/prepare/contact-ombudsman">website</a>.</p>
+                      </div>
+                    </div><!-- END .content-l -->
+                  </div><!-- END .block -->
+
+                  <div class="block block__bg block__padded-top block__flush-top block__flush-bottom block__border submit-a-complaint_guide submit-a-complaint_guide-conditional" id="submit-student-loan-private">
+                    <div>
+                      <h2 class="h2-demi">Submit a private student loan complaint to the CFPB</h2>
                     </div>
                     <div class="content-l">
                       <div class="content-l_col-1-3">
