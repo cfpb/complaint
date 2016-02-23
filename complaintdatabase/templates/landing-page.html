@@ -28,7 +28,7 @@
         <h1 class="hero_heading">Consumer Complaint Database</h1>
         <p class="hero_subhead">Each week we send thousands of consumers’ complaints about financial products and services to companies for response. Those complaints are published here after the company responds or after 15 days, whichever comes first. By adding their voice, consumers help improve the financial marketplace.</p>
       </div>
-      <div class="hero_image" style="background-image:url({% static 'img/hero.png' %})"></div>
+      <div class="hero_image" style="background-image:url({% static 'complaint_common/img/hero.png' %})"></div>
     </div>
   </section>
   <div class="wrapper  wrapper__match-content content_wrapper">
@@ -36,21 +36,21 @@
       <div class="block">
         <div class="section-one ccdb-landing_section content-l">
           <div class="content-l_col content-l_col-1-3">
-            <img class="isocon" src="{% static 'img/read.png' %}">
+            <img class="isocon" src="{% static 'complaint_common/img/read.png' %}">
             <p>Consumers have let us know they want to share their complaint descriptions so others can learn from their experience.</p>
             <div class="btn-holder">
               <p><a href="https://data.consumerfinance.gov/d/nsyy-je5y" target="_blank" class="btn">Read consumer narratives</a></p>
             </div>
           </div>
           <div class="content-l_col content-l_col-1-3">
-            <img class="isocon" src="{% static 'img/view.png' %}">
+            <img class="isocon" src="{% static 'complaint_common/img/view.png' %}">
             <p>View, sort, and filter data right in your browser.</p>
             <div class="btn-holder">
               <p><a href="https://data.consumerfinance.gov/d/s6ew-h6mp" target="_blank" class="btn">View complaint data</a></p>
             </div>
           </div>
           <div class="content-l_col content-l_col-1-3">
-            <img class="isocon" src="{% static 'img/download.png' %}">
+            <img class="isocon" src="{% static 'complaint_common/img/download.png' %}">
             <p>All complaint data we publish is freely available for anyone to use, analyze, and build on.</p>
             <div class="btn-holder">
               <p><a href="#download-the-data" class="btn">Download options and API</a></p>
@@ -288,5 +288,5 @@
 {% endblock %}
 
 {% block page_js %}
-    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'complaint_common/js/index.js' %}"></script>
 {% endblock %}
