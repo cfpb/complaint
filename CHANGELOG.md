@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
+## [1.1.7] - 2016-02-23
+### Added
+- Bug fixes for Django static file paths
+- Bug fixes for complaint database landing page: links to Socrata random complaint category views and tags loop comma madness
+
 ## [1.1.6] - 2016-02-22
 ### Added
 - Copy updates to Submit a complaint page
@@ -40,7 +45,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Version 1 Django app + Jinja templates
 
 
-[unreleased]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.6...HEAD
+[unreleased]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.7...HEAD
+[1.1.7]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.6...v1.1.7
 [1.1.6]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.5...v1.1.6
 [1.1.5]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.4...v1.1.5
 [1.1.4]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.3...v1.1.4
