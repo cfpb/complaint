@@ -145,7 +145,7 @@
                       {% if narrative.tags %}
                       <h4>Tags <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-tags"></span></h4>
                       <p class="complaint-tags"> 
-                        {% for tag in narrative.tags %}<span>{% if forloop.counter > 1 %}, {% endif %}{{tag}}</span>{% endfor %}
+                        <span>{{narrative.tags}}</span>
                       </p>
                       {% endif %}
                       <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
