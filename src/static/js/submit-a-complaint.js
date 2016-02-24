@@ -69,7 +69,7 @@ if ('onhashchange' in window) {
 //Does this need to be in a separate section from the above? *Confirm this JS won't break anything else on cf.gov!
 //*How does this work if JavaScript is disabled in the user's browser?
 $(function() {
-    
+
 //Credit & debit card radio button selections display different "Submit Complaint" wells
     $('input[name=radio-ccpp]:radio').change(function() {
         var $selected_radio = $('input[name=radio-ccpp]:radio:checked');
@@ -84,6 +84,20 @@ $(function() {
         }
         else {
             $('#submit-prepaid-card').show();
+        }
+    });
+
+//Student loan radio button selections display different "Submit Complaint" wells
+    $('input[name=radio-student-loan]:radio').change(function() {
+        var $selected_radio = $('input[name=radio-student-loan]:radio:checked');
+        var selected_id = $selected_radio.attr('id');
+        $('#submit-student-loan-federal,#submit-student-loan-private').hide();
+
+        if (selected_id == 'radio-student-loan-federal') {
+            $('#submit-student-loan-federal').show();
+        }
+        else {
+            $('#submit-student-loan-private').show();
         }
     });
 
@@ -116,11 +130,11 @@ $(function() {
             $('#credit-repair_conditional').fadeIn(500);
             $('input[name=radio-money_conditional]:radio').change(function() {
                 var $selected_conditional = $('input[name=radio-money_conditional]:radio:checked');
-                var selected_conditional_id = $selected_conditional.attr('id');             
+                var selected_conditional_id = $selected_conditional.attr('id');
 
                 if (selected_conditional_id == 'radio2-credit-report') {
                     $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/creditreporting/ask');
-                    $('#submit-money-service h2').html('Submit a credit reporting complaint to the CFPB');              
+                    $('#submit-money-service h2').html('Submit a credit reporting complaint to the CFPB');
                 }
                 else {
                     $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/other/ask/p_id/3070');
@@ -135,11 +149,11 @@ $(function() {
             $('#debt-settlement_conditional').fadeIn(500);
             $('input[name=radio-money_conditional]:radio').change(function() {
                 var $selected_conditional = $('input[name=radio-money_conditional]:radio:checked');
-                var selected_conditional_id = $selected_conditional.attr('id');             
+                var selected_conditional_id = $selected_conditional.attr('id');
 
                 if (selected_conditional_id == 'radio2-debt-settlement') {
                     $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/other/ask/p_id/3047');
-                    $('#submit-money-service h2').html('Submit an other financial service complaint to the CFPB');              
+                    $('#submit-money-service h2').html('Submit an other financial service complaint to the CFPB');
                 }
                 else {
                     $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/debtcollection/ask#currentPage=0');
@@ -162,7 +176,7 @@ $(function() {
                 break;
             case "radio-money-order":
                 $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/other/ask/p_id/3072');
-                break;          
+                break;
             case "radio-refund-anticipation-check":
                 $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/other/ask/p_id/250');
                 break;
@@ -171,12 +185,12 @@ $(function() {
                 break;
             } //close switch
             $('#submit-money-service').show();
-        } //close else 
+        } //close else
 
     });
 
 // Reset detail views on URL hash change
-    $(window).on('hashchange',function(){ 
+    $(window).on('hashchange',function(){
         $('input[name=radio-ccpp]:radio,input[name=radio-mtvc]:radio,input[name=radio-money]:radio,input[name=radio-money_conditional]:radio').prop('checked', false);
         $('#submit-credit-card,#submit-debit-card,#submit-prepaid-card,#submit-money-transfer2,#submit-money-service,#credit-repair_conditional,#debt-settlement_conditional').hide();
     });
