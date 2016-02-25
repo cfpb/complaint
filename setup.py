@@ -13,7 +13,7 @@ def read_file(filename):
 
 setup(
     name='ccdb-content',
-    version='1.1.7',
+    version='1.1.8',
     author='CFPB',
     author_email='tech@cfpb.gov',
     maintainer='cfpb',
