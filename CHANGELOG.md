@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
+## [1.1.8] - 2016-02-25
+### Changed
+- Submit a complaint info for student loans now provides an option for submitting federal student loan complaints.
+
 ## [1.1.7] - 2016-02-23
 ### Added
 - Bug fixes for Django static file paths
@@ -45,7 +49,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Version 1 Django app + Jinja templates
 
 
-[unreleased]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.7...HEAD
+[unreleased]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.8...HEAD
+[1.1.8]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.7...v1.1.8
 [1.1.7]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.6...v1.1.7
 [1.1.6]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.5...v1.1.6
 [1.1.5]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.4...v1.1.5
