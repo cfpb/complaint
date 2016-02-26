@@ -12,7 +12,7 @@ def read_file(filename):
         return ''
 
 setup(
-    name='ccdb-content',
+    name='complaintdatabase',
     version='1.1.8',
     author='CFPB',
     author_email='tech@cfpb.gov',
