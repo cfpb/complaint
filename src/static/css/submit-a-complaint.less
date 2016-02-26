@@ -1,41 +1,41 @@
 .submit-a-complaint {
-  
+
   .hero {
     background-color: @green-midtone;
-    
+
     &_text {
       border-left-width: 0;
     }
-    
+
     &_image {
       padding-top: @grid_gutter-width / 2;
       .respond-to-max(800px, {
         min-height: initial;
       });
     }
-    
+
     .status-check {
       margin-bottom: @grid_gutter-width;
     }
-    
+
     .small-type {
       font-size: .75em;
     }
-    
+
     .status-check_btn {
       .cf-icon {
         font-size:  @base-font-size-px;
         padding-right: 5px;
       }
     }
-    
+
     a.status-check_link {
       margin-left: @grid_gutter-width / 2;
       color: @black;
       border-bottom: 1px dotted @black;
     }
   }
-  
+
   &_categories {
     h5 {
       color: #75787B;
@@ -43,16 +43,16 @@
       border-bottom: 1px solid @block__border-bottom;
       margin-bottom: @grid_gutter-width / 2;
     }
-    
+
     li {
       padding-bottom: @grid_gutter-width / 2;
     }
-    
+
     .categories-section {
       padding-bottom: @grid_gutter-width / 3;
     }
   }
-  
+
   &_wizard {
     p {
       .webfont-regular();
@@ -62,7 +62,7 @@
     padding-top: 50px;
     padding-bottom: 50px;
   }
-  
+
   .heading-with-icon__lrg a {
     &,
     &:visited {
@@ -91,12 +91,12 @@
     .btn {
       width: 100%;
       text-align: center;
-    }    
+    }
     padding: @grid_gutter-width;
     border: 1px solid #BABBBD;
     background: #E3E4E5;
   }
-  
+
   .isocon-200 {
     display: none;
     .respond-to-min(600px, {
@@ -128,7 +128,7 @@
   	  vertical-align: middle;
   	  padding-left: 0.5em;
     }
-    
+
     a {
       border-bottom-width: 0;
     }
@@ -146,11 +146,11 @@
       }
     }
   }
-  
+
   .block-label {
     margin-top: 20px;
     display: block;
-    font-family: "Avenir Next", Verdana, sans-serif;
+    .webfont-regular();
     font-size: 1.125em;
     margin-left: 30px;
   }
@@ -165,11 +165,11 @@
     font-size: .75em;
     color: #75787B;
   }
-  
+
   .sub-product-radios {
     margin-bottom: @grid_gutter-width;
   }
-  
+
   .l-separated--vertical {
       padding-top: 30px;
       padding-bottom: 30px;
@@ -178,10 +178,9 @@
   .l-divided--top {
       border-top: 1px solid #D0D0CE;
   }
-  
+
   &_guide-conditional {
     display: none;
   }
 
 }
-

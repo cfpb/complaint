@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
+### Fixed
+- Use `.webfont-regular()` mixin for `.block-label` so Windows users see Avenir Next correctly.
 
 ## [1.1.8] - 2016-02-25
 ### Changed
