@@ -156,3 +156,9 @@
   text-align: center;
   background-color: @green-tint;
 }
+
+.wrapper__match-content {
+    .respond-to-min(600px, {
+        max-width: @grid_wrapper-width - (@grid_gutter-width * 2);
+    });
+}
