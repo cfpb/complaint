@@ -3,8 +3,37 @@
   .hero {
     background-color: @green-midtone;
 
+    &_wrapper {
+      .respond-to-min(@tablet-min, {
+        display: block;
+      });
+      .respond-to-min(@desktop-min, {
+        display: table;
+      });
+    }
+
     &_text {
       border-left-width: 0;
+
+      .respond-to-min(@tablet-min, {
+        display: block;
+        width: 100%;
+      });
+
+      .respond-to-min(@desktop-min, {
+        .grid_column(7,12);
+        display: table-cell;
+        vertical-align: middle;
+      });
+
+      .respond-to-min(1080px, {
+        padding-right: 100px;
+      });
+    }
+
+    &_subhead {
+      .lead-paragraph();
+      margin-top: 0;
     }
 
     &_image {
@@ -14,25 +43,57 @@
       });
     }
 
+    &_phone-prompt {
+      .webfont-regular();
+      padding-right: unit(@grid_gutter-width / 2 / @base-font-size-px, em);
+      border-right: 1px solid @black;
+      margin-top: 0;
+      margin-right: unit(@grid_gutter-width / 2 / @base-font-size-px, em);
+      margin-bottom: unit(@grid_gutter-width / @base-font-size-px, em);
+      float: left;
+
+      .respond-to-min(@desktop-min, {
+        margin-left: -0.5em;
+        text-indent: 0.5em;
+      });
+
+      .respond-to-min(980px, {
+        .heading-3();
+        padding-right: unit(@grid_gutter-width / 2 / @font-size, em);
+        margin-right: unit(@grid_gutter-width / 2 / @font-size, em);
+        margin-bottom: unit(@grid_gutter-width / @font-size, em);
+      });
+
+    }
+
+    &_phone-number {
+      .webfont-medium();
+      line-height: unit(44px / @base-font-size-px, em);
+
+
+      .respond-to-min(@desktop-min, {
+        .heading-4();
+        margin-left: -0.5em;
+        line-height: unit(44px / @font-size, em);
+        text-indent: 0.5em;
+      });
+
+      .respond-to-min(980px, {
+        .heading-3();
+        .webfont-medium();
+        line-height: unit(54px / @font-size, em);
+      });
+    }
+
     .status-check {
-      margin-bottom: @grid_gutter-width;
-    }
-
-    .small-type {
-      font-size: .75em;
-    }
-
-    .status-check_btn {
-      .cf-icon {
-        font-size:  @base-font-size-px;
-        padding-right: 5px;
-      }
+      clear: both;
     }
 
     a.status-check_link {
+      .webfont-medium();
+      .u-link__colors(#0050b4, @teal, @pacific, @pacific, @navy);
+      border-bottom-width: 1px;
       margin-left: @grid_gutter-width / 2;
-      color: @black;
-      border-bottom: 1px dotted @black;
     }
   }
 
