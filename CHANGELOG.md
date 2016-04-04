@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
+### Changed
+- Update header on Submit a Complaint to feature the phone number more prominently.
 ### Fixed
 - Use `.webfont-regular()` mixin for `.block-label` so Windows users see Avenir Next correctly.
 
