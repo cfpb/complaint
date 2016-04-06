@@ -5,6 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Changed
 - Update header on Submit a Complaint to feature the phone number more prominently.
+- Added Monthly complaint report, volumes 8 and 9
+
 ### Fixed
 - Use `.webfont-regular()` mixin for `.block-label` so Windows users see Avenir Next correctly.
 
