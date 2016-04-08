@@ -64,9 +64,7 @@
   },
   "scripts": {
     "gulp": "gulp",
-    "test": "snyk test && gulp test",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "test": "snyk test && gulp test"
   },
   "browserify-shim": {
     "jquery": "global:jQuery"
