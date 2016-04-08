@@ -12,12 +12,12 @@
     "type": "git",
     "url": "https://github.com/cfpb/capital-framework.git"
   },
-  "license": "CC0",
+  "license": "CC0-1.0",
   "keywords": [
     "complaint-database"
   ],
   "devDependencies": {
-    "browser-sync": "2.8.0",
+    "browser-sync": "2.11.2",
     "browserify": "12.0.1",
     "browserify-shim": "3.8.11",
     "chai": "3.4.1",
@@ -53,6 +53,7 @@
     "require-dir": "0.3.0",
     "sinon": "1.15.3",
     "sinon-chai": "2.8.0",
+    "snyk": "1.13.2",
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0"
   },
@@ -63,7 +64,9 @@
   },
   "scripts": {
     "gulp": "gulp",
-    "test": "gulp test"
+    "test": "snyk test && gulp test",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "browserify-shim": {
     "jquery": "global:jQuery"
@@ -71,5 +74,6 @@
   "browser": {
     "cf-expandables": "./src/vendor/cf-expandables/src/js/cf-expandables.js",
     "jquery-easing": "./src/vendor/jquery.easing/js/jquery.easing.js"
-  }
+  },
+  "snyk": true
 }
