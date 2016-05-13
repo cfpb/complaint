@@ -152,7 +152,7 @@ $(function() {
                 var selected_conditional_id = $selected_conditional.attr('id');
 
                 if (selected_conditional_id == 'radio2-debt-settlement') {
-                    $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/other/ask/p_id/3047');
+                    $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/other/ask/p_id/3071');
                     $('#submit-money-service h2').html('Submit an other financial service complaint to the CFPB');
                 }
                 else {
@@ -169,10 +169,10 @@ $(function() {
             switch (selected_id)
             {
             case "radio-check-cashing":
-                $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/other/ask/p_id/3071');
+                $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/other/ask/p_id/258');
                 break;
             case "radio-foreign-currency-exchange":
-                $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/other/ask/p_id/3073');
+                $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/other/ask/p_id/1206');
                 break;
             case "radio-money-order":
                 $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/other/ask/p_id/3072');
@@ -181,7 +181,7 @@ $(function() {
                 $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/other/ask/p_id/250');
                 break;
             case "radio-travelers-check":
-                $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/other/ask/p_id/3049');
+                $('#submit-money-service a').attr('href', 'https://help.consumerfinance.gov/app/other/ask/p_id/3073');
                 break;
             } //close switch
             $('#submit-money-service').show();
