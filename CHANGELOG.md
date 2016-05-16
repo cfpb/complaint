@@ -3,9 +3,15 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
+### Fixed
+- Submit a complaint links to "Other financial services" now point to accurate form URLs with the correct radio buttons selected.
+
+## [1.2] - 2016-04-21
 ### Changed
 - Update header on Submit a Complaint to feature the phone number more prominently.
 - Added Monthly complaint report, volumes 8 and 9
+- Add snyk to project
+- cf.gov v1 release: Tweaks needed to make sure 'pip wheel <repo> includes all files'
 
 ### Fixed
 - Use `.webfont-regular()` mixin for `.block-label` so Windows users see Avenir Next correctly.
@@ -55,7 +61,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Version 1 Django app + Jinja templates
 
 
-[unreleased]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.8...HEAD
+[unreleased]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.2...HEAD
+[1.2]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.8...v1.2
 [1.1.8]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.7...v1.1.8
 [1.1.7]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.6...v1.1.7
 [1.1.6]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.5...v1.1.6
