@@ -41,11 +41,9 @@ if ('onhashchange' in window) {
         var prev_hash_val = location.hash;
 
         if (window.location.hash) {
-            show_slide(window.location.hash.replace('#',''), 1);
-            // If you paste a url into the browser with a hash it will jump to that hash.
-            // We don't want this behavior, we want the page to behave as normal so you have
-            // context from the intro.
-            $('html, body').scrollTop($(window.location.hash).offset().top);
+            var slide_id = window.location.hash.replace('#','');
+
+            show_slide(slide_id, 1);
         }
 
         // Create event for back/forward hash tag change
