@@ -3,7 +3,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
-### Fixed
+
+## [1.2.1] - 2016-05-26
+### Changed
+- Fix broken report links on data use page
+- Add new reports to data use page
 - Submit a complaint links to "Other financial services" now point to accurate form URLs with the correct radio buttons selected.
 
 ## [1.2] - 2016-04-21
@@ -61,7 +65,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Version 1 Django app + Jinja templates
 
 
-[unreleased]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.2...HEAD
+[unreleased]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.2.1...HEAD
+[1.2]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.2...v1.2.1
 [1.2]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.8...v1.2
 [1.1.8]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.7...v1.1.8
 [1.1.7]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.6...v1.1.7
