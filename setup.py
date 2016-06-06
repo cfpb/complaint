@@ -56,7 +56,7 @@ class bdist_wheel(_bdist_wheel):
 
 setup(
     name='complaintdatabase',
-    version='1.2.1',
+    version='1.2.2',
     author='CFPB',
     author_email='tech@cfpb.gov',
     maintainer='cfpb',

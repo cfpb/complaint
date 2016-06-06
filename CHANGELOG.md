@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
+## [1.2.2] - 2016-06-06
+### Fixed
+- Fix 404 for link to Narrative Scrubbing Standard PDF
+
 ## [1.2.1] - 2016-05-26
 ### Changed
 - Fix broken report links on data use page
@@ -65,15 +69,16 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Version 1 Django app + Jinja templates
 
 
-[unreleased]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.2.1...HEAD
-[1.2]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.2...v1.2.1
-[1.2]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.8...v1.2
-[1.1.8]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.7...v1.1.8
-[1.1.7]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.6...v1.1.7
-[1.1.6]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.5...v1.1.6
-[1.1.5]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.4...v1.1.5
-[1.1.4]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.3...v1.1.4
-[1.1.3]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.2...v1.1.3
-[1.1.2]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.1...v1.1.2
-[1.1.1]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.1.0...v1.1.1
-[1.1.0]: https://fake.ghe.domain/CCDB4/CCDB-content/compare/v1.0.0...v1.1.0
+[unreleased]: ../../compare/v1.2.2...HEAD
+[1.2.2]: ../../compare/v1.2.1...v1.2.2
+[1.2.1]: ../../compare/v1.2...v1.2.1
+[1.2]: ../../compare/v1.1.8...v1.2
+[1.1.8]: ../../compare/v1.1.7...v1.1.8
+[1.1.7]: ../../compare/v1.1.6...v1.1.7
+[1.1.6]: ../../compare/v1.1.5...v1.1.6
+[1.1.5]: ../../compare/v1.1.4...v1.1.5
+[1.1.4]: ../../compare/v1.1.3...v1.1.4
+[1.1.3]: ../../compare/v1.1.2...v1.1.3
+[1.1.2]: ../../compare/v1.1.1...v1.1.2
+[1.1.1]: ../../compare/v1.1.0...v1.1.1
+[1.1.0]: ../../compare/v1.0.0...v1.1.0
