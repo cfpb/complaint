@@ -1,6 +1,6 @@
 CCDB-content
 ============
-CCDB-content is a standalone Django project that runs the [Submit a complaint](http://www.consumerfinance.gov/complaint) and [Consumer Complaint Database](](http://www.consumerfinance.gov/complaintdatabase) applications.
+CCDB-content is a standalone Django project that runs the [Submit a complaint](http://www.consumerfinance.gov/complaint) and [Consumer Complaint Database](http://www.consumerfinance.gov/complaintdatabase) applications.
 
 ![Submit a complaint website screenshot](https://raw.githubusercontent.com/cfpb/complaint/master/screenshot-complaint.png)
 ![Consumer Complaint Database website screenshot](https://raw.githubusercontent.com/cfpb/complaint/master/screenshot-complaintdatabase.png)
