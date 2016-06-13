@@ -14,43 +14,51 @@ CCDB-content is a standalone Django project that runs the complaint database app
 
 ## Setup
 
-1. copy settings_secret.py.template to settings_secret.py
-1. set up virtual environment 
+1. Copy `settings_secret.py.template` to `settings_secret.py`:
 
+  ```bash
+  cp ccdb/settings_secret.py.template ccdb/settings_secret.py
   ```
+1. Set up virtual environment:
+
+  ```bash
   mkvirtualenv ccdb
   workon ccdb
   ```
-1. install Django 1.6 etc
+1. Install Django 1.6 and Python dependencies:
 
-  ```
+  ```bash
   pip install -r requirements.txt
   ```
-1. run server
+1. Run server locally:
 
-  ``` 
+  ```bash
   python manage.py runserver 
   ```
-1. install Gulp
+1. To set up the front end, first install Gulp if you don't have it:
 
-  ``` 
+  ```bash
   npm install --global gulp
   ``` 
-1. install [Autoenv](https://github.com/kennethreitz/autoenv) 
+1. Install [Autoenv](https://github.com/kennethreitz/autoenv) if needed:
 
-  ```
+  ```bash
   $ pip install autoenv
   ```
-1. copy `.env_SAMPLE` to `.env` and cd into root directory to execute `.env`.
+1. Copy `.env_SAMPLE` to `.env` and cd into root directory to execute `.env`.
+  
+  ```bash
+  cp .env_SAMPLE .env
+  cd ../complaint
+  ```
+1. Run the front end build script to compile JavaScript, CSS, and image assets:
 
-1. run front end build
-
-  ``` 
+  ```bash
   sh ./setup.sh
   ``` 
-1. go to landing pages: 
+1. Go to landing pages: 
   - http://127.0.0.1:8000/complaintdatabase/
-  - http://127.0.0.1:8000/complaintdatabase/data-use/
+  - http://127.0.0.1:8000/complaint/data-use/
   - http://127.0.0.1:8000/complaint/process/
   - http://127.0.0.1:8000/complaint/
 
@@ -73,7 +81,7 @@ In your Django project `settings.py`, you will need to include the following in 
 
 Add this to your `requirements.txt` file:
 ```
--e git+https://fake.ghe.domain/CCDB4/CCDB-content.git#egg=complaintdatabase
+-e git+https://github.com/cfpb/complaint.git#egg=complaintdatabase
 ```
 
 Then run the `requirements.txt` file in your terminal your virtual environment:
