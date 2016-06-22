@@ -47,6 +47,7 @@
     "gulp-util": "3.0.6",
     "jquery": "1.11.3",
     "jsdom": "7.0.2",
+    "license-exceptions": "1.2.2",
     "mocha-jsdom": "1.0.0",
     "object-assign": "4.0.1",
     "pretty-hrtime": "1.0.0",
