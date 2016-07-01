@@ -12,20 +12,8 @@ install:
   - pip install -r test_requirements.txt
   - pip install pysqlite
 
-  # Project initialization.
-  # - mkvirtualenv ccdb
-  # - workon ccdb
-  # - chmod +x ./setup.sh
-  # - ./setup.sh
-
-# before_script:
-  # - python manage.py migrate
-
 script:
     - python manage.py test
-  # - gulp lint
-  # - gulp test:unit
-  # - gulp test:coveralls
 
 env:
     - export DEPLOY_ENV=DEV
