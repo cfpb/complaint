@@ -7,6 +7,7 @@ sudo: false
 
 install:
   # Project configuration requirements.
+  - cp ccdb/settings_secret.py.template ccdb/settings_secret.py
   - pip install -r requirements.txt
   - pip install -r test_requirements.txt
 
