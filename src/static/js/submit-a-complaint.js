@@ -56,7 +56,6 @@ if ('onhashchange' in window) {
             // Analytics
             if( prev_hash_val != location.hash ) {
                 prev_hash_val = location.hash;
-                _gaq.push(['_trackPageview', location.pathname + location.search + location.hash]);
             }
         });
 
