@@ -13,9 +13,10 @@ install:
   # Project configuration requirements.
   - pip install -r requirements.txt
   - pip install -r test_requirements.txt
-  - pip install pysqlite
+#  - pip install pysqlite
 
 script:
+  - ./travis-prep.sh
   - coverage run --source='.' manage.py test
 
 after_success:
