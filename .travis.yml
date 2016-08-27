@@ -1,0 +1,20 @@
+language: python
+
+python:
+  - "2.7"
+
+sudo: false
+
+install:
+  # Project configuration requirements.
+  - cp ccdb/settings_secret.py.template ccdb/settings_secret.py
+  - pip install -r requirements.txt
+  - pip install -r test_requirements.txt
+  - pip install pysqlite
+
+script:
+    - python manage.py test
+
+env:
+    - export DEPLOY_ENV=DEV
+    - DJANGO_SETTINGS_MODULE=ccdb.settings
