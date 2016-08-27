@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/cfpb/complaints.png)](https://travis-ci.org/cfpb/complaints) [![Coverage Status](https://coveralls.io/repos/github/cfpb/complaints/badge.svg?branch=master)](https://coveralls.io/github/cfpb/complaints?branch=master)
+[![Build Status](https://travis-ci.org/cfpb/complaint.png)](https://travis-ci.org/cfpb/complaint) [![Coverage Status](https://coveralls.io/repos/github/cfpb/complaint/badge.svg?branch=master)](https://coveralls.io/github/cfpb/complaint?branch=master)
 
 complaint
 ============
