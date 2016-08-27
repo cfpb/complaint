@@ -14,7 +14,7 @@ install:
   - pip install -r requirements.txt
   - pip install -r test_requirements.txt
   - pip install pysqlite
-  - npm install --global gulp
+  - npm install gulp
 
 script:
   - gulp clean:templates
