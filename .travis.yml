@@ -14,11 +14,8 @@ install:
   - pip install -r requirements.txt
   - pip install -r test_requirements.txt
   - pip install pysqlite
-  - npm install gulp
 
 script:
-  - gulp clean:templates
-  - gulp copy:templates
   - coverage run --source='.' manage.py test
 
 after_success:
