@@ -1,11 +1,9 @@
-import unittest
-
-import django
-from django.test import RequestFactory, TestCase
-from django.http import HttpResponse, HttpRequest
-from django.test import Client
-from django.core.urlresolvers import reverse
+from django.test import RequestFactory, TestCase, Client
 from .views import SubmitView, DataUseView, ProcessView
+from django.core.urlresolvers import reverse
+
+client = Client()
+
 
 class SubmitViewTest(TestCase):
     def setUp(self):
@@ -19,6 +17,7 @@ class SubmitViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue('base_template' in response.context_data.keys())
 
+
 class DataUseViewTest(TestCase):
     def setUp(self):
         # Every test needs access to the request factory.
@@ -31,6 +30,7 @@ class DataUseViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue('base_template' in response.context_data.keys())
 
+
 class ProcessViewTest(TestCase):
     def setUp(self):
         # Every test needs access to the request factory.
@@ -42,3 +42,14 @@ class ProcessViewTest(TestCase):
         response = ProcessView.as_view()(request)
         self.assertEqual(response.status_code, 200)
         self.assertTrue('base_template' in response.context_data.keys())
+
+
+class URLTest(TestCase):
+    url_names = ['ccdb_landing', 'ccdb_data_use', 'ccdb_process']
+
+    def test_complaint_urls(self):
+        for url_name in self.url_names:
+            print "trying URL name {}".format(url_name)
+            response = client.get(reverse("complaints:{}".format(url_name)))
+            self.assertEqual(response.status_code, 200)
+            self.assertTrue('base_template' in response.context_data.keys())
