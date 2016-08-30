@@ -10,8 +10,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from settings_secret import *
-
+# from settings_secret import *
+SECRET_KEY = "fordevelopmentonly"
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
