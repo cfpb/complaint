@@ -61,12 +61,16 @@ def get_narratives_json():
 def format_narratives(res_json):
     
     narratives = []
+
+    # Additional data needed to output the narratives on the page
+    # title, css, and icon are required
+    # optional 'tooltip' determines text that displays on section button hover (defaults to title)
     narrative_types = [
         {'key': 'bank_accounts', 'title': 'Bank account', 'css': 'bank-account', 'icon':'bank-account'},
         {'key':'credit_cards', 'title':'Credit card', 'css':'credit-card', 'icon':'credit-card'},
         {'key':'credit_reporting', 'title':'Credit reporting', 'css':'credit-reporting', 'icon':'loan'},
         {'key':'debt_collection', 'title':'Debt collection', 'css':'debt-collection', 'icon': 'debt-collection'},
-        {'key':'money_transfers', 'title':'Money transfer', 'css':'money-transfer', 'icon': 'money-transfer'},
+        {'key':'money_transfers', 'title':'Money transfer or virtual currency', 'tooltip': 'Money transfer/virtual currency', 'css':'money-transfer', 'icon': 'money-transfer'},
         {'key':'mortgages', 'title':'Mortgage', 'css':'mortgage', 'icon': 'owning-home'},
         {'key':'other_financial_services', 'title':'Other financial service', 'css':'other', 'icon': 'money'},
         {'key':'payday_loans', 'title':'Payday loan', 'css':'payday-loan', 'icon': 'payday-loan'},
@@ -80,9 +84,9 @@ def format_narratives(res_json):
         for index, item in enumerate(narrative_types):
             # get json data for this type
             narrative = res_json[item['key']]
-            
-            for attr in ['title', 'css', 'icon']:
-                narrative[attr] = item[attr]
+
+            # extend it with the additional title/css/icon/tooltip data
+            narrative.update(item)
             
             # format date
             narrative['date'] = datetime.strptime(narrative['date_received'], "%Y-%m-%dT%H:%M:%S")
