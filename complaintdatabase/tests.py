@@ -84,7 +84,7 @@ class FormatNarrativesTest(TestCase):
         }
         sorted_titles = ['Bank account', 'Credit card',
                          'Credit reporting', 'Debt collection',
-                         'Money transfer', 'Mortgage',
+                         'Money transfer or virtual currency', 'Mortgage',
                          'Other financial service', 'Payday loan',
                          'Prepaid card', 'Student loan',
                          'Vehicle / consumer loan']
