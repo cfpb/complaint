@@ -31,7 +31,7 @@ class LandingViewTest(TestCase):
 
 class NarrativeJsonTest(TestCase):
 
-    @patch('requests.get')
+    @patch('complaintdatabase.views.requests.get')
     def test_get_narratives_json(self, mock_requests_get):
         # Using namedtuple to mock out the attribute text in response
         # not sure if this is the best way though
@@ -40,7 +40,7 @@ class NarrativeJsonTest(TestCase):
         res_json = get_narratives_json()
         self.assertEqual(res_json, {})
 
-    @patch('requests.get')
+    @patch('complaintdatabase.views.requests.get')
     def test_request_exception_get_narratives_json(self, mock_requests_get):
         mock_requests_get.side_effect = MOCK_404
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
@@ -49,7 +49,7 @@ class NarrativeJsonTest(TestCase):
             self.assertIn('requests.exceptions.RequestException',
                           fakeOutput.getvalue().strip())
 
-    @patch('requests.get')
+    @patch('complaintdatabase.views.requests.get')
     def test_incorrect_text_get_narratives_json(self, mock_requests_get):
         Response = collections.namedtuple('Response', 'text')
         mock_requests_get.return_value = Response(text=("This is not a correct"
@@ -116,7 +116,7 @@ class GetStatsTest(TestCase):
 
 
 class CountInfoTest(TestCase):
-    @patch('requests.get')
+    @patch('complaintdatabase.views.requests.get')
     def test_get_count_info(self, mock_requests_get):
         # Using namedtuple to mock out the attribute text in response
         # not sure if this is the best way though
@@ -132,7 +132,7 @@ class CountInfoTest(TestCase):
         self.assertEqual(res_complaints, 15)
         self.assertEqual(res_timely, 11)
 
-    @patch('requests.get')
+    @patch('complaintdatabase.views.requests.get')
     def test_request_exception_get_count_info(self, mock_requests_get):
         mock_requests_get.side_effect = MOCK_404
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
@@ -142,7 +142,7 @@ class CountInfoTest(TestCase):
             self.assertIn('requests.exceptions.RequestException',
                           fakeOutput.getvalue().strip())
 
-    @patch('requests.get')
+    @patch('complaintdatabase.views.requests.get')
     def test_incorrect_text_get_count_info(self, mock_requests_get):
         error = "This is not a correct set of info"
         Response = collections.namedtuple('Response', 'text')
@@ -153,7 +153,7 @@ class CountInfoTest(TestCase):
             self.assertEqual(res_timely, 0)
             self.assertIn('ValueError', fakeOutput.getvalue().strip())
 
-    @patch('requests.get')
+    @patch('complaintdatabase.views.requests.get')
     def test_no_key_get_count_info(self, mock_requests_get):
         response_text = "[ {\"count\": \"1\"}, {\"count\": \"2\"} ]"
         Response = collections.namedtuple('Response', 'text')
