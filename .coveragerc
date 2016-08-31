@@ -1,0 +1,12 @@
+[run]
+omit = 
+    *ccdb/wsgi.py
+    *admin*
+    */settings.py
+    */python2.7/*
+    *setup.py
+
+[report]
+exclude_lines = 
+    pragma: no cover
+    if __name__ == .__main__.:

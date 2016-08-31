@@ -11,8 +11,8 @@ var urlCodes = {
   'credit-reporting_narratives' : 'ur78-i5sn',
   'debt-collection_all' : 'ckyu-ku28',
   'debt-collection_narratives' : 'dx9u-5nhx',
-  'money-transfer_all' : 'uha4-cwwn',
-  'money-transfer_narratives' : 'njq8-tnnk',
+  'money-transfer_all' : '3hjq-88e9', // + virtual currency
+  'money-transfer_narratives' : 'd644-vf4p', // + virtual currency
   'mortgage_all' : 'g5qz-smft',
   'mortgage_narratives' : 'gfmg-6ppu',
   'other_all' : 'b239-tvpx',

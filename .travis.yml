@@ -5,16 +5,19 @@ python:
 
 sudo: false
 
+env:
+  - DEPLOY_ENV=DEV
+  - DJANGO_SETTINGS_MODULE=ccdb.settings
+
 install:
   # Project configuration requirements.
-  - cp ccdb/settings_secret.py.template ccdb/settings_secret.py
   - pip install -r requirements.txt
   - pip install -r test_requirements.txt
-  - pip install pysqlite
+#  - pip install pysqlite
 
 script:
-    - python manage.py test
+  - ./travis-prep.sh
+  - coverage run --source='.' manage.py test
 
-env:
-    - export DEPLOY_ENV=DEV
-    - DJANGO_SETTINGS_MODULE=ccdb.settings
+after_success:
+  - coveralls

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cfpb/complaint.png)](https://travis-ci.org/cfpb/complaint) [![Coverage Status](https://coveralls.io/repos/github/cfpb/complaint/badge.svg?branch=master)](https://coveralls.io/github/cfpb/complaint?branch=master)
+
 complaint
 ============
 Standalone Django project that runs the [Submit a complaint](http://www.consumerfinance.gov/complaint) and [Consumer Complaint Database](http://www.consumerfinance.gov/complaintdatabase) applications.
@@ -18,18 +20,13 @@ Standalone Django project that runs the [Submit a complaint](http://www.consumer
 
 ## Setup
 
-1. Copy `settings_secret.py.template` to `settings_secret.py`:
-
-  ```bash
-  cp ccdb/settings_secret.py.template ccdb/settings_secret.py
-  ```
 1. Set up virtual environment:
 
   ```bash
   mkvirtualenv ccdb
   workon ccdb
   ```
-1. Install Django 1.6 and Python dependencies:
+1. Install Django 1.8.14 and Python dependencies:
 
   ```bash
   pip install -r requirements.txt
@@ -98,5 +95,6 @@ pip install -r requirements.txt
 For Python/Django tests, in the base directory, run the following:
 
 ```shell
-python manage.py test
+pip install -r test_requirements.txt
+./pytest.sh
 ```

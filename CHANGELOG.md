@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
+- Added travis and coveralls setup
+- Updated the download 4x4 codes for Money transfers
 
 ## [1.2.2] - 2016-06-06
 ### Fixed
