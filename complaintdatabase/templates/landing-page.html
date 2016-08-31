@@ -109,7 +109,7 @@
 
           <div class="category-buttons u-clearfix">
             {% for narrative in narratives %}
-              <button data-category="{{narrative.css}}" class="{% if forloop.counter == 1 %}selected-button{% endif %} tab_btn"><span class="text-content">{{ narrative.title }}</span><span class="cf-icon cf-icon-{{ narrative.icon }}-round"></span></button>
+              <button data-category="{{narrative.css}}" class="{% if forloop.counter == 1 %}selected-button{% endif %} tab_btn"><span class="text-content">{% if narrative.tooltip %} {{ narrative.tooltip }} {% else %} {{ narrative.title }} {% endif %}</span><span class="cf-icon cf-icon-{{ narrative.icon }}-round"></span></button>
             {% endfor %}
           </div>
 
