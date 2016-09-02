@@ -3,6 +3,8 @@ from mock import patch, Mock, MagicMock, mock_open
 
 from requests.exceptions import ConnectionError
 from django.test import RequestFactory, TestCase
+from django.core.urlresolvers import reverse
+from django.test import Client
 from datetime import datetime
 from StringIO import StringIO
 from .views import (LandingView, DocsView, get_narratives_json,
@@ -10,6 +12,7 @@ from .views import (LandingView, DocsView, get_narratives_json,
                     is_data_not_updated)
 
 MOCK_404 = ConnectionError(Mock(return_value={'status': 404}), 'not found')
+client = Client()
 
 
 class LandingViewTest(TestCase):
@@ -27,6 +30,15 @@ class LandingViewTest(TestCase):
         self.assertTrue('stats' in response.context_data.keys())
         self.assertTrue('total_complaints' in response.context_data.keys())
         self.assertTrue('timely_responses' in response.context_data.keys())
+
+    def test_demo_json(self):
+        """Test demo version of landing page"""
+        response = client.get(reverse("complaintdatabase:ccdb-demo",
+                                      kwargs={'demo_json': 'demo.json'}))
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('base_template' in response.context_data.keys())
+        self.assertTrue('narratives' in response.context_data.keys())
+        self.assertTrue('stats' in response.context_data.keys())
 
 
 class NarrativeJsonTest(TestCase):
@@ -316,33 +328,6 @@ class DataUpdatedTest(TestCase):
         data_down, narratives_down = is_data_not_updated(input_json)
         self.assertFalse(data_down)
         self.assertTrue(narratives_down)
-
-    # @patch('complaintdatabase.views.get_now')
-    # def test_data_not_updated_saturday_down(self, mock_get_now):
-    #     mock_get_now.return_value = datetime(2015, 12, 26, 19, 20, 10, 975427)
-    #     input_json = {'stats': {'last_updated': "2015-12-18",
-    #                             'last_updated_narratives': "2015-12-18"}}
-    #     data_down, narratives_down = is_data_not_updated(input_json)
-    #     self.assertTrue(data_down)
-    #     self.assertFalse(narratives_down)
-
-    # @patch('complaintdatabase.views.get_now')
-    # def test_data_not_updated_saturday_up(self, mock_get_now):
-    #     mock_get_now.return_value = datetime(2015, 12, 26, 19, 20, 10, 975427)
-    #     input_json = {'stats': {'last_updated': "2015-12-21",
-    #                             'last_updated_narratives': "2015-12-21"}}
-    #     data_down, narratives_down = is_data_not_updated(input_json)
-    #     self.assertFalse(data_down)
-    #     self.assertFalse(narratives_down)
-
-    # @patch('complaintdatabase.views.get_now')
-    # def test_data_not_updated_saturday_narratives_down(self, mock_get_now):
-    #     mock_get_now.return_value = datetime(2015, 12, 26, 19, 20, 10, 975427)
-    #     input_json = {'stats': {'last_updated': "2015-12-21",
-    #                             'last_updated_narratives': "2015-12-18"}}
-    #     data_down, narratives_down = is_data_not_updated(input_json)
-    #     self.assertFalse(data_down)
-    #     self.assertTrue(narratives_down)
 
     @patch('complaintdatabase.views.get_now')
     def test_data_not_updated_saturday_down(self, mock_get_now):

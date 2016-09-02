@@ -17,12 +17,24 @@ else:  # pragma: no cover
 
 
 class LandingView(TemplateView):
+    """
+    Main page view.
+
+    To run as a standalone demo with local data, put your demo json
+    in the 'demo.json' file at the project root and use this standalone url:
+    'http://127.0.0.1:8000/complaintdatabase/demo/demo.json/'
+    You can use a different file name; just specify it in the last URL field.
+    """
+
     template_name = "landing-page.html"
 
     def get_context_data(self, **kwargs):
         context = super(LandingView, self).get_context_data(**kwargs)
         context['base_template'] = BASE_TEMPLATE
-        res_json = get_narratives_json()
+        if 'demo_json' in kwargs:
+            res_json = get_narratives_json(demo_json=kwargs['demo_json'])
+        else:
+            res_json = get_narratives_json()
         context['narratives'] = format_narratives(res_json)
         context['stats'] = get_stats(res_json)
         (context['total_complaints'],
