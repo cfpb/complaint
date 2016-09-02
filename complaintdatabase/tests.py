@@ -45,8 +45,6 @@ class NarrativeJsonTest(TestCase):
 
     @patch('complaintdatabase.views.requests.get')
     def test_get_narratives_json(self, mock_get):
-        # Using namedtuple to mock out the attribute text in response
-        # not sure if this is the best way though
         mock_return = MagicMock()
         mock_return.json.return_value = {}
         mock_get.return_value = mock_return
@@ -56,8 +54,6 @@ class NarrativeJsonTest(TestCase):
 
     @patch('complaintdatabase.views.requests.get')
     def test_get_demo_narratives_json(self, mock_get):
-        # Using namedtuple to mock out the attribute text in response
-        # not sure if this is the best way though
         mock_return = MagicMock()
         mock_return.json.return_value = {}
         mock_get.return_value = mock_return
