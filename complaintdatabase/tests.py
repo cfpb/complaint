@@ -1,5 +1,5 @@
 import collections
-from mock import patch, Mock
+from mock import patch, Mock, MagicMock, mock_open
 
 from requests.exceptions import ConnectionError
 from django.test import RequestFactory, TestCase
@@ -32,13 +32,27 @@ class LandingViewTest(TestCase):
 class NarrativeJsonTest(TestCase):
 
     @patch('complaintdatabase.views.requests.get')
-    def test_get_narratives_json(self, mock_requests_get):
+    def test_get_narratives_json(self, mock_get):
         # Using namedtuple to mock out the attribute text in response
         # not sure if this is the best way though
-        Response = collections.namedtuple('Response', 'text')
-        mock_requests_get.return_value = Response(text="narratives({});")
+        mock_return = MagicMock()
+        mock_return.json.return_value = {}
+        mock_get.return_value = mock_return
         res_json = get_narratives_json()
         self.assertEqual(res_json, {})
+        self.assertTrue(mock_get.call_count == 1)
+
+    @patch('complaintdatabase.views.requests.get')
+    def test_get_demo_narratives_json(self, mock_get):
+        # Using namedtuple to mock out the attribute text in response
+        # not sure if this is the best way though
+        mock_return = MagicMock()
+        mock_return.json.return_value = {}
+        mock_get.return_value = mock_return
+        m = mock_open(read_data='{"mock_data": ""}')
+        with patch("__builtin__.open", m, create=True):
+            res_json = get_narratives_json(demo_json='/fake/path')
+        self.assertEqual(res_json, {"mock_data": ""})
 
     @patch('complaintdatabase.views.requests.get')
     def test_request_exception_get_narratives_json(self, mock_requests_get):
@@ -50,14 +64,15 @@ class NarrativeJsonTest(TestCase):
                           fakeOutput.getvalue().strip())
 
     @patch('complaintdatabase.views.requests.get')
-    def test_incorrect_text_get_narratives_json(self, mock_requests_get):
-        Response = collections.namedtuple('Response', 'text')
-        mock_requests_get.return_value = Response(text=("This is not a correct"
-                                                        " set of narratives"))
-        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+    def test_incorrect_text_get_narratives_json(self, mock_get):
+        mock_return = MagicMock()
+        mock_return.json.return_value = {}
+        mock_get.return_value = mock_return
+        with patch('sys.stdout', new=StringIO('ValueError')) as fakeOutput:
             res_json = get_narratives_json()
             self.assertEqual(res_json, {})
-            self.assertIn('ValueError', fakeOutput.getvalue().strip())
+            self.assertIn('ValueError', fakeOutput.getvalue())
+            self.assertTrue(mock_get.call_count == 1)
 
 
 class FormatNarrativesTest(TestCase):
