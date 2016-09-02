@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 - Added travis and coveralls setup
 - Updated the download 4x4 codes for Money transfers
+- Removed view code to parse narratives as jsonp (now straight json)
 
 ## [1.2.2] - 2016-06-06
 ### Fixed
