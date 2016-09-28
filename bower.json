@@ -21,7 +21,7 @@
     "ie8": "https://github.com/WebReflection/ie8.git"
   },
   "devDependencies": {
-    "django-assets": "https://github.com/virginiacc/django-assets.git",
+    "django-assets": "https://github.com/cfpb/django-assets.git",
     "respond": "~1.4.2"
   }
 }
