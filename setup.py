@@ -34,6 +34,6 @@ setup(
     ],
     long_description=read_file('README.md'),
     zip_safe=False,
-    setup_requires=['cfgov-setup'],
+    setup_requires=['cfgov-setup==1.2',],
     frontend_build_script= 'setup.sh',
 )
