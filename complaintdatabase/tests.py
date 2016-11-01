@@ -1,8 +1,10 @@
 import collections
-from mock import patch, Mock
+from mock import patch, Mock, MagicMock, mock_open
 
 from requests.exceptions import ConnectionError
 from django.test import RequestFactory, TestCase
+from django.core.urlresolvers import reverse
+from django.test import Client
 from datetime import datetime
 from StringIO import StringIO
 from .views import (LandingView, DocsView, get_narratives_json,
@@ -10,6 +12,7 @@ from .views import (LandingView, DocsView, get_narratives_json,
                     is_data_not_updated)
 
 MOCK_404 = ConnectionError(Mock(return_value={'status': 404}), 'not found')
+client = Client()
 
 
 class LandingViewTest(TestCase):
@@ -28,17 +31,36 @@ class LandingViewTest(TestCase):
         self.assertTrue('total_complaints' in response.context_data.keys())
         self.assertTrue('timely_responses' in response.context_data.keys())
 
+    def test_demo_json(self):
+        """Test demo version of landing page"""
+        response = client.get(reverse("complaintdatabase:ccdb-demo",
+                                      kwargs={'demo_json': 'demo.json'}))
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('base_template' in response.context_data.keys())
+        self.assertTrue('narratives' in response.context_data.keys())
+        self.assertTrue('stats' in response.context_data.keys())
+
 
 class NarrativeJsonTest(TestCase):
 
     @patch('complaintdatabase.views.requests.get')
-    def test_get_narratives_json(self, mock_requests_get):
-        # Using namedtuple to mock out the attribute text in response
-        # not sure if this is the best way though
-        Response = collections.namedtuple('Response', 'text')
-        mock_requests_get.return_value = Response(text="narratives({});")
+    def test_get_narratives_json(self, mock_get):
+        mock_return = MagicMock()
+        mock_return.json.return_value = {}
+        mock_get.return_value = mock_return
         res_json = get_narratives_json()
         self.assertEqual(res_json, {})
+        self.assertTrue(mock_get.call_count == 1)
+
+    @patch('complaintdatabase.views.requests.get')
+    def test_get_demo_narratives_json(self, mock_get):
+        mock_return = MagicMock()
+        mock_return.json.return_value = {}
+        mock_get.return_value = mock_return
+        m = mock_open(read_data='{"mock_data": ""}')
+        with patch("__builtin__.open", m, create=True):
+            res_json = get_narratives_json(demo_json='/fake/path')
+        self.assertEqual(res_json, {"mock_data": ""})
 
     @patch('complaintdatabase.views.requests.get')
     def test_request_exception_get_narratives_json(self, mock_requests_get):
@@ -50,14 +72,15 @@ class NarrativeJsonTest(TestCase):
                           fakeOutput.getvalue().strip())
 
     @patch('complaintdatabase.views.requests.get')
-    def test_incorrect_text_get_narratives_json(self, mock_requests_get):
-        Response = collections.namedtuple('Response', 'text')
-        mock_requests_get.return_value = Response(text=("This is not a correct"
-                                                        " set of narratives"))
-        with patch('sys.stdout', new=StringIO()) as fakeOutput:
+    def test_incorrect_text_get_narratives_json(self, mock_get):
+        mock_return = MagicMock()
+        mock_return.json.return_value = {}
+        mock_get.return_value = mock_return
+        with patch('sys.stdout', new=StringIO('ValueError')) as fakeOutput:
             res_json = get_narratives_json()
             self.assertEqual(res_json, {})
-            self.assertIn('ValueError', fakeOutput.getvalue().strip())
+            self.assertIn('ValueError', fakeOutput.getvalue())
+            self.assertTrue(mock_get.call_count == 1)
 
 
 class FormatNarrativesTest(TestCase):
@@ -301,33 +324,6 @@ class DataUpdatedTest(TestCase):
         data_down, narratives_down = is_data_not_updated(input_json)
         self.assertFalse(data_down)
         self.assertTrue(narratives_down)
-
-    # @patch('complaintdatabase.views.get_now')
-    # def test_data_not_updated_saturday_down(self, mock_get_now):
-    #     mock_get_now.return_value = datetime(2015, 12, 26, 19, 20, 10, 975427)
-    #     input_json = {'stats': {'last_updated': "2015-12-18",
-    #                             'last_updated_narratives': "2015-12-18"}}
-    #     data_down, narratives_down = is_data_not_updated(input_json)
-    #     self.assertTrue(data_down)
-    #     self.assertFalse(narratives_down)
-
-    # @patch('complaintdatabase.views.get_now')
-    # def test_data_not_updated_saturday_up(self, mock_get_now):
-    #     mock_get_now.return_value = datetime(2015, 12, 26, 19, 20, 10, 975427)
-    #     input_json = {'stats': {'last_updated': "2015-12-21",
-    #                             'last_updated_narratives': "2015-12-21"}}
-    #     data_down, narratives_down = is_data_not_updated(input_json)
-    #     self.assertFalse(data_down)
-    #     self.assertFalse(narratives_down)
-
-    # @patch('complaintdatabase.views.get_now')
-    # def test_data_not_updated_saturday_narratives_down(self, mock_get_now):
-    #     mock_get_now.return_value = datetime(2015, 12, 26, 19, 20, 10, 975427)
-    #     input_json = {'stats': {'last_updated': "2015-12-21",
-    #                             'last_updated_narratives': "2015-12-18"}}
-    #     data_down, narratives_down = is_data_not_updated(input_json)
-    #     self.assertFalse(data_down)
-    #     self.assertTrue(narratives_down)
 
     @patch('complaintdatabase.views.get_now')
     def test_data_not_updated_saturday_down(self, mock_get_now):

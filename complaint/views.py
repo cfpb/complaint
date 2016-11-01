@@ -16,6 +16,7 @@ if STANDALONE:
 else:  # pragma: no cover
     BASE_TEMPLATE = "front/base_update.html"
 
+
 class SubmitView(TemplateView):
     template_name = "submit-a-complaint.html"
 
@@ -24,6 +25,7 @@ class SubmitView(TemplateView):
         context['base_template'] = BASE_TEMPLATE
         return context
 
+
 class DataUseView(TemplateView):
     template_name = "data-use.html"
 
@@ -31,6 +33,7 @@ class DataUseView(TemplateView):
         context = super(DataUseView, self).get_context_data(**kwargs)
         context['base_template'] = BASE_TEMPLATE
         return context
+
 
 class ProcessView(TemplateView):
     template_name = "process.html"

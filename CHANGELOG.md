@@ -3,9 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
+- Removed view code to parse narratives as jsonp (now straight json)
+- Added a url and view option to demo the landing page with a local json file
+
+## [1.2.6] - 2016-10-06
+- Copy updated for `submit-a-complaint` and `process`
 - Added travis and coveralls setup
 - Updated the download 4x4 codes for Money transfers
-- Copy updates on `submit-a-complaint` and `process`
 
 ## [1.2.2] - 2016-06-06
 ### Fixed

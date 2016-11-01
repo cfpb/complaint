@@ -45,7 +45,7 @@ class ProcessViewTest(TestCase):
 
 
 class URLTest(TestCase):
-    url_names = ['ccdb_landing', 'ccdb_data_use', 'ccdb_process']
+    url_names = ['ccdb_submit', 'ccdb_data_use', 'ccdb_process']
 
     def test_complaint_urls(self):
         for url_name in self.url_names:
