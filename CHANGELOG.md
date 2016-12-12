@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 - Removed view code to parse narratives as jsonp (now straight json)
 - Added a url and view option to demo the landing page with a local json file
+- Upgrade npm shrinkwrap endpoints to HTTPS
 
 ## [1.2.6] - 2016-10-06
 - Copy updated for `submit-a-complaint` and `process`
