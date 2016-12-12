@@ -63,8 +63,8 @@
             },
             "inherits": {
               "version": "2.0.1",
-              "from": "http://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz",
-              "resolved": "http://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
+              "from": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz",
+              "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
             }
           }
         },
