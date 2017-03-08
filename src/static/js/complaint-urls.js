@@ -32,19 +32,20 @@ var urlCodes = {
  * category & include params to derive a url code,
  * then constructs url from base & code and adds
  * format extension.
- * 
  *
- * @param  {string} category 
- * @param  {string} include 
+ *
+ * @param  {string} category
+ * @param  {string} include
  * @param  {string} format
  */
 
 
 var configureComplaintURL = function(category, include, format) {
-    var baseURL = 'https://data.consumerfinance.gov/views/';
+    var baseURL = 'https://data.consumerfinance.gov/api/views/';
     var code = urlCodes[category + '_' + include];
+    var queryParam = '?accessType=DOWNLOAD';
     if (code && format) {
-      return baseURL + code + '/rows.' + format;
+      return baseURL + code + '/rows.' + format + queryParam;
     }
 }
 
