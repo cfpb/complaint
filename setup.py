@@ -14,7 +14,7 @@ def read_file(filename):
 
 setup(
     name='complaintdatabase',
-    version='1.2.2',
+    version='1.2.9',
     author='CFPB',
     author_email='tech@cfpb.gov',
     maintainer='cfpb',
