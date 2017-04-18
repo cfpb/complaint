@@ -30,7 +30,7 @@ class LandingView(TemplateView):
 
     @property
     def template_name(self):
-        if flag_enabled(self.request, 'MOSAIC_COMPLAINTS'):
+        if flag_enabled(self.request, 'MOSAIC_CCDB'):
             return "landing-page.html"
         else:
             return "landing-page-original.html"
