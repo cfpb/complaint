@@ -5,6 +5,8 @@ from django.shortcuts import render
 from django.views.generic import View, TemplateView
 from django.conf import settings
 
+from flags.template_functions import flag_enabled
+
 try:
     STANDALONE = settings.STANDALONE
 except:  # pragma: no cover
@@ -26,7 +28,12 @@ class LandingView(TemplateView):
     You can use a different file name; just specify it in the last URL field.
     """
 
-    template_name = "landing-page.html"
+    @property
+    def template_name(self):
+        if flag_enabled(self.request, 'MOSAIC_COMPLAINTS'):
+            return "landing-page.html"
+        else:
+            return "landing-page-original.html"
 
     def get_context_data(self, **kwargs):
         context = super(LandingView, self).get_context_data(**kwargs)
