@@ -17,92 +17,95 @@ body {
 
 #ccdb-landing {
   .hero {
-    background-color: @gray-5;
-    
+    background-color: @teal-20;
+
     &_wrapper {
       .respond-to-range(600px, 1229px, {
           padding-left: @grid_gutter-width;
           padding-right: @grid_gutter-width;
       });
-      
+
       .respond-to-min(1230px, {
           padding-right: 0;
           padding-left: 0;
       });
     }
-    
+
     &_text {
        .respond-to-min(600px, {
          border-left-width: 0;
        });
     }
   }
-  
+
   .ccdb-landing_section{
     p {
       .webfont-regular();
     }
+    .list__links {
+      .webfont-medium();
+    }
   }
-  
+
   h2,
   h4,
   h6 {
     letter-spacing: 0em;
     text-transform: none;
   }
-  
+
   [data-tooltip-target] {
     color: #0072CC;
     font-size: 14px;
   }
-  
+
   .about-bar {
     height: 1px;
   }
-  
+
   .cf-notification {
     padding-left: 0;
     margin-bottom: 0;
     border-width: 0 0 1px 0;
-    
+
     &_wrapper {
       position: relative;
     }
-    
+
     &_icon {
       top: 2px;
       left: @grid_gutter-width / 2;
-      
+
       .respond-to-min(600px, {
         left: @grid_gutter-width
       });
     }
-    
+
     &_text {
       padding-left: @grid_gutter-width;
-      
+
       p {
         margin-bottom: 10px;
       }
-    } 
-    
+    }
+
     .data-text,
     .narratives-text {
       display: none;
     }
-    
+
     &.show-data-notification,
     &.show-narratives-notification {
       display: block;
     }
-    
+
     &.show-data-notification .data-text,
     &.show-narratives-notification .narratives-text {
       display: block;
     }
-    
+
   }
-  
+
   .section-one {
     .content-l_col {
       padding-bottom: 40px;
@@ -121,7 +124,7 @@ body {
       }
     }
   }
-    
+
   .section-two {
     .db-numbers {
       margin-top: 0;
@@ -141,7 +144,7 @@ body {
       line-height: 1.25;
     }
   }
-  
+
   .section-three {
     margin-bottom: 0px;
 
@@ -312,7 +315,7 @@ body {
     }
 
   }
-  
+
   .section-five {
     .download-text {
       width: 66.6666%;
@@ -364,7 +367,7 @@ body {
       height: 100%;
     }
   }
-  
+
   button#download-data {
     width: 85%;
   }
@@ -375,19 +378,19 @@ body {
     .expandable_header {
       display: none;
     }
-  
+
     .expandable__padded .expandable_content {
       margin: 0;
-    
+
       &:before {
         height: 0;
       }
     }
-  
+
     .expandable-group .expandable {
       border-width: 0;
       display: none;
-    
+
       &.expandable__expanded {
         display: block;
       }
@@ -405,7 +408,7 @@ body {
   }
 
   #ccdb-landing {
-   
+
     .section-one {
       .content-l_col img.isocon {
         max-width: 50%;
@@ -459,7 +462,7 @@ body {
         .content-l_col + .content-l_col {
           margin-top: 0;
         }
-        
+
         .hidden-in-medium {
           display: none;
         }
@@ -489,7 +492,7 @@ body {
         display: block;
         width: 100%;
       }
-      
+
       &_image {
         margin-top: unit(@grid_gutter-width / @base-font-size-px, em);
       }
@@ -499,7 +502,7 @@ body {
 
 .respond-to-max(699px, {
   #ccdb-landing,
-  #maincontent {    
+  #maincontent {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -509,7 +512,7 @@ body {
     .section-one {
       border-top: 1px solid #CDCDCB;
       padding-top: 25px;
-      
+
       .content-l_col {
         padding-bottom: 0;
 
@@ -564,7 +567,6 @@ body {
       }
     }
 
-
     .section-five {
       .download-text {
         width: 100%;
@@ -572,7 +574,7 @@ body {
       .data-selection-container {
         padding-left: 35px;
         padding-right: 35px;
-        
+
         .content-l_col.content-l_col-1-3 {
           width: 100%;
         }
@@ -585,7 +587,7 @@ body {
       margin-top: .6em;
     }
   }
-  
+
 });
 /* Expandable padding */
 
@@ -611,7 +613,7 @@ body {
     .content-l_col.content-l_col-1-3.complaint-details {
       .grid_push(8);
     }
-    
+
     .content-l_col.content-l_col-2-3.complaint-contents {
       .grid_pull(4);
     }
@@ -639,11 +641,11 @@ div[data-tooltip-name] {
   position: absolute;
   width: 20em;
   z-index: 3000;
-  
+
   .content {
     padding: 0;
     margin: 0;
-    
+
     p:last-child {
       margin-bottom: 0;
     }
@@ -661,7 +663,7 @@ div[data-tooltip-name] {
     top: -20px;
     width: 0;
   }
-  
+
   .innertip {
     border: 7px solid transparent;
     border-bottom-color: @neutral-20;
@@ -702,4 +704,4 @@ div[data-tooltip-name] {
 }
 
 
-  
+
