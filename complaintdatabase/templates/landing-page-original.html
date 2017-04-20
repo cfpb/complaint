@@ -1,0 +1,292 @@
+{% extends 'base_responsive.html' %}
+{% load staticfiles %}
+{% load humanize %}
+
+{% block title %}Consumer Complaint Database{% endblock %}
+
+{% block content %}
+
+<div id="ccdb-landing">
+  <!--
+    If the data has not been updated, add class 'show-data-notification' to cf-notification
+    If narratives have not been updated, add class 'show-narratives-notification'-->
+  <div class="cf-notification cf-notification__warning {% if data_down %} show-data-notification {% elif narratives_down %} show-narratives-notification {% endif %} ">
+    <div class="wrapper wrapper__match-content cf-notification_wrapper">
+      <span class="cf-notification_icon cf-notification_icon__warning cf-icon cf-icon-error-round"></span>
+      <div class="cf-notification_text">
+        <p class="data-text">We're currently experiencing technical issues that have delayed the refresh of data in the Consumer Complaint database.</p>
+        <p class="narratives-text">We're currently experiencing technical issues that have delayed the refresh of consumer complaint narratives in the Consumer Complaint database.</p>
+        <p class="short-desc">We expect to refresh the data in the next few days.</p>
+      </div>
+    </div>
+  </div>
+          
+          
+  <section class="hero">
+    <div class="hero_wrapper wrapper wrapper__match-content">
+      <div class="hero_text">
+        <h1 class="hero_heading">Consumer Complaint Database</h1>
+        <p class="hero_subhead">Each week we send thousands of consumers’ complaints about financial products and services to companies for response. Those complaints are published here after the company responds or after 15 days, whichever comes first. By adding their voice, consumers help improve the financial marketplace.</p>
+      </div>
+      <div class="hero_image" style="background-image:url({% static 'complaint_common/img/hero.png' %})"></div>
+    </div>
+  </section>
+  <div class="wrapper  wrapper__match-content content_wrapper">
+    <div class="content_full">
+      <div class="block">
+        <div class="section-one ccdb-landing_section content-l">
+          <div class="content-l_col content-l_col-1-3">
+            <img class="isocon" src="{% static 'complaint_common/img/read.png' %}">
+            <p>Consumers have let us know they want to share their complaint descriptions so others can learn from their experience.</p>
+            <div class="btn-holder">
+              <p><a href="https://data.consumerfinance.gov/d/nsyy-je5y" target="_blank" class="btn">Read consumer narratives</a></p>
+            </div>
+          </div>
+          <div class="content-l_col content-l_col-1-3">
+            <img class="isocon" src="{% static 'complaint_common/img/view.png' %}">
+            <p>View, sort, and filter data right in your browser.</p>
+            <div class="btn-holder">
+              <p><a href="https://data.consumerfinance.gov/d/s6ew-h6mp" target="_blank" class="btn">View complaint data</a></p>
+            </div>
+          </div>
+          <div class="content-l_col content-l_col-1-3">
+            <img class="isocon" src="{% static 'complaint_common/img/download.png' %}">
+            <p>All complaint data we publish is freely available for anyone to use, analyze, and build on.</p>
+            <div class="btn-holder">
+              <p><a href="#download-the-data" class="btn">Download options and API</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block block__border-top block__padded-top">
+        <div class="section-two ccdb-landing_section content-l">
+          <div class="content-l_col content-l_col-2-3">
+            <h2>How one complaint can help millions</h2>
+            <div class="db-numbers callouts-small">
+              <p class="callout"><span class="numeric-callout company-responses">{{ timely_responses|intcomma }} </span> company responses to consumer complaints</p>
+              <p class="callout"><span class="numeric-callout percent-timely"> {{ stats.percent_timely|floatformat|add:"%" }} </span> of complaints sent to companies get timely responses</p>
+            </div>
+            <p>By submitting a complaint, consumers can be heard by financial companies, get help with their own issues, and help others avoid similar ones. Every complaint provides insight into problems that people are experiencing,  helping us identify inappropriate practices and allowing us to stop them before they become major issues. The result: better outcomes for consumers, and a better financial marketplace for everyone.</p>
+            <p class="have-an-issue"><strong>Have an issue with a financial product or service? Add your voice. <a href="/complaint/" class="internal-link icon-link icon-link__right"><span class="icon-link_text">Submit a complaint</span></a></strong></p>
+          </div>
+          <div class="content-l_col content-l_col-1-3 db-numbers callouts-large">
+            <p class="callout"><span class="numeric-callout company-responses"> {{ timely_responses|intcomma }}</span> company responses to consumer complaints</p>
+            <p class="callout"><span class="numeric-callout percent-timely"> {{ stats.percent_timely|floatformat|add:"%" }} </span> of complaints sent to companies get timely responses</p>
+          </div>
+        </div>
+      </div>
+      <div class="block block__border-top block__padded-top">
+        <div class="section-three ccdb-landing_section">
+          <h2>Consumers’ experiences in their own words</h2>
+          <p class="in-their-own-words">These are real complaints from consumers who have opted to share their descriptions of what happened. The complaints were pulled randomly from the database.</p>
+          <div class="tooltip-content" data-tooltip-name="complaint-narrative">
+            <p>Consumer complaint narrative is the consumer-submitted description of “what happened” from the complaint.  Consumers must opt-in to share their narrative. We will not publish the narrative unless the consumer consents and consumers can opt-out at any time. The CFPB takes reasonable steps to scrub personal information from each complaint that could be used to identify the consumer.</p>
+          </div>
+          <div class="tooltip-content" data-tooltip-name="company-public-response">
+            <p>The company's optional, public-facing response to a consumer's complaint. Companies provide a public response to the CFPB, for posting on the public database, by selecting a response from a set list of options.</p>
+          </div>
+          <div class="tooltip-content" data-tooltip-name="complaint-subproduct">
+            <p>The type of sub-product the consumer identified in the complaint. For example, “Checking account” or “Non-federal student loan”</p>
+          </div>
+          <div class="tooltip-content" data-tooltip-name="complaint-tags">
+            <p>Data that supports easier searching and sorting of complaints submitted by or on behalf of consumers. For example, complaints where the submitter reports the age of the consumer as 62 years or older are tagged, &lsquo;Older American.&rsquo;  Complaints submitted by or on behalf of a servicemember or the spouse or dependent of a servicemember are tagged, &lsquo;Servicemember.&rsquo;  Servicemember includes anyone who is active duty, National Guard, or Reservist, as well as anyone who previously served and is a Veteran or retiree.</p>
+          </div>
+          <div class="tooltip-content" data-tooltip-name="complaint-issue">
+            <p>The issue the consumer identified in the complaint. For example, “Deposits and withdrawals” or “Repaying your loan”</p>
+          </div>
+          <div class="tooltip-content" data-tooltip-name="complaint-state">
+            <p>The consumer’s reported mailing state for the complaint</p>
+          </div>
+          <div class="tooltip-content" data-tooltip-name="complaint-date-received">
+            <p>The date the CFPB received the complaint. For example, “05/25/2013”</p>
+          </div>
+          <div class="tooltip-content" data-tooltip-name="complaint-company-response">
+            <p>This is how the company responded. For example, “Closed with explanation”</p>
+          </div>
+          <div class="tooltip-content" data-tooltip-name="complaint-consent-provided">
+            <p>Identifies whether the consumer opted in to publish their complaint narrative.  We do not publish the narrative unless the consumer consents and consumers can opt-out at any time.</p>
+          </div>
+
+          <div class="category-buttons u-clearfix">
+            {% for narrative in narratives %}
+              <button data-category="{{narrative.css}}" class="{% if forloop.counter == 1 %}selected-button{% endif %} tab_btn"><span class="text-content">{% if narrative.tooltip %} {{ narrative.tooltip }} {% else %} {{ narrative.title }} {% endif %}</span><span class="cf-icon cf-icon-{{ narrative.icon }}-round"></span></button>
+            {% endfor %}
+          </div>
+
+          <div class="category-tabs expandable-group" data-accordion=true>
+            {% for narrative in narratives %}
+              <div class="expandable expandable__padded {% if forloop.counter == 1 %}expandable__expanded{% endif %}" data-category="{{narrative.css}}">
+                 <button class="expandable_header expandable_target" title="Expand content" data-category="{{narrative.css}}">
+                   <span class="expandable_header-left expandable_label">
+                    <span class="cf-icon cf-icon-{{narrative.icon}}-round"></span> {{narrative.title}}
+                   </span>
+                   <span class="expandable_header-right expandable_link">
+                     <span class="expandable_cue-open">
+                       <span class="u-visually-hidden">Show</span>
+                       <span class="cf-icon cf-icon-plus-round"></span>
+                     </span>
+                     <span class="expandable_cue-close">
+                       <span class="u-visually-hidden">Hide</span>
+                       <span class="cf-icon cf-icon-minus-round"></span>
+                     </span>
+                   </span>
+                 </button>
+
+                <div class="complaint-container {{narrative.css}}-container expandable_content" data-container-for="{{narrative.css}}">
+                  <button class="category-next icon-link icon-link__right tab_nav" data-category="{{ narrative.next.css }}">Next complaint: {{ narrative.next.title }}</button>
+                  <h3 class="complaint-title">{{narrative.title}} complaint</h3>
+                  <div class="content-l">
+
+                    <div class="content-l_col content-l_col-1-3 complaint-details">
+                      <h4>Sub-product <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-subproduct"></span></h4>
+                      <p class="complaint-subproduct"> {{narrative.sub_product}} </p>
+                      <h4>Issue <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-issue"></span></h4>
+                      <p class="complaint-issue"> {{narrative.issue}} </p>
+                      {% if narrative.tags %}
+                      <h4>Tags <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-tags"></span></h4>
+                      <p class="complaint-tags"> 
+                        <span>{{narrative.tags}}</span>
+                      </p>
+                      {% endif %}
+                      <h4>State <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-state"></span></h4>
+                      <p class="complaint-state"> {{narrative.state}} </p>
+                      <h4>Date received <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-date-received"></span></h4>
+                      <p class="complaint-date"> {{narrative.date|date:"m/d/Y"}} </p>
+                      <h4>Company response to consumer <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-company-response"></span></h4>
+                      <p class="complaint-company-response"> {{narrative.company_response}} </p>
+                      <h4>Consumer consent provided? <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-consent-provided"></span></h4>
+                      <p class="complaint-consent-provided"> {{narrative.consumer_consent_provided}} </p>
+                      <p>Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first. We publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf" class="internal-link icon-link icon-link__right"><span class="icon-link_text">See our Scrubbing Standard for more details</span></a></p>
+                      <p>We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship between the consumer and the company. We may remove complaints if they don’t meet all of the publication criteria. Data is generally refreshed nightly.</p>
+                    </div>
+
+                    <div class="content-l_col content-l_col-2-3 complaint-contents">
+                      <h4>Consumer complaint narrative <span class="cf-icon cf-icon-help-round" data-tooltip-target="complaint-narrative"></span></h4>
+                      <div class="complaint-text">{{narrative.complaint_what_happened}}</div>
+                      <h4>Company public response <span class="cf-icon cf-icon-help-round" data-tooltip-target="company-public-response"></span></h4>
+                      <div class="response-text"> {{narrative.company_public_response}} </div>
+                      <p><a href="https://data.consumerfinance.gov/d/{{narrative.view_id}}" class="icon-link icon-link__right" target="_blank"><span class="icon-link_text">See {{narrative.title}} complaint data</span></a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="block block__border-top block__padded-top">
+        <div class="section-four ccdb-landing_section">
+          <h2>About the data</h2>
+          <div class="content-l">
+            <div class="content-l_col content-l_col-1-2">
+              <p>The Consumer Complaint Database is a collection of <span class="total-complaints"> {{ total_complaints|intcomma }} </span> complaints, on a range of consumer financial products and services, sent to nearly 3,000 companies for response. We don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship between the consumer and the company. <span class="publication-criteria"><a href="http://files.consumerfinance.gov/f/201303_cfpb_Final-Policy-Statement-Disclosure-of-Consumer-Complaint-Data.pdf" class="icon-link icon-link__right">
+                <span class="icon-link_text">See publication criteria</span>
+              </a></span></p>
+              <p>Since we started accepting complaints in July 2011, we’ve helped consumers connect with financial companies to understand issues with their mortgages, fix errors on their credit reports, stop unlawful calls from debt collectors, and get direct responses about problems with their credit cards, bank accounts, private student loans, and more. We analyze the data to identify trends and problems in the marketplace to help us do a better job supervising companies, enforcing federal consumer financial laws and writing rules and regulations. We publish reports on complaints and share information with state and federal agencies.</p>  
+              <p><a href="/complaint/data-use/#reports" class="icon-link icon-link__right">
+                <span class="icon-link_text">View reports</span>
+              </a></p>
+            </div>
+            <div class="content-l_col content-l_col-1-2">
+              <p>The database generally updates nightly, and contains certain information for each complaint, including the source of the complaint, the date of submission, and the company the complaint was sent to for response. The database also includes information about the actions taken by the company in response to the complaint, such as, whether the company’s response was timely, how the company responded, and whether the consumer disputed the company’s response. If the consumer opts to share it and after we take steps to remove personal information, we publish the consumer’s description of what happened. Companies also have the option to select a public response. Company level information should be considered in context of company size and/or market share. Complaints referred to other regulators, such as complaints about depository institutions with less than $10 billion in assets, are not published in the Consumer Complaint Database.</p>
+              <p><a href="/complaint/data-use/" class="icon-link icon-link__right">
+                <span class="icon-link_text">More on how we collect and use the data</span>
+              </a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block block__border-top block__padded-top">
+        <div class="section-five ccdb-landing_section">
+          <h2 id="download-the-data">Download the data</h2>
+          <p class="download-text">Our reports highlight some of what we’re seeing in the complaints we handle, but know there are more ways to use, analyze and build on the data. That’s why we make it possible for you to download the data, once we have taken steps to remove personal information.</p>
+          <div class="data-selection-container content-l">
+            <div class="content-l_col content-l_col-3-4">
+              <h3>Choose from these products and services</h3>
+              <div class="content-l">
+                <div class="content-l_col content-l_col-1-3">
+                  <label class="download-radio"><input type="radio" name="download-category" value="all" checked> All products and services</label>
+                  <label class="download-radio"><input type="radio" name="download-category" value="bank-account"> Bank account / service</label>
+                  <label class="download-radio"><input type="radio" name="download-category" value="credit-card"> Credit card</label>
+                  <label class="download-radio"><input type="radio" name="download-category" value="credit-reporting"> Credit reporting</label>
+                  <label class="hidden-in-large download-radio"><input type="radio" name="download-category" value="debt-collection"> Debt collection</label>
+                  <label class="hidden-in-large download-radio"><input type="radio" name="download-category" value="money-transfer"> Money transfer / virtual currency</label>
+                </div>
+                <div class="content-l_col content-l_col-1-3 hidden-in-medium">
+                  <label class="download-radio"><input type="radio" name="download-category" value="debt-collection"> Debt collection</label>
+                  <label class="download-radio"><input type="radio" name="download-category" value="money-transfer"> Money transfer / virtual currency</label>
+                  <label class="download-radio"><input type="radio" name="download-category" value="mortgage"> Mortgage</label>
+                  <label class="download-radio"><input type="radio" name="download-category" value="other"> Other financial service</label>
+                </div>
+                <div class="content-l_col content-l_col-1-3">
+                  <label class="hidden-in-large download-radio"><input type="radio" name="download-category" value="mortgage"> Mortgage</label>
+                  <label class="hidden-in-large download-radio"><input type="radio" name="download-category" value="other"> Other financial service</label>
+                  <label class="download-radio"><input type="radio" name="download-category" value="payday-loan"> Payday loan</label>
+                  <label class="download-radio"><input type="radio" name="download-category" value="prepaid-card"> Prepaid card</label>
+                  <label class="download-radio"><input type="radio" name="download-category" value="student-loan"> Student loan</label>
+                  <label class="download-radio"><input type="radio" name="download-category" value="consumer-loan"> Vehicle / consumer loan</label>
+                </div>
+              </div>
+            </div>
+            <div class="content-l_col content-l_col-1-4">
+              <h3>Include</h3>
+              <div class="select-wrapper">
+                <select id="download_include">
+                  <option value="all" selected>All complaints</option>
+                  <option value="narratives">Only complaints with a consumer narrative</option>
+                </select>
+              </div>
+              <h3>File format</h3>
+              <div class="select-wrapper">
+                <select id="download_format">
+                  <option value="csv" selected>CSV</option>
+                  <option value="json">JSON</option>
+                </select>
+              </div>
+              <a id="download-data-btn" class="btn" href="https://data.consumerfinance.gov/views/s6ew-h6mp/rows.csv" target="_blank">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block block__border-top block__padded-top">
+        <div class="section-six ccdb-landing_section">
+          <div class="content-l">
+            <div class="content-l_col content-l_col-2-3">
+              <h2>Use our data</h2>
+              
+              <p>Looking to export our data and have more control over it? Use our Open Data API.</p>
+              <p><a href="https://dev.socrata.com/foundry/#/data.consumerfinance.gov/jhzv-w97w" class="api-documentation internal-link icon-link icon-link__right">
+                <span class="icon-link_text">For instructions and examples, refer to Socrata’s API documentation</span>
+              </a></p>
+              <p><a href="https://cfpb.github.io/api/ccdb/" class="internal-link icon-link icon-link__right">
+                <span class="icon-link_text">What is this data?</span>
+              </a></p>
+            </div>
+            <div class="content-l_col content-l_col-1-3">
+              <h3 class="header-slug">
+                  <span class="header-slug_inner">
+                      Field reference
+                  </span>
+              </h3>
+              <p>Have a question about a data field?</p>
+              <p><a href="https://cfpb.github.io/api/ccdb/fields.html" class="internal-link 
+      icon-link icon-link__right">
+                <span class="icon-link_text">Check out our database field reference</span>
+              </a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="tooltip-container">
+        <div class="outertip"> </div>
+        <div class="innertip"> </div>
+        <div class="content">content</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block page_js %}
+    <script src="{% static 'complaint_common/js/index.js' %}"></script>
+{% endblock %}
