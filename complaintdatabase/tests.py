@@ -20,8 +20,10 @@ class LandingViewTest(TestCase):
         """Every test needs access to the request factory."""
         self.factory = RequestFactory()
 
-    def test_get_context_data_exist(self):
+    @patch('complaintdatabase.views.flag_enabled')
+    def test_get_context_data_exist(self, mock_flag_enabled):
         """Create an instance of a GET request."""
+        mock_flag_enabled.return_value = True
         request = self.factory.get('/')
         response = LandingView.as_view()(request)
         self.assertEqual(response.status_code, 200)
@@ -31,8 +33,10 @@ class LandingViewTest(TestCase):
         self.assertTrue('total_complaints' in response.context_data.keys())
         self.assertTrue('timely_responses' in response.context_data.keys())
 
-    def test_demo_json(self):
+    @patch('complaintdatabase.views.flag_enabled')
+    def test_demo_json(self, mock_flag_enabled):
         """Test demo version of landing page"""
+        mock_flag_enabled.return_value = True
         response = client.get(reverse("complaintdatabase:ccdb-demo",
                                       kwargs={'demo_json': 'demo.json'}))
         self.assertEqual(response.status_code, 200)
