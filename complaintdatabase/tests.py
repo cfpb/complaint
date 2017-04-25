@@ -1,12 +1,17 @@
 import collections
-from mock import patch, Mock, MagicMock, mock_open
-
-from requests.exceptions import ConnectionError
-from django.test import RequestFactory, TestCase
-from django.core.urlresolvers import reverse
-from django.test import Client
 from datetime import datetime
 from StringIO import StringIO
+from unittest import skipIf
+
+from mock import patch, Mock, MagicMock, mock_open
+
+from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.test import RequestFactory, TestCase
+from django.test import Client
+
+from requests.exceptions import ConnectionError
+
 from .views import (LandingView, DocsView, get_narratives_json,
                     format_narratives, get_stats, get_count_info,
                     is_data_not_updated)
@@ -33,11 +38,12 @@ class LandingViewTest(TestCase):
         self.assertTrue('total_complaints' in response.context_data.keys())
         self.assertTrue('timely_responses' in response.context_data.keys())
 
+    @skipIf(not hasattr(settings, 'STANDALONE'), "not running standlone")
     @patch('complaintdatabase.views.flag_enabled')
     def test_demo_json(self, mock_flag_enabled):
         """Test demo version of landing page"""
         mock_flag_enabled.return_value = True
-        response = client.get(reverse("complaintdatabase:ccdb-demo",
+        response = client.get(reverse("ccdb-demo",
                                       kwargs={'demo_json': 'demo.json'}))
         self.assertEqual(response.status_code, 200)
         self.assertTrue('base_template' in response.context_data.keys())
