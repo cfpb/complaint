@@ -50,6 +50,6 @@ class URLTest(TestCase):
 
     def test_complaint_urls(self):
         for url_name in self.url_names:
-            response = client.get(reverse("{}".format(url_name)))
+            response = client.get(reverse(url_name))
             self.assertEqual(response.status_code, 200)
             self.assertTrue('base_template' in response.context_data.keys())
