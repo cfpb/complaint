@@ -38,7 +38,8 @@ class LandingViewTest(TestCase):
         self.assertTrue('total_complaints' in response.context_data.keys())
         self.assertTrue('timely_responses' in response.context_data.keys())
 
-    @skipIf(not hasattr(settings, 'STANDALONE'), "not running standlone")
+    @skipIf(not getattr(settings, 'STANDALONE', 'False'),
+            "not running standlone")
     @patch('complaintdatabase.views.flag_enabled')
     def test_demo_json(self, mock_flag_enabled):
         """Test demo version of landing page"""
