@@ -3,14 +3,54 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
-- Removed view code to parse narratives as jsonp (now straight json)
+
+## [1.3.2] - 2017-05-02
+### Fixed
+- Fixed tests for running with cfgov-refresh
+
+### Updated
+- Updated CCDB landing page content
+
+## [1.3.1] - 2017-04-24
+### Added
+- Added links to product and issue list PDFs to CCDB landing page
+
+## [1.3.0] - 2017-04-20
+### Added
+- Added "recent changes" notes on CCDB landing page
+- Added feature flag for the CCDB landing page template name
+
+### Removed
+- Removed dynamic complaint counts on CCDB landing page
+- Removed complaint randomizer on CCDB landing page
+- Removed data downloader (and replaced with static download links) on CCDB landing page
+- Removed chevrons after links on CCDB landing page
+- Removed unneeded JS on CCDB landing page
+
+### Fixed
+- Fixed tests for `landingView`
+
+### Updated
+- Updated header and circle illustrations on CCDB landing page
+- Updated "About the data" content on CCDB landing page
+
+## [1.2.9] - 2017-03-09
+### Added
 - Added a url and view option to demo the landing page with a local json file
+
+### Removed
+- Removed view code to parse narratives as jsonp (now straight json)
+
+### Updated
 - Upgrade npm shrinkwrap endpoints to HTTPS
 - Modified api endpoints in JS and HTML
 
 ## [1.2.6] - 2016-10-06
-- Copy updated for `submit-a-complaint` and `process`
+### Added
 - Added travis and coveralls setup
+
+### Updated
+- Copy updated for `submit-a-complaint` and `process`
 - Updated the download 4x4 codes for Money transfers
 
 ## [1.2.2] - 2016-06-06
@@ -78,7 +118,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Version 1 Django app + Jinja templates
 
 
-[unreleased]: ../../compare/v1.2.2...HEAD
+[unreleased]: ../../compare/1.3.2...HEAD
+[1.3.2]: ../../compare/1.3.1...1.3.2
+[1.3.1]: ../../compare/1.3.0...1.3.1
+[1.3.0]: ../../compare/v1.2.9...1.3.0
+[1.2.9]: ../../compare/v1.2.8...v1.2.9
+[1.2.6]: ../../compare/v1.2.5...v1.2.6
 [1.2.2]: ../../compare/v1.2.1...v1.2.2
 [1.2.1]: ../../compare/v1.2...v1.2.1
 [1.2]: ../../compare/v1.1.8...v1.2
