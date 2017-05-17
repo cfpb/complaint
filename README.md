@@ -2,9 +2,8 @@
 
 complaint
 ============
-Standalone Django project that runs the [Submit a complaint](http://www.consumerfinance.gov/complaint) and [Consumer Complaint Database](http://www.consumerfinance.gov/complaintdatabase) applications.
+Standalone Django project that runs the [Consumer Complaint Database](http://www.consumerfinance.gov/complaintdatabase) application.
 
-![Submit a complaint website screenshot](https://raw.githubusercontent.com/cfpb/complaint/master/screenshot-complaint.png)
 ![Consumer Complaint Database website screenshot](https://raw.githubusercontent.com/cfpb/complaint/master/screenshot-complaintdatabase.png)
 
 
@@ -34,20 +33,20 @@ Standalone Django project that runs the [Submit a complaint](http://www.consumer
 1. Run server locally:
 
   ```bash
-  python manage.py runserver 
+  python manage.py runserver
   ```
 1. To set up the front end, first install Gulp if you don't have it:
 
   ```bash
   npm install --global gulp
-  ``` 
+  ```
 1. Install [Autoenv](https://github.com/kennethreitz/autoenv) if needed:
 
   ```bash
   $ pip install autoenv
   ```
 1. Copy `.env_SAMPLE` to `.env` and cd into root directory to execute `.env`.
-  
+
   ```bash
   cp .env_SAMPLE .env
   cd ../complaint
@@ -56,8 +55,8 @@ Standalone Django project that runs the [Submit a complaint](http://www.consumer
 
   ```bash
   sh ./setup.sh
-  ``` 
-1. Go to landing pages: 
+  ```
+1. Go to landing pages:
   - http://127.0.0.1:8000/complaintdatabase/
   - http://127.0.0.1:8000/complaint/data-use/
   - http://127.0.0.1:8000/complaint/process/
