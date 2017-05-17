@@ -64,7 +64,7 @@ Standalone Django project that runs the [Submit a complaint](http://www.consumer
   - http://127.0.0.1:8000/complaint/
 
 
-###Installing app to your project
+### Installing app to your project
 The Complaint Database and Complaint apps can be installed into other Django projects by doing the following:
 
 In your Django project `url.py`, you will need to include the following in your `urlpatterns` list for each app:
