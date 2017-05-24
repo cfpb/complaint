@@ -1,3 +1,2 @@
 Django==1.8.14
 requests==2.7.0
-wagtail-flags==1.0.3
