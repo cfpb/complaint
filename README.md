@@ -76,7 +76,7 @@ In your Django project `settings.py`, you will need to include the following in 
 ```python
 'complaint_common',
 'complaint',
-'complaintdatabase’,
+'complaintdatabase',
 ```
 
 Add this to your `requirements.txt` file:
