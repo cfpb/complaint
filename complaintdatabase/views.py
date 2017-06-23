@@ -25,10 +25,7 @@ class LandingView(TemplateView):
     'http://127.0.0.1:8000/complaintdatabase/demo/demo.json/'
     You can use a different file name; just specify it in the last URL field.
     """
-
-    @property
-    def template_name(self):
-        return "landing-page.html"
+    template_name = 'landing-page.html'
 
     def get_context_data(self, **kwargs):
         context = super(LandingView, self).get_context_data(**kwargs)
