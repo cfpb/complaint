@@ -13,8 +13,7 @@ from django.test import Client
 from requests.exceptions import ConnectionError
 
 from .views import (LandingView, DocsView, get_narratives_json,
-                    format_narratives, get_stats, get_count_info,
-                    is_data_not_updated)
+                    format_narratives, get_stats, is_data_not_updated)
 
 MOCK_404 = ConnectionError(Mock(return_value={'status': 404}), 'not found')
 client = Client()
@@ -33,8 +32,6 @@ class LandingViewTest(TestCase):
         self.assertTrue('base_template' in response.context_data.keys())
         self.assertTrue('narratives' in response.context_data.keys())
         self.assertTrue('stats' in response.context_data.keys())
-        self.assertTrue('total_complaints' in response.context_data.keys())
-        self.assertTrue('timely_responses' in response.context_data.keys())
 
     @skipIf(not getattr(settings, 'STANDALONE', 'False'),
             "not running standlone")
@@ -144,55 +141,6 @@ class GetStatsTest(TestCase):
             self.assertEqual({}, res)
             self.assertIn('KeyError', fakeOutput.getvalue().strip())
 
-
-class CountInfoTest(TestCase):
-    @patch('complaintdatabase.views.requests.get')
-    def test_get_count_info(self, mock_requests_get):
-        # Using namedtuple to mock out the attribute text in response
-        # not sure if this is the best way though
-        Response = collections.namedtuple('Response', 'text')
-        input_text = ("[{\"company_response\": \"Untimely response\", "
-                      "\"count_complaint_id\": \"4\"}, "
-                      "{\"company_response\": \"Ok\", "
-                      "\"count_complaint_id\": \"5\"}, "
-                      "{\"company_response\": \"Yes\", "
-                      "\"count_complaint_id\": \"6\"}]")
-        mock_requests_get.return_value = Response(text=input_text)
-        res_complaints, res_timely = get_count_info()
-        self.assertEqual(res_complaints, 15)
-        self.assertEqual(res_timely, 11)
-
-    @patch('complaintdatabase.views.requests.get')
-    def test_request_exception_get_count_info(self, mock_requests_get):
-        mock_requests_get.side_effect = MOCK_404
-        with patch('sys.stdout', new=StringIO()) as fakeOutput:
-            res_complaints, res_timely = get_count_info()
-            self.assertEqual(res_complaints, 0)
-            self.assertEqual(res_timely, 0)
-            self.assertIn('requests.exceptions.RequestException',
-                          fakeOutput.getvalue().strip())
-
-    @patch('complaintdatabase.views.requests.get')
-    def test_incorrect_text_get_count_info(self, mock_requests_get):
-        error = "This is not a correct set of info"
-        Response = collections.namedtuple('Response', 'text')
-        mock_requests_get.return_value = Response(text=error)
-        with patch('sys.stdout', new=StringIO()) as fakeOutput:
-            res_complaints, res_timely = get_count_info()
-            self.assertEqual(res_complaints, 0)
-            self.assertEqual(res_timely, 0)
-            self.assertIn('ValueError', fakeOutput.getvalue().strip())
-
-    @patch('complaintdatabase.views.requests.get')
-    def test_no_key_get_count_info(self, mock_requests_get):
-        response_text = "[ {\"count\": \"1\"}, {\"count\": \"2\"} ]"
-        Response = collections.namedtuple('Response', 'text')
-        mock_requests_get.return_value = Response(text=response_text)
-        with patch('sys.stdout', new=StringIO()) as fakeOutput:
-            res_complaints, res_timely = get_count_info()
-            self.assertEqual(res_complaints, 0)
-            self.assertEqual(res_timely, 0)
-            self.assertIn('KeyError', fakeOutput.getvalue().strip())
 
 
 class DataUpdatedTest(TestCase):
