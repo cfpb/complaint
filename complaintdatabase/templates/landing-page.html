@@ -5,18 +5,21 @@
 {% block title %}Consumer Complaint Database{% endblock %}
 
 {% block content %}
-
 <div id="ccdb-landing">
   <!--
     If the data has not been updated, add class 'show-data-notification' to cf-notification
     If narratives have not been updated, add class 'show-narratives-notification'-->
-  <div class="cf-notification cf-notification__warning {% if data_down %} show-data-notification {% elif narratives_down %} show-narratives-notification {% endif %} ">
+    <div class="cf-notification cf-notification__warning {% if data_down %} show-data-notification {% elif narratives_down %} show-narratives-notification  {% endif %}">
     <div class="wrapper wrapper__match-content cf-notification_wrapper">
       <span class="cf-notification_icon cf-notification_icon__warning cf-icon cf-icon-error-round"></span>
       <div class="cf-notification_text">
         <p class="data-text">We're currently experiencing technical issues that have delayed the refresh of data in the Consumer Complaint database.</p>
         <p class="narratives-text">We're currently experiencing technical issues that have delayed the refresh of consumer complaint narratives in the Consumer Complaint database.</p>
-        <p class="short-desc">We expect to refresh the data in the next few days.</p>
+        <p class="short-desc">{% if technical_issues %}
+        We expect a refresh of the data and restoration of access soon. 
+        {% else %}
+        We expect to refresh the data in the next few days.
+        {% endif %}</p>
       </div>
     </div>
   </div>
