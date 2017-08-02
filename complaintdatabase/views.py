@@ -45,8 +45,6 @@ class LandingView(TemplateView):
             res_json = get_narratives_json()
         context['narratives'] = format_narratives(res_json)
         context['stats'] = get_stats(res_json)
-        (context['total_complaints'],
-         context['timely_responses']) = get_count_info()
         (context['data_down'],
          context['narratives_down']) = is_data_not_updated(res_json)
         context['technical_issues'] = flag_enabled('CCDB_TECHNICAL_ISSUES')
@@ -186,42 +184,6 @@ def get_stats(res_json):
         print(e)
 
     return res_stat
-
-
-def get_count_info():
-    total_complaints = 0
-    timely_responses = 0
-    try:
-        count_response = requests.get('https://data.consumerfinance.gov/'
-                                      'resource/u473-64qt.json')
-        count_json = json.loads(count_response.text)
-
-        for item in count_json:
-            item_count = int(item['count_complaint_id'])
-            total_complaints += item_count
-            if item['company_response'] != 'Untimely response':
-                timely_responses += item_count
-
-    except requests.exceptions.RequestException as e:
-        print("get_count_info:requests.exceptions.RequestException")
-        print("There is a problem with getting data from the URL")
-        print(e)
-
-    except ValueError as e:
-        print("get_count_info:ValueError")
-        print("The text from the response doesn't follow "
-              "the correct format to be parsed as json.")
-        print(e)
-
-    except KeyError as e:
-        print("get_count_info:KeyError")
-        print("There is problem accessing with the given key, "
-              "which probably means the json has missing data")
-        print(e)
-        total_complaints = 0
-        timely_responses = 0
-
-    return (total_complaints, timely_responses)
 
 
 def get_now():
