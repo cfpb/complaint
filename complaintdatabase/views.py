@@ -5,6 +5,12 @@ from django.shortcuts import render
 from django.views.generic import View, TemplateView
 from django.conf import settings
 
+from flags.state import (
+    flag_state,
+    flag_enabled,
+    flag_disabled,
+)
+
 try:
     STANDALONE = settings.STANDALONE
 except:  # pragma: no cover
@@ -43,6 +49,7 @@ class LandingView(TemplateView):
          context['timely_responses']) = get_count_info()
         (context['data_down'],
          context['narratives_down']) = is_data_not_updated(res_json)
+        context['technical_issues'] = flag_enabled('CCDB_TECHNICAL_ISSUES')
         return context
 
 
@@ -222,7 +229,7 @@ def get_now():
 
 
 def is_data_not_updated(res_json):
-    data_down = False
+    data_down = flag_enabled('CCDB_TECHNICAL_ISSUES')
     narratives_down = False
     # show notification starting fifth business day data has not been updated
     # M-Th, data needs to have been updated 6 days ago; F-S, preceding Monday
