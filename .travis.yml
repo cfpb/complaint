@@ -1,23 +1,31 @@
 language: python
-
 python:
-  - "2.7"
-
+- '2.7'
+nodejs: 6
 sudo: false
-
 env:
-  - DEPLOY_ENV=DEV
-  - DJANGO_SETTINGS_MODULE=ccdb.settings
-
+- DEPLOY_ENV=DEV
+- DJANGO_SETTINGS_MODULE=ccdb.settings
 install:
-  # Project configuration requirements.
-  - pip install -r requirements.txt
-  - pip install -r test_requirements.txt
-  - pip install coveralls
-
+- pip install -r requirements.txt
+- pip install -r test_requirements.txt
+- pip install coveralls
+before_script:
+- npm install -g bower gulp-cli
+- bower install
 script:
-  - ./travis-prep.sh
-  - coverage run --source='.' manage.py test
-
+- ./travis-prep.sh
+- coverage run --source='.' manage.py test
+- python2.7 setup.py bdist_wheel
+- ls dist/*
 after_success:
-  - coveralls
+- coveralls
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: V8MCeolsM1iNuKOkQ6+hNsnwJuZw3nNjaLvWGJ9oPVA/FporQtevCMqdsTGJqRcvdLl/Xl7G+7NmysNTQCdqcxB1b1DkGRYg2orRod4eRz75j+YfkMejdEgWIkmfE3WIyET8D1sXi3mEGCv5SWiBvoJhrP+bNnj466Zd0l0mBn6H6h92MAkF7Y+OiRhks5FjhqaaXdunluZHkE9ehYCIaH7grfHgBRXV8f6g/zPd8+DCJWlSZ/dud1FsyRzWYUSHIkGWTa5F+O2s0HuzSghjP9EOFu8hb1Oqsu2OUJ8jbrZHDIO0uIvz0Z72CDxZg0/PEY9Nl+AUycxUUeCE/TRhL5r4wIk1yh0NYOLHQdgXMgY0ssFYGRJXWX9hw6EwlwiFLjvJuzpjS8eABNm+S5E3xrpfH33062zZSMOZKIZEVkv8LvOkc22xmYu1laphlLZ/bC9FNGLjTNxaEoQFzrmcoZ8U807Bhh1lcFMdJA/f77ZioRXpdhAJkIlsiGJPv3QHPnfH8fttuyN+bEBIYWhVn+WJzNHI4lNuFgdnmkmNbQc8fxx7aEZTCaapMojZ/KHvI8JWG4yYdsKvfNqWA6SH53GTp9bRNHME/UBYl2S8kr966iXC+p3AW0fQqZd5IAnVzV5sKw0cW7SpXexFnFP16hejAzez7apgrI83NrHcVw8=
+  file_glob: true
+  file: dist/*.whl
+  on:
+    tags: true
