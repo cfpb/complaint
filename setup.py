@@ -14,12 +14,12 @@ def read_file(filename):
 
 setup(
     name='complaintdatabase',
-    version='1.3.3',
+    version_format='{tag}.dev{commitcount}+{gitsha}',
     author='CFPB',
     author_email='tech@cfpb.gov',
     maintainer='cfpb',
     maintainer_email='tech@cfpb.gov',
-    packages=['complaint_common','complaint','complaintdatabase'],
+    packages=['complaint_common', 'complaint', 'complaintdatabase'],
     include_package_data=True,
     description=u'CCDB Landing Pages',
     classifiers=[
@@ -34,6 +34,6 @@ setup(
     ],
     long_description=read_file('README.md'),
     zip_safe=False,
-    setup_requires=['cfgov-setup==1.2',],
-    frontend_build_script= 'setup.sh',
+    setup_requires=['cfgov-setup==1.2', 'setuptools-git-version==1.0.3'],
+    frontend_build_script='setup.sh',
 )
