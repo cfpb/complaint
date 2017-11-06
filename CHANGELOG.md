@@ -8,8 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Updates browser-sync, browserify, browserify-shim, chai, debounce, del, gulp,
   gulp-autoprefixer, gulp-changed, gulp-concat, gulp-cssmin, gulp-header,
   gulp-imagemin, gulp-istanbul, gulp-less, gulp-load-plugins, gulp-notify,
-  gulp-replace, gulp-sourcemaps, gulp-util, license-exceptions, mocha-jsdom,
-  object-assign, pretty-hrtime, require-dir, sinon-chai, snyk.
+  gulp-replace, gulp-sourcemaps, gulp-util, gulp-uglify, license-exceptions,
+  mocha-jsdom, object-assign, pretty-hrtime, require-dir, sinon-chai, snyk.
 
 ## [1.3.2] - 2017-05-02
 ### Fixed
