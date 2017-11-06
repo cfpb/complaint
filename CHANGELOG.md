@@ -4,11 +4,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+- Updates browser-sync, browserify, browserify-shim, chai, debounce, del, gulp,
+  gulp-autoprefixer, gulp-changed, gulp-concat, gulp-cssmin, gulp-header,
+  gulp-imagemin, gulp-istanbul, gulp-less, gulp-load-plugins, gulp-notify,
+  gulp-replace, gulp-sourcemaps, gulp-util, license-exceptions, mocha-jsdom,
+  object-assign, pretty-hrtime, require-dir, sinon-chai, snyk.
+
 ## [1.3.2] - 2017-05-02
 ### Fixed
 - Fixed tests for running with cfgov-refresh
 
-### Updated
+### Changed
 - Updated CCDB landing page content
 
 ## [1.3.1] - 2017-04-24
@@ -30,7 +37,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - Fixed tests for `landingView`
 
-### Updated
+### Changed
 - Updated header and circle illustrations on CCDB landing page
 - Updated "About the data" content on CCDB landing page
 
@@ -41,7 +48,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 - Removed view code to parse narratives as jsonp (now straight json)
 
-### Updated
+### Changed
 - Upgrade npm shrinkwrap endpoints to HTTPS
 - Modified api endpoints in JS and HTML
 
@@ -49,7 +56,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Added travis and coveralls setup
 
-### Updated
+### Changed
 - Copy updated for `submit-a-complaint` and `process`
 - Updated the download 4x4 codes for Money transfers
 
