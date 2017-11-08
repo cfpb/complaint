@@ -39,6 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'wagtail.wagtailcore',
+    'flags',
     'complaint_common',
     'complaint',
     'complaintdatabase',
