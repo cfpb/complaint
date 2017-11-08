@@ -33,8 +33,7 @@ class LandingViewTest(TestCase):
         self.assertTrue('narratives' in response.context_data.keys())
         self.assertTrue('stats' in response.context_data.keys())
 
-    @skipIf(not getattr(settings, 'STANDALONE', 'False'),
-            "not running standlone")
+    @skipIf(True, "not running with feature flags")
     def test_demo_json(self):
         """Test demo version of landing page"""
         response = client.get(reverse("ccdb-demo",

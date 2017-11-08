@@ -1,10 +1,12 @@
 {% extends 'base_responsive.html' %}
 {% load staticfiles %}
 {% load humanize %}
+{% load feature_flags %}
 
 {% block title %}Consumer Complaint Database{% endblock %}
 
 {% block content %}
+{% flag_enabled 'CCDB5_RELEASE' as CCDB5_RELEASE %}
 <div id="ccdb-landing">
   <!--
     If the data has not been updated, add class 'show-data-notification' to cf-notification
@@ -42,14 +44,22 @@
             <img class="isocon" src="{% static 'complaint_common/img/read.png' %}">
             <p>Consumers have let us know they want to share their complaint descriptions so others can learn from their experience.</p>
             <div class="btn-holder">
+              {% if CCDB5_RELEASE %}
               <p><a href="/data-research/consumer-complaints/search/?has_narrative=true" target="_blank" class="btn">Read consumer narratives</a></p>
+              {% else %}
+              <p><a href="https://data.consumerfinance.gov/d/nsyy-je5y" target="_blank" class="btn">Read consumer narratives</a></p>
+              {% endif %}
             </div>
           </div>
           <div class="content-l_col content-l_col-1-3">
             <img class="isocon" src="{% static 'complaint_common/img/view.png' %}">
             <p>View, sort, and filter data right in your browser.</p>
             <div class="btn-holder">
+              {% if CCDB5_RELEASE %}
               <p><a href="/data-research/consumer-complaints/search/" target="_blank" class="btn">View complaint data</a></p>
+              {% else %}
+              <p><a href="https://data.consumerfinance.gov/d/s6ew-h6mp" target="_blank" class="btn">View complaint data</a></p>
+              {% endif %}
             </div>
           </div>
           <div class="content-l_col content-l_col-1-3">
@@ -149,7 +159,11 @@
               </a>
             </li>
             <li class="list_item">
+              {% if CCDB5_RELEASE %}
               <a class="list_link" href="/data-research/consumer-complaints/search/">
+              {% else %}
+              <a class="list_link" href="https://data.consumerfinance.gov/d/s6ew-h6mp">
+              {% endif %}
                 Filter the full data set
               </a>
             </li>
