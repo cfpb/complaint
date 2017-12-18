@@ -4,8 +4,9 @@ python:
 nodejs: 6
 sudo: false
 env:
-- DEPLOY_ENV=DEV
-- DJANGO_SETTINGS_MODULE=ccdb.settings
+  global:
+    - DEPLOY_ENV=DEV
+    - DJANGO_SETTINGS_MODULE=ccdb.settings
 install:
 - pip install -r requirements.txt
 - pip install -r test_requirements.txt
