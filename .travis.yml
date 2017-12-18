@@ -1,7 +1,7 @@
 language: python
 python:
 - '2.7'
-nodejs: 6
+nodejs: 8
 sudo: false
 env:
   global:
