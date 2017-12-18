@@ -43,7 +43,6 @@ class LandingView(TemplateView):
             res_json = get_narratives_json(demo_json=kwargs['demo_json'])
         else:
             res_json = get_narratives_json()
-        context['narratives'] = format_narratives(res_json)
         context['stats'] = get_stats(res_json)
         (context['data_down'],
          context['narratives_down']) = is_data_not_updated(res_json)
@@ -87,90 +86,6 @@ def get_narratives_json(demo_json=None):
         print(e)
         res_json = {}
     return res_json
-
-
-def format_narratives(res_json):
-    """Set up label and css values for page."""
-    narratives = []
-
-    # Additional data needed to output the narratives on the page
-    # title, css, and icon are required
-    # optional 'tooltip' determines text that displays on section button hover
-    # 'tooltip' defaults to title
-    narrative_types = [
-        {'key': 'bank_accounts',
-         'title': 'Bank account',
-         'css': 'bank-account',
-         'icon': 'bank-account'},
-        {'key': 'credit_cards',
-         'title': 'Credit card',
-         'css': 'credit-card',
-         'icon': 'credit-card'},
-        {'key': 'credit_reporting',
-         'title': 'Credit reporting',
-         'css': 'credit-reporting',
-         'icon': 'loan'},
-        {'key': 'debt_collection',
-         'title': 'Debt collection',
-         'css': 'debt-collection',
-         'icon': 'debt-collection'},
-        {'key': 'money_transfers',
-         'title': 'Money transfer or virtual currency',
-         'css': 'money-transfer',
-         'icon': 'money-transfer',
-         'tooltip': 'Money transfer/virtual currency'},
-        {'key': 'mortgages',
-         'title': 'Mortgage',
-         'css': 'mortgage',
-         'icon': 'owning-home'},
-        {'key': 'other_financial_services',
-         'title': 'Other financial service',
-         'css': 'other',
-         'icon': 'money'},
-        {'key': 'payday_loans',
-         'title': 'Payday loan',
-         'css': 'payday-loan',
-         'icon': 'payday-loan'},
-        {'key': 'prepaid_cards',
-         'title': 'Prepaid card',
-         'css': 'prepaid-card',
-         'icon': 'prepaid-cards'},
-        {'key': 'student_loans',
-         'title': 'Student loan',
-         'css': 'student-loan',
-         'icon': 'paying-college'},
-        {'key': 'other_consumer_loans',
-         'title': 'Vehicle / consumer loan',
-         'css': 'consumer-loan',
-         'icon': 'buying-car'}
-    ]
-
-    try:
-
-        for index, item in enumerate(narrative_types):
-            # get json data for this type
-            narrative = res_json[item['key']]
-
-            # extend it with the additional title/css/icon/tooltip data
-            narrative.update(item)
-
-            # format date
-            narrative['date'] = datetime.strptime(narrative['date_received'],
-                                                  "%Y-%m-%dT%H:%M:%S")
-
-            # add data for next item
-            narrative['next'] = narrative_types[(index + 1) %
-                                                len(narrative_types)]
-
-            narratives.append(narrative)
-
-    except KeyError as e:
-        print("format_narratives:KeyError")
-        print("There is problem accessing with the given key, "
-              "which probably means the json has missing data")
-        print(e)
-
-    return narratives
 
 
 def get_stats(res_json):
