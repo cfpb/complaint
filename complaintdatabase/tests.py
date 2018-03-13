@@ -12,8 +12,9 @@ from django.test import Client
 
 from requests.exceptions import ConnectionError
 
-from .views import (LandingView, DocsView, get_narratives_json,
-                    format_narratives, get_stats, is_data_not_updated)
+from .views import (LandingView, DocsView, get_narratives_json, get_stats,
+                    is_data_not_updated)
+
 
 MOCK_404 = ConnectionError(Mock(return_value={'status': 404}), 'not found')
 client = Client()
@@ -30,18 +31,15 @@ class LandingViewTest(TestCase):
         response = LandingView.as_view()(request)
         self.assertEqual(response.status_code, 200)
         self.assertTrue('base_template' in response.context_data.keys())
-        self.assertTrue('narratives' in response.context_data.keys())
         self.assertTrue('stats' in response.context_data.keys())
 
-    @skipIf(not getattr(settings, 'STANDALONE', 'False'),
-            "not running standlone")
+    @skipIf(True, "not running with feature flags")
     def test_demo_json(self):
         """Test demo version of landing page"""
         response = client.get(reverse("ccdb-demo",
                                       kwargs={'demo_json': 'demo.json'}))
         self.assertEqual(response.status_code, 200)
         self.assertTrue('base_template' in response.context_data.keys())
-        self.assertTrue('narratives' in response.context_data.keys())
         self.assertTrue('stats' in response.context_data.keys())
 
 
@@ -85,48 +83,6 @@ class NarrativeJsonTest(TestCase):
             self.assertEqual(res_json, {})
             self.assertIn('ValueError', fakeOutput.getvalue())
             self.assertTrue(mock_get.call_count == 1)
-
-
-class FormatNarrativesTest(TestCase):
-    def test_format_narratives(self):
-        input_json = {
-            'bank_accounts': {'date_received': '2015-04-08T20:32:15',
-                              'tags': ['Older American', 'Servicemember']},
-            'credit_cards': {'date_received': '2015-04-08T20:32:16',
-                             'tags': ['Older American', 'Servicemember']},
-            'credit_reporting': {'date_received': '2015-04-08T20:32:17',
-                                 'tags': ['Older American', 'Servicemember']},
-            'debt_collection': {'date_received': '2015-04-08T20:32:18',
-                                'tags': ['Older American', 'Servicemember']},
-            'money_transfers': {'date_received': '2015-04-08T20:32:19',
-                                'tags': ['Older American', 'Servicemember']},
-            'mortgages': {'date_received': '2015-04-08T21:32:15',
-                          'tags': ['Older American', 'Servicemember']},
-            'other_financial_services': {'date_received':
-                                         '2015-04-09T20:32:15'},
-            'payday_loans': {'date_received': '2015-04-10T20:32:15'},
-            'prepaid_cards': {'date_received': '2015-04-11T20:32:15'},
-            'student_loans': {'date_received': '2015-04-12T20:32:15'},
-            'other_consumer_loans': {'date_received': '2015-04-13T20:32:15'}
-        }
-        sorted_titles = ['Bank account', 'Credit card',
-                         'Credit reporting', 'Debt collection',
-                         'Money transfer or virtual currency', 'Mortgage',
-                         'Other financial service', 'Payday loan',
-                         'Prepaid card', 'Student loan',
-                         'Vehicle / consumer loan']
-        res = format_narratives(input_json)
-        self.assertEqual(len(res), 11)
-        res_titles = sorted([entry['title'] for entry in res])
-        self.assertEqual(res_titles, sorted_titles)
-        for date in [entry['date'] for entry in res]:
-            self.assertEqual(type(date), datetime)
-
-    def test_invalid_json_format_narratives(self):
-        with patch('sys.stdout', new=StringIO()) as fakeOutput:
-            res = format_narratives({})
-            self.assertEqual(res, [])
-            self.assertIn('KeyError', fakeOutput.getvalue().strip())
 
 
 class GetStatsTest(TestCase):
