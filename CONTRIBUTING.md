@@ -61,6 +61,7 @@ We configure [Autoprefixer](#autoprefixer) to support the following list of brow
     - Samsung Internet
 - Internet Explorer 9
 - Internet Explorer 8
+- Internet Explorer 7
 
 http://browserl.ist/?q=last+2+versions%2C+Explorer+%3E%3D+8
 
