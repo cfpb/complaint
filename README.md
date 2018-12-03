@@ -1,6 +1,5 @@
-⚠️ THIS REPO IS DEPRECATED (12/3/2018) ⚠️
----
-Please migrate to using [cfgov-refresh](https://github.com/cfpb/cfgov-refresh)
+# :warning: THIS REPO IS DEPRECATED (12/3/2018) :warning:
+Please migrate to using [cfgov-refresh](https://github.com/cfpb/cfgov-refresh).
 
 [![Build Status](https://travis-ci.org/cfpb/complaint.png)](https://travis-ci.org/cfpb/complaint) [![Coverage Status](https://coveralls.io/repos/github/cfpb/complaint/badge.svg?branch=master)](https://coveralls.io/github/cfpb/complaint?branch=master)
 
