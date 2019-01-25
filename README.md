@@ -60,7 +60,7 @@ Standalone Django project that runs the [Consumer Complaint Database](http://www
   sh ./setup.sh
   ```
 1. Go to landing pages:
-  - http://127.0.0.1:8000/complaintdatabase/
+  - http://127.0.0.1:8000/data-research/consumer-complaints/
   - http://127.0.0.1:8000/complaint/data-use/
   - http://127.0.0.1:8000/complaint/process/
   - http://127.0.0.1:8000/complaint/
